@@ -1,0 +1,10 @@
+.wrapper {
+  margin-bottom: 10px;
+  padding: 0 10px;
+  border: 1px solid white;
+  border-radius: 20px;
+}
+
+.removedIngredients {
+  text-decoration: underline;
+}

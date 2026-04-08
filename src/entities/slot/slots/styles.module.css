@@ -1,0 +1,5 @@
+.unavailable {
+  pointer-events: none;
+  background-color: pink;
+  opacity: 0.2;
+}

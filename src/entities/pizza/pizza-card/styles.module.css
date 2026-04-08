@@ -1,0 +1,46 @@
+.cardContainer {
+  display: flex;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.addButton {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+
+  background: white;
+  font-size: 25px;
+}
+
+.price {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.name {
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.weight {
+  margin-top: 3px;
+  font-size: 0.8rem;
+}
