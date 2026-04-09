@@ -13,7 +13,6 @@ export const App = () => {
   const [selectedSlotTime, setSelectedSlotTime] = useState(null)
 
   const [selectedPizza, setSelectedPizza] = useState(null)
-
   const [orderItems, setOrderItems] = useState([])
 
   let content
@@ -39,12 +38,9 @@ export const App = () => {
           setCurrentStep={setCurrentStep}
           orderDays={orderDays}
           activeSlotIndex={activeSlotIndex}
-          selectedSlotId={selectedSlotId}
           selectedSlotTime={selectedSlotTime}
-          selectedPizza={selectedPizza}
           setSelectedPizza={setSelectedPizza}
           orderItems={orderItems}
-          setOrderItems={setOrderItems}
         />
       )
       break
@@ -53,11 +49,7 @@ export const App = () => {
       content = (
         <PizzaDetails
           setCurrentStep={setCurrentStep}
-          orderDays={orderDays}
-          activeSlotIndex={activeSlotIndex}
-          selectedSlotTime={selectedSlotTime}
           selectedPizza={selectedPizza}
-          orderItems={orderItems}
           setOrderItems={setOrderItems}
         />
       )
@@ -66,8 +58,12 @@ export const App = () => {
     case 'order':
       content = (
         <OrderConfirmationPage
+          orderDays={orderDays}
+          selectedSlotTime={selectedSlotTime}
+          activeSlotIndex={activeSlotIndex}
           setCurrentStep={setCurrentStep}
           orderItems={orderItems}
+          setOrderItems={setOrderItems}
         />
       )
       break

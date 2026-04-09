@@ -1,0 +1,19 @@
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.actionsRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.addMoreButton {
+  margin-left: 5px;
+}
+
+.confirmOrderButton {
+  margin-right: 5px;
+}

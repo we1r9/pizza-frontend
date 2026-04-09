@@ -3,25 +3,28 @@ import { formatIngredients } from "../../../shared/lib/formatIngredients"
 import { AddToOrderButton } from "../../order/add-to-order-button/component"
 import { RemovableIngredients } from "../removable-ingredients/component"
 import { ToppingsSelection } from "../toppings-selection/component"
+import { QuantitySelector } from "../quantity-selector/component"
 
 import styles from './styles.module.css'
 
 export const PizzaDetails = ({
-  setOrderItems,
+  setCurrentStep,
   selectedPizza,
-  setCurrentStep
+  setOrderItems,
 }) => {
   const [removedIngredients, setRemovedIngredients] = useState([])
   const [addedToppings, setAddedToppings] = useState([])
+  const [quantity, setQuantity] = useState(1)
 
-  if (!selectedPizza) return null;
+  if (!selectedPizza) return null
 
   const handleAddToOrder = () => {
-    const id = crypto.randomUUID()
-
     const orderItem = {
-      id,
+      id: crypto.randomUUID(),
       name: selectedPizza.name,
+      image: selectedPizza.image,
+      price: selectedPizza.price,
+      quantity,
       removedIngredients: [...removedIngredients],
       addedToppings: [...addedToppings]
     }
@@ -30,11 +33,12 @@ export const PizzaDetails = ({
 
     setRemovedIngredients([])
     setAddedToppings([])
+    setQuantity(1)
     setCurrentStep('pizza')
   }
 
   return (
-    <div style={{ position: "relative" }}>
+    <div>
       <button
         onClick={() => setCurrentStep('pizza')}>
         ← Назад
@@ -73,9 +77,17 @@ export const PizzaDetails = ({
         setAddedToppings={setAddedToppings}
       />
 
-      <AddToOrderButton onClick={handleAddToOrder}>
-        Добавить в заказ
-      </AddToOrderButton>
+      <div className={styles.actionsRow}>
+        <QuantitySelector
+          className={styles.quantityControls}
+          quantity={quantity}
+          setQuantity={setQuantity}
+        />
+
+        <AddToOrderButton onClick={handleAddToOrder}>
+          Добавить в заказ
+        </AddToOrderButton>
+      </div>
     </div>
   )
 }

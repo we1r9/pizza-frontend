@@ -4,10 +4,10 @@ import { PizzaGrid } from "../../../entities/pizza/pizza-grid/component";
 import { GoToCartButton } from "../../../entities/order/go-to-cart-button/component";
 
 export const PizzaSelectionPage = ({
-  orderDays,
-  selectedSlotTime,
-  activeSlotIndex,
   setCurrentStep,
+  orderDays,
+  activeSlotIndex,
+  selectedSlotTime,
   setSelectedPizza,
   orderItems
 }) => {

@@ -5,7 +5,7 @@ export const GoToCartButton = ({
   onClick
 }) => {
   return (
-    <div>
+    <div style={{marginTop: "20px"}}>
       {orderItems.length > 0 && (
         <button
           onClick={onClick}

@@ -2,13 +2,13 @@ import { DateTabs } from "../../../entities/slot/date-tabs/component";
 import { Slots } from "../../../entities/slot/slots/component";
 
 export const SlotSelectionPage = ({
-  orderDays,
   setCurrentStep,
+  orderDays,
+  activeSlotIndex,
+  setActiveSlotIndex,
   selectedSlotId,
   setSelectedSlotId,
   setSelectedSlotTime,
-  activeSlotIndex,
-  setActiveSlotIndex
 }) => {
   const chosenDay = orderDays[activeSlotIndex];
 

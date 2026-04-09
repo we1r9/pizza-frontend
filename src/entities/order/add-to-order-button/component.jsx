@@ -4,10 +4,7 @@ export const AddToOrderButton = ({
 }) => {
 
   return (
-    <button
-      style={{ marginTop: "20px" }}
-      onClick={onClick}
-    >
+    <button onClick={onClick}>
       {children}
     </button>
   )
