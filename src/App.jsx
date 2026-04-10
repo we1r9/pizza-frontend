@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { orderDays } from "./shared/data/order-days"
 import { SlotSelectionPage } from "./pages/customer/slot-selection-page/component"
 import { PizzaSelectionPage } from "./pages/customer/pizza-selection-page/component"
@@ -18,6 +18,16 @@ export const App = () => {
   const [selectedPizza, setSelectedPizza] = useState(null)
   const [orderItems, setOrderItems] = useState([])
   const [paymentMethod, setPaymentMethod] = useState(null)
+
+  const [orders, setOrders] = useState(() => {
+    const savedOrders = localStorage.getItem('orders')
+
+    return savedOrders ? JSON.parse(savedOrders) : []
+  })
+
+  useEffect(() => {
+    localStorage.setItem('orders', JSON.stringify(orders))
+  }, [orders])
 
   let content
 
@@ -79,6 +89,10 @@ export const App = () => {
           orderItems={orderItems}
           paymentMethod={paymentMethod}
           setPaymentMethod={setPaymentMethod}
+          orderDays={orderDays}
+          selectedSlotTime={selectedSlotTime}
+          activeSlotIndex={activeSlotIndex}
+          setOrders={setOrders}
         />
       )
       break
@@ -92,6 +106,8 @@ export const App = () => {
           activeSlotIndex={activeSlotIndex}
           orderItems={orderItems}
           paymentMethod={paymentMethod}
+          setPaymentMethod={setPaymentMethod}
+          setOrderItems={setOrderItems}
         />
       )
       break
@@ -100,7 +116,15 @@ export const App = () => {
       content = (
         <OrdersPage
           setCurrentStep={setCurrentStep}
+          orders={orders}
+          setOrders={setOrders}
         />
+      )
+      break
+
+    case 'order-details':
+      content = (
+        <div></div>
       )
       break
 

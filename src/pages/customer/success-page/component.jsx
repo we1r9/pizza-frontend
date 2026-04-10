@@ -9,7 +9,9 @@ export const SuccessPage = ({
   selectedSlotTime,
   activeSlotIndex,
   orderItems,
-  paymentMethod
+  paymentMethod,
+  setPaymentMethod,
+  setOrderItems
 }) => {
   const totalCost = orderItems.reduce(
     (sum, orderItem) => sum + orderItem.price * orderItem.quantity, 0
@@ -41,12 +43,20 @@ export const SuccessPage = ({
 
       <div className={styles.actionsRow}>
         <button
-          onClick={() => setCurrentStep('slot')}
+          onClick={() => {
+            setCurrentStep('slot')
+            setPaymentMethod(null)
+            setOrderItems([])
+          }}
         >
           + Новый заказ
         </button>
         <button
-          onClick={() => setCurrentStep('orders')}
+          onClick={() => {
+            setCurrentStep('orders')
+            setPaymentMethod(null)
+            setOrderItems([])
+          }}
         >
           Мои заказы →
         </button>

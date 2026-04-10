@@ -4,11 +4,31 @@ export const PaymentPage = ({
   setCurrentStep,
   orderItems,
   paymentMethod,
-  setPaymentMethod
+  setPaymentMethod,
+  orderDays,
+  selectedSlotTime,
+  activeSlotIndex,
+  setOrders
 }) => {
   const totalCost = orderItems.reduce(
     (sum, orderItem) => sum + orderItem.price * orderItem.quantity, 0
   )
+
+  const handleAddOrder = () => {
+    const order = {
+      id: crypto.randomUUID(),
+      orderNumber: Math.floor(1000 + Math.random() * 9000),
+      date: orderDays[activeSlotIndex].date,
+      time: selectedSlotTime,
+      paymentMethod,
+      status: 'new',
+      items: [...orderItems],
+      totalCost
+    }
+
+    setOrders((prev) => [...prev, order])
+    setCurrentStep('success')
+  }
 
   return (
     <div className={styles.paymentPage}>
@@ -54,9 +74,8 @@ export const PaymentPage = ({
           <p className={styles.paymentDescription}>Наличными или картой</p>
         </button>
       </div>
-
       <button
-        onClick={() => setCurrentStep('success')}
+        onClick={handleAddOrder}
         hidden={!paymentMethod}
       >
         {paymentMethod === 'card'

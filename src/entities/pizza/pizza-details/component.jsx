@@ -18,7 +18,7 @@ export const PizzaDetails = ({
 
   if (!selectedPizza) return null
 
-  const handleAddToOrder = () => {
+  const handleAddItemToOrder = () => {
     const orderItem = {
       id: crypto.randomUUID(),
       name: selectedPizza.name,
@@ -84,7 +84,7 @@ export const PizzaDetails = ({
           setQuantity={setQuantity}
         />
 
-        <AddToOrderButton onClick={handleAddToOrder}>
+        <AddToOrderButton onClick={handleAddItemToOrder}>
           Добавить в заказ
         </AddToOrderButton>
       </div>
