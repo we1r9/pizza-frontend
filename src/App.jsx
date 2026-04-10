@@ -4,6 +4,7 @@ import { SlotSelectionPage } from "./pages/customer/slot-selection-page/componen
 import { PizzaSelectionPage } from "./pages/customer/pizza-selection-page/component"
 import { PizzaDetails } from "./entities/pizza/pizza-details/component"
 import { OrderConfirmationPage } from "./pages/customer/order-confirmation-page/component"
+import { PaymentPage } from "./pages/customer/payment-page/component"
 
 export const App = () => {
   const [currentStep, setCurrentStep] = useState("slot")
@@ -14,6 +15,7 @@ export const App = () => {
 
   const [selectedPizza, setSelectedPizza] = useState(null)
   const [orderItems, setOrderItems] = useState([])
+  const [paymentMethod, setPaymentMethod] = useState(null)
 
   let content
 
@@ -64,6 +66,17 @@ export const App = () => {
           setCurrentStep={setCurrentStep}
           orderItems={orderItems}
           setOrderItems={setOrderItems}
+        />
+      )
+      break
+
+    case 'payment':
+      content = (
+        <PaymentPage
+          setCurrentStep={setCurrentStep}
+          orderItems={orderItems}
+          paymentMethod={paymentMethod}
+          setPaymentMethod={setPaymentMethod}
         />
       )
       break

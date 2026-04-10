@@ -4,6 +4,22 @@
   align-items: center;
 }
 
+.commentSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.commentLabel {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.commentTextarea {
+  margin-top: 10px;
+  resize: none;
+}
+
 .actionsRow {
   display: flex;
   justify-content: space-between;

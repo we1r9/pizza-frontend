@@ -76,6 +76,14 @@ export const OrderConfirmationPage = ({
         onIncreaseQuantity={onIncreaseQuantity}
       />
 
+      <div className={styles.commentSection}>
+        <label className={styles.commentLabel}>Комментарий к заказу</label>
+        
+        <textarea
+          className={styles.commentTextarea}
+          placeholder="Например: порезать на 6 кусочков" />
+      </div>
+
       <div className={styles.actionsRow}>
         <button
           onClick={() => setCurrentStep('pizza')}
@@ -84,8 +92,10 @@ export const OrderConfirmationPage = ({
           Добавить еще
         </button>
 
-        <button className={styles.confirmOrderButton}>
-          Подтвердить заказ
+        <button
+          onClick={() => setCurrentStep('payment')}
+          className={styles.confirmOrderButton}>
+          К оплате →
         </button>
       </div>
     </div>

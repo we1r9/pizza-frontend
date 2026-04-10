@@ -1,0 +1,57 @@
+.paymentPage {
+  position: relative;
+}
+
+.totalCostTitle {
+  margin: 18px 0 12px;
+}
+
+.totalCost {
+  font-size: 18px;
+}
+
+.paymentOptionsTitle {
+  margin: 18px 0 15px;
+}
+
+.paymentOptions {
+  display: flex;
+  gap: 15px;
+}
+
+.paymentOption {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 15px;
+  padding: 10px;
+  width: 190px;
+  margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.paymentTitle {
+  margin: 8px 5px;
+  font-size: 16px;
+}
+
+.paymentDescription {
+  margin: 5px 5px;
+  font-size: 15px;
+}
+
+.active {
+  border-color: #4da3ff;
+  background-color: rgba(77, 163, 255, 0.12);
+}
+
+.submitButton {
+  position: absolute;
+  right: 46.5%;
+}
