@@ -1,0 +1,34 @@
+.successPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.returnButton {
+  align-self: flex-start;
+}
+
+.successTitle {
+  margin: 2rem 0 10px;
+}
+
+.orderDateTitle {
+  margin: 0 0 5px;
+}
+
+.selectedSlotInfo {
+  margin-bottom: 20px;
+}
+
+.summaryRow {
+  margin: 15px 0 7px;
+}
+
+.paymentStatus {
+  margin-bottom: 20px;
+}
+
+.actionsRow {
+  display: flex;
+  gap: 10px;
+}

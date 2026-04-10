@@ -35,7 +35,7 @@ export const PaymentPage = ({
         >
 
           <h4 className={styles.paymentTitle}>💳 Картой</h4>
-          
+
           <p className={styles.paymentDescription}>Онлайн</p>
         </button>
 
@@ -50,14 +50,14 @@ export const PaymentPage = ({
         >
 
           <h4 className={styles.paymentTitle}>💵 При получении</h4>
-          
+
           <p className={styles.paymentDescription}>Наличными или картой</p>
         </button>
       </div>
 
       <button
+        onClick={() => setCurrentStep('success')}
         hidden={!paymentMethod}
-        className={styles.submitButton}
       >
         {paymentMethod === 'card'
           ? 'Оплатить'

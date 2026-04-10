@@ -1,5 +1,7 @@
-import { DateTabs } from "../../../entities/slot/date-tabs/component";
-import { Slots } from "../../../entities/slot/slots/component";
+import { DateTabs } from "../../../entities/slot/date-tabs/component"
+import { Slots } from "../../../entities/slot/slots/component"
+
+import styles from './styles.module.css'
 
 export const SlotSelectionPage = ({
   setCurrentStep,
@@ -13,14 +15,17 @@ export const SlotSelectionPage = ({
   const chosenDay = orderDays[activeSlotIndex];
 
   return (
-    <div>
+    <div className={styles.slotSelectionPage}>
       <h2>Здравствуйте</h2>
+
       <p>Выберите дату, на которую хотите оформить заказ</p>
+
       <DateTabs
         orderDays={orderDays}
         onClick={setActiveSlotIndex}
         activeIndex={activeSlotIndex}
       />
+
       <Slots
         key={chosenDay.id}
         setCurrentStep={setCurrentStep}
@@ -29,6 +34,13 @@ export const SlotSelectionPage = ({
         setSelectedSlotId={setSelectedSlotId}
         setSelectedSlotTime={setSelectedSlotTime}
       />
+
+      <button
+        onClick={() => setCurrentStep('orders')}
+        className={styles.ordersPageButton}
+      >
+        Заказы
+      </button>
     </div>
   )
 }

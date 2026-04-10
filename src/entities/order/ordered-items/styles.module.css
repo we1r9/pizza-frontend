@@ -1,0 +1,57 @@
+.orderItems {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.orderedItemCard {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 20px;
+  width: 400px;
+}
+
+.imageWrapper {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.orderItem {
+  margin-left: 1rem;
+  min-width: 0;
+}
+
+.orderItemTitle {
+  margin: 0 0 4px;
+}
+
+.addedToppings {
+  margin-bottom: 3px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.removedIngredients {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  font-size: 0.8rem;
+}

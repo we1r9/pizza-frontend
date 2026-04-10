@@ -3,10 +3,11 @@ import { formatDate } from "../../../shared/lib/formatDate"
 export const SelectedSlotInfo = ({
   orderDays,
   selectedSlotTime,
-  activeSlotIndex
+  activeSlotIndex,
+  className
 }) => {
   return (
-    <div>
+    <div className={className}>
       <span>
         {formatDate(orderDays[activeSlotIndex].date)}
       </span>

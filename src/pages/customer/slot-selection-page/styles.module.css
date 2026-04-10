@@ -1,0 +1,9 @@
+.slotSelectionPage {
+  position: relative;
+}
+
+.ordersPageButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
