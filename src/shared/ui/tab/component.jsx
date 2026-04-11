@@ -1,14 +1,16 @@
 export const Tab = ({
   children,
   onClick,
-  isActive
+  isActive,
 }) => {
   return (
-    <button
-      onClick={onClick}
-      disabled={isActive}
-    >
-      {children}
-    </button>
+    <div>
+      <button
+        onClick={onClick}
+        disabled={isActive}
+      >
+        {children}
+      </button>
+    </div>
   );
 };

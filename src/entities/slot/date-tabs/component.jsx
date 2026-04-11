@@ -1,13 +1,15 @@
 import { formatDate } from "../../../shared/lib/formatDate"
 import { Tab } from "../../../shared/ui/tab/component"
 
+import styles from './styles.module.css'
+
 export const DateTabs = ({
   orderDays,
   onClick,
   activeIndex
 }) => {
   return (
-    <div>
+    <div className={styles.datesRow}>
       {orderDays.map((day, index) => (
         <Tab
           key={day.id}

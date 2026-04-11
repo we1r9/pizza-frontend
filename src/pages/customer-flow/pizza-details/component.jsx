@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { formatIngredients } from "../../../shared/lib/formatIngredients"
-import { AddToOrderButton } from "../../order/add-to-order-button/component"
-import { RemovableIngredients } from "../removable-ingredients/component"
-import { ToppingsSelection } from "../toppings-selection/component"
-import { QuantitySelector } from "../quantity-selector/component"
+import { AddToOrderButton } from "../../../entities/order/add-to-order-button/component"
+import { RemovableIngredients } from "../../../entities/pizza/removable-ingredients/component"
+import { ToppingsSelection } from "../../../entities/pizza/toppings-selection/component"
+import { QuantitySelector } from "../../../entities/pizza/quantity-selector/component"
 
 import styles from './styles.module.css'
 
