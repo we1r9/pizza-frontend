@@ -9,8 +9,9 @@
   position: relative;
   align-items: center;
   padding: 10px;
-  border: 1px solid white;
-  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 25px;
   width: 400px;
 }
 
@@ -54,4 +55,5 @@
 
 .price {
   font-size: 0.8rem;
+  opacity: 0.75;
 }

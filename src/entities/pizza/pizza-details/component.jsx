@@ -7,7 +7,7 @@ import { QuantitySelector } from "../quantity-selector/component"
 
 import styles from './styles.module.css'
 
-export const PizzaDetails = ({
+export const PizzaDetailsPage = ({
   setCurrentStep,
   selectedPizza,
   setOrderItems,

@@ -11,7 +11,8 @@ export const SuccessPage = ({
   orderItems,
   paymentMethod,
   setPaymentMethod,
-  setOrderItems
+  setOrderItems,
+  setOrderComment
 }) => {
   const totalCost = orderItems.reduce(
     (sum, orderItem) => sum + orderItem.price * orderItem.quantity, 0
@@ -47,6 +48,7 @@ export const SuccessPage = ({
             setCurrentStep('slot')
             setPaymentMethod(null)
             setOrderItems([])
+            setOrderComment('')
           }}
         >
           + Новый заказ
@@ -56,6 +58,7 @@ export const SuccessPage = ({
             setCurrentStep('orders')
             setPaymentMethod(null)
             setOrderItems([])
+            setOrderComment('')
           }}
         >
           Мои заказы →

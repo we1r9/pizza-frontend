@@ -9,7 +9,8 @@ export const OrderConfirmationPage = ({
   activeSlotIndex,
   setCurrentStep,
   orderItems,
-  setOrderItems
+  setOrderItems,
+  setOrderComment
 }) => {
   const handleRemoveItem = (id) => {
     setOrderItems((prev) => prev.filter((orderItem) => orderItem.id !== id))
@@ -81,7 +82,9 @@ export const OrderConfirmationPage = ({
         
         <textarea
           className={styles.commentTextarea}
-          placeholder="Например: порезать на 6 кусочков" />
+          placeholder="Например: порезать на 6 кусочков"
+          onChange={(e) => setOrderComment(e.target.value)}
+          />
       </div>
 
       <div className={styles.actionsRow}>

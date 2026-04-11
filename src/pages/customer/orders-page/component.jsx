@@ -5,7 +5,8 @@ import styles from './styles.module.css'
 export const OrdersPage = ({
   setCurrentStep,
   orders,
-  setOrders
+  setOrders,
+  setSelectedOrder
 }) => {
 
   return (
@@ -38,7 +39,10 @@ export const OrdersPage = ({
               <div
                 key={order.id}
                 className={styles.orderContainer}
-                onClick={() => setCurrentStep('order-details')}
+                onClick={() => {
+                  setCurrentStep('order-details')
+                  setSelectedOrder(order)
+                }}
               >
                 <h4 className={styles.orderNumber}>№{order.orderNumber}</h4>
 

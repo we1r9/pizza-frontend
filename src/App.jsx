@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 import { orderDays } from "./shared/data/order-days"
 import { SlotSelectionPage } from "./pages/customer/slot-selection-page/component"
 import { PizzaSelectionPage } from "./pages/customer/pizza-selection-page/component"
-import { PizzaDetails } from "./entities/pizza/pizza-details/component"
+import { PizzaDetailsPage } from "./entities/pizza/pizza-details/component"
 import { OrderConfirmationPage } from "./pages/customer/order-confirmation-page/component"
 import { PaymentPage } from "./pages/customer/payment-page/component"
 import { SuccessPage } from "./pages/customer/success-page/component"
 import { OrdersPage } from "./pages/customer/orders-page/component"
+import { OrderDetailsPage } from "./pages/customer/order-details-page/component"
 
 export const App = () => {
   const [currentStep, setCurrentStep] = useState("slot")
@@ -18,6 +19,8 @@ export const App = () => {
   const [selectedPizza, setSelectedPizza] = useState(null)
   const [orderItems, setOrderItems] = useState([])
   const [paymentMethod, setPaymentMethod] = useState(null)
+  const [selectedOrder, setSelectedOrder] = useState(null)
+  const [orderComment, setOrderComment] = useState('')
 
   const [orders, setOrders] = useState(() => {
     const savedOrders = localStorage.getItem('orders')
@@ -61,7 +64,7 @@ export const App = () => {
 
     case 'pizza-details':
       content = (
-        <PizzaDetails
+        <PizzaDetailsPage
           setCurrentStep={setCurrentStep}
           selectedPizza={selectedPizza}
           setOrderItems={setOrderItems}
@@ -78,6 +81,7 @@ export const App = () => {
           setCurrentStep={setCurrentStep}
           orderItems={orderItems}
           setOrderItems={setOrderItems}
+          setOrderComment={setOrderComment}
         />
       )
       break
@@ -93,6 +97,7 @@ export const App = () => {
           selectedSlotTime={selectedSlotTime}
           activeSlotIndex={activeSlotIndex}
           setOrders={setOrders}
+          orderComment={orderComment}
         />
       )
       break
@@ -108,6 +113,7 @@ export const App = () => {
           paymentMethod={paymentMethod}
           setPaymentMethod={setPaymentMethod}
           setOrderItems={setOrderItems}
+          setOrderComment={setOrderComment}
         />
       )
       break
@@ -118,13 +124,18 @@ export const App = () => {
           setCurrentStep={setCurrentStep}
           orders={orders}
           setOrders={setOrders}
+          setSelectedOrder={setSelectedOrder}
         />
       )
       break
 
     case 'order-details':
       content = (
-        <div></div>
+        <OrderDetailsPage
+          setCurrentStep={setCurrentStep}
+          selectedOrder={selectedOrder}
+          orderComment={orderComment}
+        />
       )
       break
 

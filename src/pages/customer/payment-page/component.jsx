@@ -8,7 +8,8 @@ export const PaymentPage = ({
   orderDays,
   selectedSlotTime,
   activeSlotIndex,
-  setOrders
+  setOrders,
+  orderComment
 }) => {
   const totalCost = orderItems.reduce(
     (sum, orderItem) => sum + orderItem.price * orderItem.quantity, 0
@@ -23,7 +24,8 @@ export const PaymentPage = ({
       paymentMethod,
       status: 'new',
       items: [...orderItems],
-      totalCost
+      totalCost,
+      orderComment
     }
 
     setOrders((prev) => [...prev, order])
