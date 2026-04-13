@@ -1,0 +1,77 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  position: absolute;
+  top: 25%;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.closeButton {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.daysButtonsRow {
+  display: flex;
+  gap: 10px;
+  margin: 0 0 15px;
+}
+
+.fallback {
+  color: black;
+}
+
+.slotsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0 0 10px;
+}
+
+.slotPill {
+  border: 2px solid #d0d0d0;
+  border-radius: 999px;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: #1f1f1f;
+  transition: border .2s ease;
+}
+
+.enabledSlotPill {
+  background-color: #b3fbb8;
+}
+
+.disabledSlotPill {
+  background-color: #ff9595;
+}
+
+.saveChangesContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saveChangesButton {
+  border: 1px solid #d0d0d0;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 14px;
+  background-color: transparent;
+}

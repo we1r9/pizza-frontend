@@ -1,0 +1,73 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: absolute;
+  top: 25%;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.closeButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.daySelect {
+  width: 120px;
+  margin: 0 0 20px;
+  outline: none;
+}
+
+.fallback {
+  color: black;
+}
+
+.saveChangesContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.saveChangesButton {
+  border: 1px solid #d0d0d0;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 14px;
+  background-color: transparent;
+}
+
+.totalAddedSlotsText {
+  color: black;
+  font-size: 14px;
+}
+
+.activeSlotsFallback {
+  color: black;
+}
+
+.actionsRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectButton {
+  align-self: flex-start;
+}

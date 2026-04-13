@@ -7,9 +7,9 @@ import { PaymentPage } from "./payment-page/component"
 import { SuccessPage } from "./success-page/component"
 import { OrdersPage } from "./orders-page/component"
 import { OrderDetailsPage } from "./order-details-page/component"
-import { orderDays } from "../../shared/data/order-days"
 
 export const CustomerFlow = ({
+  orderDays,
   orders,
   setOrders
 }) => {

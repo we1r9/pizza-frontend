@@ -10,9 +10,9 @@ export const SlotSelectionPage = ({
   setActiveSlotIndex,
   selectedSlotId,
   setSelectedSlotId,
-  setSelectedSlotTime,
+  setSelectedSlotTime
 }) => {
-  const chosenDay = orderDays[activeSlotIndex];
+  const chosenDay = orderDays[activeSlotIndex]
 
   return (
     <div className={styles.slotSelectionPage}>

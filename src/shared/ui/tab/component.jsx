@@ -12,5 +12,5 @@ export const Tab = ({
         {children}
       </button>
     </div>
-  );
-};
+  )
+}

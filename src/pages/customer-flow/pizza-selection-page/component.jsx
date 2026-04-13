@@ -1,7 +1,7 @@
-import { pizzas } from "../../../shared/data/pizzas";
-import { SelectedSlotInfo } from "../../../entities/slot/selected-slot-info/component";
-import { PizzaGrid } from "../../../entities/pizza/pizza-grid/component";
-import { GoToCartButton } from "../../../entities/order/go-to-cart-button/component";
+import { pizzas } from "../../../shared/data/pizzas"
+import { SelectedSlotInfo } from "../../../entities/slot/selected-slot-info/component"
+import { PizzaGrid } from "../../../entities/pizza/pizza-grid/component"
+import { GoToCartButton } from "../../../entities/order/go-to-cart-button/component"
 
 export const PizzaSelectionPage = ({
   setCurrentStep,

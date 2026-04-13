@@ -73,4 +73,4 @@ export const pizzas = [
     image:
       "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80"
   }
-];
+]

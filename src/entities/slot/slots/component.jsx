@@ -1,5 +1,5 @@
 import { Slot } from "../slot/component"
-import { ConfirmSlotButton } from "../confirm-slot-button/component";
+import { ConfirmSlotButton } from "../confirm-slot-button/component"
 
 import styles from './styles.module.css'
 
@@ -10,13 +10,24 @@ export const Slots = ({
   setSelectedSlotId,
   setSelectedSlotTime
 }) => {
-  const { availableSlots } = chosenDay;
+  const { availableSlots } = chosenDay
+
+  const activeSlots = availableSlots.filter((slot) => !slot.expired && slot.enabled)
+
+  if (!activeSlots.length) {
+    return (
+      <div>
+        <h3>Доступные слоты</h3>
+        <p>На эту дату нет актуальных слотов</p>
+      </div>
+    )
+  }
 
   return (
     <div>
       <h3>Доступные слоты</h3>
 
-      {availableSlots.map((slot => (
+      {activeSlots.map((slot => (
         <Slot
           key={slot.id}
           slot={slot}
