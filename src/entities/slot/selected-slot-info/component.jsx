@@ -1,15 +1,14 @@
 import { formatDate } from "../../../shared/lib/formatDate"
 
 export const SelectedSlotInfo = ({
-  orderDays,
+  chosenDay,
   selectedSlotTime,
-  activeSlotIndex,
   className
 }) => {
   return (
     <div className={className}>
       <span>
-        {formatDate(orderDays[activeSlotIndex].date)}
+        {formatDate(chosenDay.date)}
       </span>
       <span> • </span>
       <span>

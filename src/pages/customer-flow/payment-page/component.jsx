@@ -5,9 +5,8 @@ export const PaymentPage = ({
   orderItems,
   paymentMethod,
   setPaymentMethod,
-  orderDays,
+  chosenDay,
   selectedSlotTime,
-  activeSlotIndex,
   setOrders,
   orderComment
 }) => {
@@ -19,7 +18,7 @@ export const PaymentPage = ({
     const order = {
       id: crypto.randomUUID(),
       orderNumber: Math.floor(1000 + Math.random() * 9000),
-      date: orderDays[activeSlotIndex].date,
+      date: chosenDay.date,
       time: selectedSlotTime,
       paymentMethod,
       status: 'new',

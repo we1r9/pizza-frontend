@@ -4,9 +4,8 @@ import { SelectedSlotInfo } from "../../../entities/slot/selected-slot-info/comp
 import styles from './styles.module.css'
 
 export const OrderConfirmationPage = ({
-  orderDays,
+  chosenDay,
   selectedSlotTime,
-  activeSlotIndex,
   setCurrentStep,
   orderItems,
   setOrderItems,
@@ -65,9 +64,8 @@ export const OrderConfirmationPage = ({
 
       <h3>Дата и время заказа:</h3>
       <SelectedSlotInfo
-        orderDays={orderDays}
+        chosenDay={chosenDay}
         selectedSlotTime={selectedSlotTime}
-        activeSlotIndex={activeSlotIndex}
       />
 
       <OrderItems
@@ -79,12 +77,12 @@ export const OrderConfirmationPage = ({
 
       <div className={styles.commentSection}>
         <label className={styles.commentLabel}>Комментарий к заказу</label>
-        
+
         <textarea
           className={styles.commentTextarea}
           placeholder="Например: порезать на 6 кусочков"
           onChange={(e) => setOrderComment(e.target.value)}
-          />
+        />
       </div>
 
       <div className={styles.actionsRow}>

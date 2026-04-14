@@ -5,9 +5,8 @@ import styles from './styles.module.css'
 
 export const SuccessPage = ({
   setCurrentStep,
-  orderDays,
+  chosenDay,
   selectedSlotTime,
-  activeSlotIndex,
   orderItems,
   paymentMethod,
   setPaymentMethod,
@@ -24,9 +23,8 @@ export const SuccessPage = ({
 
       <h3 className={styles.orderDateTitle}>Дата и время заказа</h3>
       <SelectedSlotInfo
-        orderDays={orderDays}
+        chosenDay={chosenDay}
         selectedSlotTime={selectedSlotTime}
-        activeSlotIndex={activeSlotIndex}
         className={styles.selectedSlotInfo}
       />
 

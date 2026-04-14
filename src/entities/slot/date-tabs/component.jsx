@@ -5,16 +5,22 @@ import styles from './styles.module.css'
 
 export const DateTabs = ({
   orderDays,
-  onClick,
-  activeIndex
+  selectedDayId,
+  setSelectedDayId,
+  setSelectedSlotId,
+  setSelectedSlotTime
 }) => {
   return (
     <div className={styles.datesRow}>
-      {orderDays.map((day, index) => (
+      {orderDays.map((day) => (
         <Tab
           key={day.id}
-          onClick={() => onClick(index)}
-          isActive={activeIndex === index}
+          isActive={selectedDayId === day.id}
+          onClick={() => {
+            setSelectedDayId(day.id)
+            setSelectedSlotId(null)
+            setSelectedSlotTime(null)
+          }}
         >
           {formatDate(day.date)}
         </Tab>

@@ -13,15 +13,23 @@ export const CustomerFlow = ({
   orders,
   setOrders
 }) => {
-  const [currentStep, setCurrentStep] = useState("slot")
-  const [activeSlotIndex, setActiveSlotIndex] = useState(0)
+  const [currentStep, setCurrentStep] = useState('slot')
+
+  const [selectedDayId, setSelectedDayId] = useState(orderDays[0]?.id ?? null)
   const [selectedSlotId, setSelectedSlotId] = useState(null)
   const [selectedSlotTime, setSelectedSlotTime] = useState(null)
+
   const [selectedPizza, setSelectedPizza] = useState(null)
   const [orderItems, setOrderItems] = useState([])
   const [paymentMethod, setPaymentMethod] = useState(null)
   const [selectedOrder, setSelectedOrder] = useState(null)
   const [orderComment, setOrderComment] = useState('')
+
+  const actualSelectedDayId = orderDays.some((day) => day.id === selectedDayId)
+    ? selectedDayId
+    : orderDays[0]?.id ?? null
+
+  const chosenDay = orderDays.find((day) => day.id === actualSelectedDayId)
 
   let content
 
@@ -31,8 +39,9 @@ export const CustomerFlow = ({
         <SlotSelectionPage
           setCurrentStep={setCurrentStep}
           orderDays={orderDays}
-          activeSlotIndex={activeSlotIndex}
-          setActiveSlotIndex={setActiveSlotIndex}
+          chosenDay={chosenDay}
+          selectedDayId={actualSelectedDayId}
+          setSelectedDayId={setSelectedDayId}
           selectedSlotId={selectedSlotId}
           setSelectedSlotId={setSelectedSlotId}
           setSelectedSlotTime={setSelectedSlotTime}
@@ -45,7 +54,7 @@ export const CustomerFlow = ({
         <PizzaSelectionPage
           setCurrentStep={setCurrentStep}
           orderDays={orderDays}
-          activeSlotIndex={activeSlotIndex}
+          chosenDay={chosenDay}
           selectedSlotTime={selectedSlotTime}
           setSelectedPizza={setSelectedPizza}
           orderItems={orderItems}
@@ -66,9 +75,8 @@ export const CustomerFlow = ({
     case 'order':
       content = (
         <OrderConfirmationPage
-          orderDays={orderDays}
+          chosenDay={chosenDay}
           selectedSlotTime={selectedSlotTime}
-          activeSlotIndex={activeSlotIndex}
           setCurrentStep={setCurrentStep}
           orderItems={orderItems}
           setOrderItems={setOrderItems}
@@ -84,9 +92,8 @@ export const CustomerFlow = ({
           orderItems={orderItems}
           paymentMethod={paymentMethod}
           setPaymentMethod={setPaymentMethod}
-          orderDays={orderDays}
+          chosenDay={chosenDay}
           selectedSlotTime={selectedSlotTime}
-          activeSlotIndex={activeSlotIndex}
           setOrders={setOrders}
           orderComment={orderComment}
         />
@@ -97,9 +104,8 @@ export const CustomerFlow = ({
       content = (
         <SuccessPage
           setCurrentStep={setCurrentStep}
-          orderDays={orderDays}
+          chosenDay={chosenDay}
           selectedSlotTime={selectedSlotTime}
-          activeSlotIndex={activeSlotIndex}
           orderItems={orderItems}
           paymentMethod={paymentMethod}
           setPaymentMethod={setPaymentMethod}

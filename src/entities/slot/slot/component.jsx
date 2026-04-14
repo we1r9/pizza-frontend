@@ -1,12 +1,10 @@
-export const Slot = ({ 
+export const Slot = ({
   slot,
-  isActive,
   onClick,
   className
 }) => {
   return (
     <button
-      disabled={isActive}
       onClick={onClick}
       className={className}
     >

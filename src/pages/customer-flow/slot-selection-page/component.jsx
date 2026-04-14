@@ -6,13 +6,22 @@ import styles from './styles.module.css'
 export const SlotSelectionPage = ({
   setCurrentStep,
   orderDays,
-  activeSlotIndex,
-  setActiveSlotIndex,
+  chosenDay,
+  selectedDayId,
+  setSelectedDayId,
   selectedSlotId,
   setSelectedSlotId,
   setSelectedSlotTime
 }) => {
-  const chosenDay = orderDays[activeSlotIndex]
+
+  if (!chosenDay) {
+    return (
+      <div>
+        <h2>Здравствуйте</h2>
+        <p>Сейчас нет доступных дней для заказа</p>
+      </div>
+    )
+  }
 
   return (
     <div className={styles.slotSelectionPage}>
@@ -22,8 +31,10 @@ export const SlotSelectionPage = ({
 
       <DateTabs
         orderDays={orderDays}
-        onClick={setActiveSlotIndex}
-        activeIndex={activeSlotIndex}
+        selectedDayId={selectedDayId}
+        setSelectedDayId={setSelectedDayId}
+        setSelectedSlotId={setSelectedSlotId}
+        setSelectedSlotTime={setSelectedSlotTime}
       />
 
       <Slots

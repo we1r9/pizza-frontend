@@ -5,8 +5,7 @@ import { GoToCartButton } from "../../../entities/order/go-to-cart-button/compon
 
 export const PizzaSelectionPage = ({
   setCurrentStep,
-  orderDays,
-  activeSlotIndex,
+  chosenDay,
   selectedSlotTime,
   setSelectedPizza,
   orderItems
@@ -21,9 +20,8 @@ export const PizzaSelectionPage = ({
 
       <h3>Вы делаете заказ на</h3>
       <SelectedSlotInfo
-        orderDays={orderDays}
+        chosenDay={chosenDay}
         selectedSlotTime={selectedSlotTime}
-        activeSlotIndex={activeSlotIndex}
       />
 
       <h3>Выберите товары</h3>

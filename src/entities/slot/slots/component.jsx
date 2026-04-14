@@ -4,8 +4,8 @@ import { ConfirmSlotButton } from "../confirm-slot-button/component"
 import styles from './styles.module.css'
 
 export const Slots = ({
-  chosenDay,
   setCurrentStep,
+  chosenDay,
   selectedSlotId,
   setSelectedSlotId,
   setSelectedSlotTime
@@ -13,6 +13,8 @@ export const Slots = ({
   const { availableSlots } = chosenDay
 
   const activeSlots = availableSlots.filter((slot) => !slot.expired && slot.enabled)
+
+  const selectedSlot = activeSlots.find((slot) => slot.id === selectedSlotId)
 
   if (!activeSlots.length) {
     return (
@@ -23,6 +25,20 @@ export const Slots = ({
     )
   }
 
+  const handleToggleSlotChoise = (slot) => {
+    if (slot.booked) return
+
+    if (selectedSlotId === slot.id) {
+      setSelectedSlotId(null)
+      setSelectedSlotTime(null)
+
+      return
+    }
+
+    setSelectedSlotId(slot.id)
+    setSelectedSlotTime(slot.time)
+  }
+
   return (
     <div>
       <h3>Доступные слоты</h3>
@@ -31,23 +47,20 @@ export const Slots = ({
         <Slot
           key={slot.id}
           slot={slot}
-          className={slot.available === false
-            ? styles.unavailable
-            : styles.available
-          }
-          isActive={selectedSlotId === slot.id}
-          onClick={() => {
-            setSelectedSlotId(slot.id)
-            setSelectedSlotTime(slot.time)
-          }}
+          className={`
+            ${styles.slotPill}
+            ${slot.booked && styles.bookedSlotPill}
+            ${selectedSlotId === slot.id && styles.selectedSlot}
+          `}
+          onClick={() => handleToggleSlotChoise(slot)}
         />
       )))}
 
       <ConfirmSlotButton
-        isHidden={!selectedSlotId}
+        isHidden={!selectedSlot}
         setCurrentStep={setCurrentStep}
       >
-        Выбрать пиццу →
+        Продолжить →
       </ConfirmSlotButton>
     </div>
   )
