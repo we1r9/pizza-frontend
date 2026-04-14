@@ -1,15 +1,17 @@
 import { OrderItems } from "../../../entities/order/order-items/component"
 import { SelectedSlotInfo } from "../../../entities/slot/selected-slot-info/component"
+import { getBookingInfo } from "../../../shared/lib/getBookingInfo"
 
 import styles from './styles.module.css'
 
 export const OrderConfirmationPage = ({
   chosenDay,
+  selectedSlotId,
   selectedSlotTime,
-  setCurrentStep,
   orderItems,
   setOrderItems,
-  setOrderComment
+  setOrderComment,
+  setCurrentStep
 }) => {
   const handleRemoveItem = (id) => {
     setOrderItems((prev) => prev.filter((orderItem) => orderItem.id !== id))
@@ -55,6 +57,8 @@ export const OrderConfirmationPage = ({
     )
   }
 
+  const bookingInfo = getBookingInfo(orderItems, chosenDay, selectedSlotId)
+
   return (
     <div>
       <button
@@ -95,10 +99,19 @@ export const OrderConfirmationPage = ({
 
         <button
           onClick={() => setCurrentStep('payment')}
+          disabled={!bookingInfo.canBook}
           className={styles.confirmOrderButton}>
           К оплате →
         </button>
       </div>
+
+      {!bookingInfo.canBook && (
+        <div className={styles.canNotBook}>
+          <span>
+            Максимальное количество пицц на выбранный слот: <span>{bookingInfo.maxPizzasCount}</span>
+          </span>
+        </div>
+      )}
     </div>
   )
 }

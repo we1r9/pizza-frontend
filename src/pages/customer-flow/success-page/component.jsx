@@ -11,7 +11,9 @@ export const SuccessPage = ({
   paymentMethod,
   setPaymentMethod,
   setOrderItems,
-  setOrderComment
+  setOrderComment,
+  setSelectedSlotId,
+  setSelectedSlotTime
 }) => {
   const totalCost = orderItems.reduce(
     (sum, orderItem) => sum + orderItem.price * orderItem.quantity, 0
@@ -47,6 +49,8 @@ export const SuccessPage = ({
             setPaymentMethod(null)
             setOrderItems([])
             setOrderComment('')
+            setSelectedSlotId(null)
+            setSelectedSlotTime(null)
           }}
         >
           + Новый заказ
@@ -57,6 +61,8 @@ export const SuccessPage = ({
             setPaymentMethod(null)
             setOrderItems([])
             setOrderComment('')
+            setSelectedSlotId(null)
+            setSelectedSlotTime(null)
           }}
         >
           Мои заказы →

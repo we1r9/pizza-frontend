@@ -33,3 +33,10 @@
 .confirmOrderButton {
   margin-right: 5px;
 }
+
+.canNotBook {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+  font-size: 15px;
+}

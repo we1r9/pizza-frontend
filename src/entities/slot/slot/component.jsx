@@ -1,10 +1,12 @@
 export const Slot = ({
   slot,
   onClick,
-  className
+  className,
+  isBooked
 }) => {
   return (
     <button
+      disabled={isBooked}
       onClick={onClick}
       className={className}
     >

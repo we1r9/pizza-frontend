@@ -11,7 +11,8 @@ import { OrderDetailsPage } from "./order-details-page/component"
 export const CustomerFlow = ({
   orderDays,
   orders,
-  setOrders
+  setOrders,
+  setOrderDays
 }) => {
   const [currentStep, setCurrentStep] = useState('slot')
 
@@ -76,11 +77,12 @@ export const CustomerFlow = ({
       content = (
         <OrderConfirmationPage
           chosenDay={chosenDay}
+          selectedSlotId={selectedSlotId}
           selectedSlotTime={selectedSlotTime}
-          setCurrentStep={setCurrentStep}
           orderItems={orderItems}
           setOrderItems={setOrderItems}
           setOrderComment={setOrderComment}
+          setCurrentStep={setCurrentStep}
         />
       )
       break
@@ -93,8 +95,10 @@ export const CustomerFlow = ({
           paymentMethod={paymentMethod}
           setPaymentMethod={setPaymentMethod}
           chosenDay={chosenDay}
+          selectedSlotId={selectedSlotId}
           selectedSlotTime={selectedSlotTime}
           setOrders={setOrders}
+          setOrderDays={setOrderDays}
           orderComment={orderComment}
         />
       )
@@ -111,6 +115,8 @@ export const CustomerFlow = ({
           setPaymentMethod={setPaymentMethod}
           setOrderItems={setOrderItems}
           setOrderComment={setOrderComment}
+          setSelectedSlotId={setSelectedSlotId}
+          setSelectedSlotTime={setSelectedSlotTime}
         />
       )
       break

@@ -1,3 +1,5 @@
+import { getBookingInfo } from '../../../shared/lib/getBookingInfo'
+
 import styles from './styles.module.css'
 
 export const PaymentPage = ({
@@ -6,8 +8,10 @@ export const PaymentPage = ({
   paymentMethod,
   setPaymentMethod,
   chosenDay,
+  selectedSlotId,
   selectedSlotTime,
   setOrders,
+  setOrderDays,
   orderComment
 }) => {
   const totalCost = orderItems.reduce(
@@ -15,6 +19,27 @@ export const PaymentPage = ({
   )
 
   const handleAddOrder = () => {
+    const bookingInfo = getBookingInfo(orderItems, chosenDay, selectedSlotId)
+
+    if (!bookingInfo.canBook) return
+
+    const bookedSlotIds = new Set(bookingInfo.slotsToBook.map((slot) => slot.id))
+
+    setOrderDays((prev) =>
+      prev.map((day) => {
+        if (day.id !== chosenDay.id) return day
+
+        return {
+          ...day,
+          availableSlots: day.availableSlots.map((slot) =>
+            bookedSlotIds.has(slot.id)
+              ? { ...slot, booked: true }
+              : slot
+          )
+        }
+      })
+    )
+
     const order = {
       id: crypto.randomUUID(),
       orderNumber: Math.floor(1000 + Math.random() * 9000),

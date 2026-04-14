@@ -12,11 +12,13 @@ export const Slots = ({
 }) => {
   const { availableSlots } = chosenDay
 
-  const activeSlots = availableSlots.filter((slot) => !slot.expired && slot.enabled)
+  const visibleSlots = availableSlots.filter((slot) => !slot.expired && slot.enabled)
 
-  const selectedSlot = activeSlots.find((slot) => slot.id === selectedSlotId)
+  const selectedSlot = visibleSlots.find((slot) => slot.id === selectedSlotId)
 
-  if (!activeSlots.length) {
+  const hasAvailableSlots = visibleSlots.some((slot) => !slot.booked)
+
+  if (!visibleSlots.length) {
     return (
       <div>
         <h3>Доступные слоты</h3>
@@ -25,7 +27,7 @@ export const Slots = ({
     )
   }
 
-  const handleToggleSlotChoise = (slot) => {
+  const handleToggleSlotChoice = (slot) => {
     if (slot.booked) return
 
     if (selectedSlotId === slot.id) {
@@ -43,18 +45,23 @@ export const Slots = ({
     <div>
       <h3>Доступные слоты</h3>
 
-      {activeSlots.map((slot => (
-        <Slot
-          key={slot.id}
-          slot={slot}
-          className={`
+      <div className={styles.slotsContainer}>
+        {hasAvailableSlots
+          ? visibleSlots.map((slot => (
+            <Slot
+              key={slot.id}
+              slot={slot}
+              isBooked={slot.booked}
+              className={`
             ${styles.slotPill}
             ${slot.booked && styles.bookedSlotPill}
             ${selectedSlotId === slot.id && styles.selectedSlot}
           `}
-          onClick={() => handleToggleSlotChoise(slot)}
-        />
-      )))}
+              onClick={() => handleToggleSlotChoice(slot)}
+            />
+          )))
+          : <p>На эту дату все слоты уже заняты</p>}
+      </div>
 
       <ConfirmSlotButton
         isHidden={!selectedSlot}

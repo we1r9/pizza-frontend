@@ -27,6 +27,7 @@ export const App = () => {
           orderDays={orderDays}
           orders={orders}
           setOrders={setOrders}
+          setOrderDays={setOrderDays}
         />
       )
       break
