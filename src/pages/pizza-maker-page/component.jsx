@@ -1,11 +1,14 @@
 import { useState } from "react"
 import { ViewTabs } from "./view-tabs/component"
-import { PizzaMakerOrdersPage } from "./orders-page/component"
 import { PizzaMakerSlotsPage } from "./slots-page/component"
+import { StaffOrdersPage } from "../staff-orders-page/component"
 
 export const PizzaMakerPage = ({
   orderDays,
-  setOrderDays
+  setOrderDays,
+  activeRole,
+  orders,
+  setOrders
 }) => {
   const [activeView, setActiveView] = useState('orders')
 
@@ -14,7 +17,11 @@ export const PizzaMakerPage = ({
   switch (activeView) {
     case 'orders':
       content = (
-        <PizzaMakerOrdersPage />
+        <StaffOrdersPage
+          activeRole={activeRole}
+          orders={orders}
+          setOrders={setOrders}
+        />
       )
       break
 

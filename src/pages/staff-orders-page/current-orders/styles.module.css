@@ -1,0 +1,59 @@
+.orderWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid #d0d0d0;
+  border-radius: 16px;
+  margin-bottom: 12px;
+}
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.orderTitle {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+}
+
+.orderStatus {
+  position: relative;
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.orderDateTime {
+  margin: 6px 0 12px;
+}
+
+.orderItem {
+  padding: 8px 0;
+  border-top: 1px solid #ececec;
+}
+
+.orderItemRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12pxs;
+}
+
+.orderItemMeta {
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.orderFooter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}

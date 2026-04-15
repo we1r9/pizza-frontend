@@ -19,6 +19,13 @@ export const SlotSelectionPage = ({
       <div>
         <h2>Здравствуйте</h2>
         <p>Сейчас нет доступных дней для заказа</p>
+
+        <button
+          onClick={() => setCurrentStep('orders')}
+          className={styles.ordersPageButton}
+        >
+          Заказы
+        </button>
       </div>
     )
   }

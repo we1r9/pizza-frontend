@@ -14,11 +14,19 @@ export const RoleTabs = ({
       >
         /customer
       </Tab>
+
       <Tab
         onClick={() => setActiveRole('pizza-maker')}
         isActive={activeRole === 'pizza-maker'}
       >
         /pizza-maker
+      </Tab>
+
+      <Tab
+        onClick={() => setActiveRole('cashier')}
+        isActive={activeRole === 'cashier'}
+      >
+        /cashier
       </Tab>
     </div>
   )

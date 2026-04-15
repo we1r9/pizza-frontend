@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { CustomerFlow } from "./pages/customer-flow/component"
 import { RoleTabs } from "./shared/ui/role-tabs/component"
 import { PizzaMakerPage } from "./pages/pizza-maker-page/component"
+import { CashierPage } from "./pages/cashier/component"
 
 export const App = () => {
   const [activeRole, setActiveRole] = useState('pizza-maker')
@@ -37,6 +38,19 @@ export const App = () => {
         <PizzaMakerPage
           orderDays={orderDays}
           setOrderDays={setOrderDays}
+          activeRole={activeRole}
+          orders={orders}
+          setOrders={setOrders}
+        />
+      )
+      break
+
+    case 'cashier':
+      content = (
+        <CashierPage
+          activeRole={activeRole}
+          orders={orders}
+          setOrders={setOrders}
         />
       )
       break

@@ -46,6 +46,7 @@ export const PaymentPage = ({
       date: chosenDay.date,
       time: selectedSlotTime,
       paymentMethod,
+      paymentStatus: paymentMethod === 'card' ? 'paid' : 'unpaid',
       status: 'new',
       items: [...orderItems],
       totalCost,
@@ -86,10 +87,10 @@ export const PaymentPage = ({
         </button>
 
         <button
-          onClick={() => setPaymentMethod('cash')}
+          onClick={() => setPaymentMethod('on_receipt')}
           className={`
             ${styles.paymentOption}
-            ${paymentMethod === 'cash'
+            ${paymentMethod === 'on_receipt'
               ? styles.active
               : ''}
           `}
