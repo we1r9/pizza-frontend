@@ -4,6 +4,8 @@ import { OrdersList } from "./orders-list/component"
 import { CurrentOrder } from "./current-order/component"
 import { CompletedOrder } from "./completed-order/component"
 
+import sharedStyles from './shared-styles.module.css'
+
 export const StaffOrdersPage = ({
   activeRole,
   orders,
@@ -12,14 +14,38 @@ export const StaffOrdersPage = ({
   const [activeView, setActiveView] = useState('current')
   const [selectedOrderId, setSelectedOrderId] = useState(null)
 
-  const currentOrders = orders.filter(
-    (order) =>
+  const sortOrdersByDateAndTime = (orders, direction = 'asc') => {
+    return [...orders].sort((a, b) => {
+      const dateCompare =
+        direction === 'asc'
+          ? new Date(a.date) - new Date(b.date)
+          : new Date(b.date) - new Date(a.date)
+
+      if (dateCompare !== 0) return dateCompare
+
+      return direction === 'asc'
+        ? a.time.localeCompare(b.time)
+        : b.time.localeCompare(a.time)
+    })
+  }
+
+  const currentOrders = sortOrdersByDateAndTime(
+    orders.filter((order) =>
       order.status === 'new' ||
       order.status === 'in_progress' ||
       order.status === 'ready'
+    ),
+    'asc'
   )
 
-  const completedOrders = orders.filter((order) => order.status === 'completed')
+  const completedOrders = sortOrdersByDateAndTime(
+    orders.filter((order) => order.status === 'completed'),
+    'desc'
+  )
+
+  const isCurrentView = activeView === 'current'
+  const ordersTitle = isCurrentView ? 'Активные заказы' : 'Завершенные заказы'
+  const ordersCount = isCurrentView ? currentOrders.length : completedOrders.length
 
   const handleReturn = () => {
     activeView === 'current-order'
@@ -72,22 +98,26 @@ export const StaffOrdersPage = ({
         setActiveView={setActiveView}
       />
 
-      {activeView === 'current'
-        ? <h2>Активные заказы</h2>
-        : <h2>Завершенные заказы</h2>
-      }
+      <h2>
+        {ordersTitle}
+        {ordersCount > 0 && (
+          <span className={sharedStyles.ordersCountBadge}>
+            {ordersCount}
+          </span>
+        )}
+      </h2>
 
       {activeView === 'current'
         ? <OrdersList
           orders={currentOrders}
-          emptyText='Сейчас нет активных заказов'
+          emptyText='Сейчас нет активных заказов. Новые заказы появятся здесь.'
           orderView='current-order'
           setActiveView={setActiveView}
           setSelectedOrderId={setSelectedOrderId}
         />
         : <OrdersList
           orders={completedOrders}
-          emptyText='Сейчас нет завершенных заказов'
+          emptyText='Пока что нет завершенных заказов.'
           orderView='completed-order'
           setActiveView={setActiveView}
           setSelectedOrderId={setSelectedOrderId}

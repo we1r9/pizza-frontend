@@ -9,7 +9,10 @@ export const OrderStatusControls = ({
   onActionClick,
   isActionVisible
 }) => {
-  
+
+  const isCompletedBlocked =
+    currentOrderStatus === 'completed' && order.paymentStatus !== 'paid'
+
   return (
     <section className={sharedStyles.section}>
       <h3 className={sharedStyles.sectionTitle}>Управление статусом заказа</h3>
@@ -55,13 +58,20 @@ export const OrderStatusControls = ({
       </div>
 
       {isActionVisible && (
-        <button
-          type='button'
-          onClick={onActionClick}
-          className={sharedStyles.actionButton}
-        >
-          {actionButtonText}
-        </button>
+        <div className={sharedStyles.actionButtonContainer}>
+          <button
+            type='button'
+            disabled={isCompletedBlocked}
+            onClick={onActionClick}
+            className={`${sharedStyles.actionButton} ${isCompletedBlocked && sharedStyles.actionButtonDisabled}`}
+          >
+            {actionButtonText}
+          </button>
+
+          {isCompletedBlocked && (
+            <span className={sharedStyles.actionWarning}>Невозможно выдать неоплаченный заказ</span>
+          )}
+        </div>
       )}
     </section>
   )

@@ -38,11 +38,11 @@
   opacity: 0.7;
 }
 
-.orderDateTime {
+.orderTime {
   margin: 6px 0 12px;
 }
 
-.orderDateTimeCompleted {
+.orderTimeCompleted {
   opacity: 0.7;
 }
 

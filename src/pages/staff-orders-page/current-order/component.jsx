@@ -30,7 +30,12 @@ export const CurrentOrder = ({
   const { toastMessage, showToast } = useToast()
 
   if (!order) {
-    return <p>Заказ не найден</p>
+    return (
+      <div>
+        <p>Заказ не найден.</p>
+        <p>Возможно, он был перемещен в другой список.</p>
+      </div>
+    )
   }
 
   const handleSaveOrderStatus = () => {
@@ -44,6 +49,11 @@ export const CurrentOrder = ({
 
     setOrderStatusIsChanging(false)
     showToast('Статус заказа изменен')
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   const handleSavePaymentStatus = () => {
@@ -57,16 +67,27 @@ export const CurrentOrder = ({
 
     setPaymentStatusIsChanging(false)
     showToast('Статус оплаты изменен')
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   const handleSelectOrderStatus = (status) => {
     setOrderStatusIsChanging(status !== order.status)
     setCurrentOrderStatus(status)
+
+    setCurrentPaymentStatus(order.paymentStatus)
+    setPaymentStatusIsChanging(false)
   }
 
   const handleSelectPaymentStatus = (status) => {
     setPaymentStatusIsChanging(status !== order.paymentStatus)
     setCurrentPaymentStatus(status)
+
+    setCurrentOrderStatus(order.status)
+    setOrderStatusIsChanging(false)
   }
 
   return (

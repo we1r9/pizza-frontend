@@ -45,6 +45,11 @@ export const CompletedOrder = ({
 
     setOrderStatusIsChanging(false)
     showToast('Заказ возвращен в работу')
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   return (
