@@ -1,24 +1,29 @@
-import { formatDate } from "../../../shared/lib/formatDate"
+import { formatDate } from '../../../shared/lib/formatDate'
+import { getOrderStatusLabel } from '../../../shared/lib/getOrderStatusLabel'
 
 import styles from './styles.module.css'
 
-export const CompletedOrders = ({
+export const OrdersList = ({
   orders,
+  emptyText,
+  orderView,
   setActiveView,
   setSelectedOrderId
 }) => {
   if (!orders.length) {
-    return <p>Сейчас нет завершенных заказов</p>
+    return <p>{emptyText}</p>
   }
+
+  const isCompletedView = orderView === 'completed-order'
 
   return (
     <div>
       {orders.map((order) => (
         <div
           key={order.id}
-          className={styles.orderWrapper}
+          className={`${styles.orderWrapper} ${isCompletedView ? styles.orderWrapperCompleted : ''}`}
           onClick={() => {
-            setActiveView('completed-order')
+            setActiveView(orderView)
             setSelectedOrderId(order.id)
           }}
         >
@@ -29,14 +34,11 @@ export const CompletedOrders = ({
 
                 <span>•</span>
 
-                <span className={styles.orderStatus}>
-                  {order.status === 'new' && 'Новый'}
-                  {order.status === 'in_progress' && 'Готовится'}
-                  {order.status === 'ready' && 'Готов к выдаче'}
-                  {order.status === 'completed' && 'Выдан'}
+                <span className={`${styles.orderStatus} ${isCompletedView ? styles.orderStatusCompleted : ''}`}>
+                  {getOrderStatusLabel(order.status)}
                 </span>
               </div>
-              <p className={styles.orderDateTime}>
+              <p className={`${styles.orderDateTime} ${isCompletedView ? styles.orderDateTimeCompleted : ''}`}>
                 {formatDate(order.date)} • {order.time}
               </p>
             </div>
@@ -50,7 +52,7 @@ export const CompletedOrders = ({
             {order.items.map((item) => (
               <div
                 key={item.id}
-                className={styles.orderItem}
+                className={`${styles.orderItem} ${isCompletedView ? styles.orderItemCompleted : ''}`}
               >
                 <div className={styles.orderItemRow}>
                   <span>{item.name} × {item.quantity}</span>
@@ -72,7 +74,7 @@ export const CompletedOrders = ({
             ))}
           </div>
 
-          <div className={styles.orderFooter}>
+          <div className={`${styles.orderFooter} ${isCompletedView ? styles.orderFooterCompleted : ''}`}>
             {order.paymentMethod === 'card' ? (
               <span className={styles.paymentPaid}>
                 ✅ Оплачено онлайн

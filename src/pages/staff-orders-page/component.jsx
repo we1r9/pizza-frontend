@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { OrdersTabs } from "./orders-tabs/component"
-import { CurrentOrders } from "./current-orders/component"
-import { CompletedOrders } from "./completed-orders/component"
+import { OrdersList } from "./orders-list/component"
 import { CurrentOrder } from "./current-order/component"
 import { CompletedOrder } from "./completed-order/component"
 
@@ -79,13 +78,17 @@ export const StaffOrdersPage = ({
       }
 
       {activeView === 'current'
-        ? <CurrentOrders
+        ? <OrdersList
           orders={currentOrders}
+          emptyText='Сейчас нет активных заказов'
+          orderView='current-order'
           setActiveView={setActiveView}
           setSelectedOrderId={setSelectedOrderId}
         />
-        : <CompletedOrders
+        : <OrdersList
           orders={completedOrders}
+          emptyText='Сейчас нет завершенных заказов'
+          orderView='completed-order'
           setActiveView={setActiveView}
           setSelectedOrderId={setSelectedOrderId}
         />
