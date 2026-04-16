@@ -1,0 +1,35 @@
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.itemCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.itemName {
+  font-size: 20px;
+}
+
+.itemPrice {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.itemMeta {
+  margin: 0;
+  opacity: 0.8;
+}

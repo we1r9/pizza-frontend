@@ -1,7 +1,14 @@
 import { useState } from "react"
-import { formatDate } from "../../../shared/lib/formatDate"
+import { getOrderStatusLabel } from "../../../shared/lib/getOrderStatusLabel"
+import { EditingModal } from "../editing-modal/component"
+import { OrderOverview } from "../order-overview/component"
+import { OrderItemsSection } from "../order-items-section/component"
+import { OrderCustomerInfo } from "../order-customer-info/component"
+import { Toast } from "../../../shared/ui/toast/component"
+import { OrderStatusControls } from "../order-status-controls/component"
+import { useToast } from "../../../hooks/useToast"
 
-import styles from './styles.module.css'
+import sharedStyles from '../shared-styles.module.css'
 
 export const CompletedOrder = ({
   orders,
@@ -14,8 +21,17 @@ export const CompletedOrder = ({
   const [currentOrderStatus, setCurrentOrderStatus] = useState(order?.status ?? 'new')
   const [orderStatusIsChanging, setOrderStatusIsChanging] = useState(false)
 
+  const [editingType, setEditingType] = useState(null)
+
+  const { toastMessage, showToast } = useToast()
+
   if (!order) {
     return <p>Заказ не найден</p>
+  }
+
+  const handleSelectOrderStatus = (status) => {
+    setOrderStatusIsChanging(status !== order.status)
+    setCurrentOrderStatus(status)
   }
 
   const handleReturnOrderToActive = () => {
@@ -28,145 +44,47 @@ export const CompletedOrder = ({
     )
 
     setOrderStatusIsChanging(false)
+    showToast('Заказ возвращен в работу')
   }
 
   return (
-    <div className={styles.orderPage}>
-      <section className={styles.orderInfoBlock}>
-        <div className={styles.orderTop}>
-          <div>
-            <h2 className={styles.orderNumber}>Заказ №{order.orderNumber}</h2>
-            <p className={styles.orderDateTime}>
-              {formatDate(order.date)} • {order.time}
-            </p>
-          </div>
+    <div className={sharedStyles.orderPage}>
+      <OrderOverview
+        order={order}
+        showOrderStatus={false}
+      />
 
-          <div className={styles.summaryBlock}>
-            <p className={styles.summaryRow}>
-              <span className={styles.summaryLabel}>Итого:</span>
-              <strong>{order.totalCost} ₽</strong>
-            </p>
-          </div>
-        </div>
+      <OrderItemsSection
+        order={order}
+      />
 
-        <div className={styles.metaGrid}>
-          <div className={styles.metaCard}>
-            <span className={styles.metaLabel}>Статус оплаты</span>
-            <span>
-              {order.paymentStatus === 'paid' ? '✅ Оплачено' : '❌ Не оплачено'}
-            </span>
-          </div>
-
-          <div className={styles.metaCard}>
-            <span className={styles.metaLabel}>Способ оплаты</span>
-            <span>
-              {order.paymentMethod === 'card' ? 'Картой онлайн' : 'При получении'}
-            </span>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <h3 className={styles.sectionTitle}>Товары в заказе</h3>
-
-        <div className={styles.itemsList}>
-          {order.items.map((item) => (
-            <div
-              key={item.id}
-              className={styles.itemCard}
-            >
-              <div className={styles.itemHeader}>
-                <strong className={styles.itemName}>
-                  {item.name} × {item.quantity}
-                </strong>
-
-                <span className={styles.itemPrice}>
-                  {item.price * item.quantity} ₽
-                </span>
-              </div>
-
-              {item.addedToppings?.length > 0 && (
-                <p className={styles.itemMeta}>
-                  Добавки: {item.addedToppings.join(', ')}
-                </p>
-              )}
-
-              {item.removedIngredients?.length > 0 && (
-                <p className={styles.itemMeta}>
-                  Без: {item.removedIngredients.join(', ')}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <h3 className={styles.sectionTitle}>Информация о клиенте</h3>
-
-        <div className={styles.infoList}>
-          <p><span className={styles.infoLabel}>Имя: </span>Иван</p>
-          <p><span className={styles.infoLabel}>Отряд: </span>5</p>
-          <p><span className={styles.infoLabel}>Телефон: </span>+7 (999) 123-45-67</p>
-
-          {order.orderComment && (
-            <p>
-              <span className={styles.infoLabel}>Комментарий к заказу: </span>
-              {order.orderComment}
-            </p>
-          )}
-        </div>
-      </section>
+      <OrderCustomerInfo
+        order={order}
+      />
 
       {activeRole === 'pizza-maker' && (
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>Управление статусом заказа</h3>
+        <OrderStatusControls
+          order={order}
+          currentOrderStatus={currentOrderStatus}
+          onSelectStatus={handleSelectOrderStatus}
+          showCompletedOption={false}
+          actionButtonText="Вернуть в работу"
+          onActionClick={() => setEditingType('return')}
+          isActionVisible={orderStatusIsChanging}
+        />
+      )}
 
-          <div className={styles.controlsBlock}>
-            <div className={styles.controlGroup}>
-              <div className={styles.buttonsRow}>
-                <button
-                  disabled={currentOrderStatus === 'new'}
-                  onClick={() => {
-                    setOrderStatusIsChanging(true)
-                    setCurrentOrderStatus('new')
-                  }}
-                >
-                  Новый
-                </button>
+      {editingType && (
+        <EditingModal
+          onClose={() => setEditingType(null)}
+          currentOrderStatus={getOrderStatusLabel(currentOrderStatus)}
+          handleReturnOrderToActive={handleReturnOrderToActive}
+          editingType={editingType}
+        />
+      )}
 
-                <button
-                  disabled={currentOrderStatus === 'in_progress'}
-                  onClick={() => {
-                    setOrderStatusIsChanging(true)
-                    setCurrentOrderStatus('in_progress')
-                  }}
-                >
-                  Готовится
-                </button>
-
-                <button
-                  disabled={currentOrderStatus === 'ready'}
-                  onClick={() => {
-                    setOrderStatusIsChanging(true)
-                    setCurrentOrderStatus('ready')
-                  }}
-                >
-                  Готов к выдаче
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {orderStatusIsChanging && (
-            <button
-              onClick={handleReturnOrderToActive}
-              className={styles.returnOrderBtn}
-            >
-              Вернуть в работу
-            </button>
-          )}
-        </section>
+      {toastMessage && (
+        <Toast toastMessage={toastMessage} />
       )}
     </div>
   )

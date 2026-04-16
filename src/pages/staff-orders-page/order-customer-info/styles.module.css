@@ -1,0 +1,13 @@
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.infoList p {
+  margin: 0;
+}
+
+.infoLabel {
+  opacity: 0.7;
+}
