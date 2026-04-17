@@ -1,7 +1,15 @@
+.sectionTitle {
+  margin-bottom: 12px;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
 .slotsContainer {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 7px;
+  width: 100%;
 }
 
 .slotPill {
@@ -9,14 +17,22 @@
   border-radius: 999px;
   padding: 5px 10px;
   background-color: transparent;
-  color: #d0d0d0;
+  color: rgba(0, 0, 0, 0.75);
+  transition: border 0.25s ease;
 }
 
-.bookedSlotPill {
+.bookedPill {
   opacity: 0.3;
   cursor: not-allowed;
 }
 
-.selectedSlot {
+.selectedSlotPill {
   border: 2px solid rgb(250, 108, 6);
+}
+
+.actionRow {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
 }

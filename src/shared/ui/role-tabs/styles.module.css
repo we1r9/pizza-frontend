@@ -1,6 +1,60 @@
-.tabsRow {
+.tabContainer {
+  position: relative;
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: fit-content;
+  margin: 20px auto;
+  padding: 2px 2.5px 3px;
+  background-color: #dadadb;
+  border-radius: 15px;
+}
+
+.indicator {
+  width: 100px;
+  height: 28px;
+  background: #ffffff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  z-index: 9;
+  border: 0.5px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 13px;
+  transition: all 0.3s ease;
+}
+
+.tabInput {
+  width: 100px;
+  height: 28px;
+  position: absolute;
+  z-index: 99;
+  outline: none;
+  opacity: 0;
+  margin: 0;
+}
+
+.tabLabel {
+  width: 100px;
+  height: 28px;
+  position: relative;
+  z-index: 999;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin: 10px 0;
+  border: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.tab1:checked ~ .indicator {
+  left: 2px;
+}
+
+.tab2:checked ~ .indicator {
+  left: calc(100px + 2px);
+}
+
+.tab3:checked ~ .indicator {
+  left: calc(100px * 2 + 2px);
 }

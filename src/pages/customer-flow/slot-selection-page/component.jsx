@@ -16,49 +16,71 @@ export const SlotSelectionPage = ({
 
   if (!chosenDay) {
     return (
-      <div>
-        <h2>Здравствуйте</h2>
-        <p>Сейчас нет доступных дней для заказа</p>
+      <div className={styles.page}>
+        <header className={styles.topBar}>
+          <span className={styles.logo}>🍕</span>
+          <button
+            className={styles.ordersButton}
+            onClick={() => setCurrentStep('orders')}>
+            Мои заказы
+          </button>
+        </header>
 
-        <button
-          onClick={() => setCurrentStep('orders')}
-          className={styles.ordersPageButton}
-        >
-          Заказы
-        </button>
+        <section className={styles.hero}>
+          <h1 className={styles.title}>Добрый день!</h1>
+
+          <div className={styles.emptyState}>
+            <p className={styles.subtitle}>
+              Свободного времени для заказа пока нет.
+            </p>
+            <p className={styles.subtitle}>
+              Загляните к нам позже
+            </p>
+            <p className={styles.emptyStateFace}>(ಠ‿ಠ)</p>
+          </div>
+        </section>
       </div>
     )
   }
 
   return (
-    <div className={styles.slotSelectionPage}>
-      <h2>Здравствуйте</h2>
+    <div className={styles.page}>
+      <header className={styles.topBar}>
+        <span className={styles.logo}>🍕</span>
+        <button
+          className={styles.ordersButton}
+          onClick={() => setCurrentStep('orders')}>
+          Мои заказы
+        </button>
+      </header>
 
-      <p>Выберите дату, на которую хотите оформить заказ</p>
+      <section className={styles.hero}>
+        <h1 className={styles.title}>Добрый день!</h1>
+        <p className={styles.subtitle}>
+          Когда вы хотите получить заказ?
+        </p>
+      </section>
 
-      <DateTabs
-        orderDays={orderDays}
-        selectedDayId={selectedDayId}
-        setSelectedDayId={setSelectedDayId}
-        setSelectedSlotId={setSelectedSlotId}
-        setSelectedSlotTime={setSelectedSlotTime}
-      />
+      <main className={styles.content}>
+        <DateTabs
+          orderDays={orderDays}
+          selectedDayId={selectedDayId}
+          setSelectedDayId={setSelectedDayId}
+          setSelectedSlotId={setSelectedSlotId}
+          setSelectedSlotTime={setSelectedSlotTime}
+          className={styles.availableDatesRow}
+        />
 
-      <Slots
-        key={chosenDay.id}
-        setCurrentStep={setCurrentStep}
-        chosenDay={chosenDay}
-        selectedSlotId={selectedSlotId}
-        setSelectedSlotId={setSelectedSlotId}
-        setSelectedSlotTime={setSelectedSlotTime}
-      />
-
-      <button
-        onClick={() => setCurrentStep('orders')}
-        className={styles.ordersPageButton}
-      >
-        Заказы
-      </button>
+        <Slots
+          key={chosenDay.id}
+          setCurrentStep={setCurrentStep}
+          chosenDay={chosenDay}
+          selectedSlotId={selectedSlotId}
+          setSelectedSlotId={setSelectedSlotId}
+          setSelectedSlotTime={setSelectedSlotTime}
+          className={styles.availableSlotsContainer}
+        />
+      </main>
     </div>
   )
 }

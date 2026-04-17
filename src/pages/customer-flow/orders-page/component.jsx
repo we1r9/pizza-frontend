@@ -22,7 +22,7 @@ export const OrdersPage = ({
       {!orders.length ? (
         <div className={styles.emptyState}>
           <span className={styles.emptyStateTitle}>Тут пока что пусто</span>
-          <span className={styles.emptyStateEmoji}>{'(ಠ‿ಠ)'}</span>
+          <span className={styles.emptyStateEmoji}>{'(•◡•)'}</span>
         </div>
       ) : (
         <div className={styles.orderWrapper}>

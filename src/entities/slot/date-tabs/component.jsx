@@ -1,6 +1,5 @@
 import { formatDate } from "../../../shared/lib/formatDate"
 import { isSlotExpired } from '../../../shared/lib/isSlotExpired'
-import { Tab } from "../../../shared/ui/tab/component"
 
 import styles from './styles.module.css'
 
@@ -9,11 +8,15 @@ export const DateTabs = ({
   selectedDayId,
   setSelectedDayId,
   setSelectedSlotId,
-  setSelectedSlotTime
+  setSelectedSlotTime,
+  className
 }) => {
-  
+
   return (
-    <div className={styles.datesRow}>
+    <div
+      className={className}
+      role="group"
+      aria-label="Выбор даты заказа">
       {orderDays
         .filter((day) =>
           day.availableSlots.some(
@@ -21,9 +24,10 @@ export const DateTabs = ({
           )
         )
         .map((day) => (
-          <Tab
+          <button
+            type="button"
             key={day.id}
-            isActive={selectedDayId === day.id}
+            className={`${styles.dateButton} ${selectedDayId === day.id && styles.selectedDateButton}`}
             onClick={() => {
               setSelectedDayId(day.id)
               setSelectedSlotId(null)
@@ -31,7 +35,7 @@ export const DateTabs = ({
             }}
           >
             {formatDate(day.date)}
-          </Tab>
+          </button>
         ))}
     </div>
   )

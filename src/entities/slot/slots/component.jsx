@@ -1,6 +1,7 @@
 import { Slot } from "../slot/component"
 import { ConfirmSlotButton } from "../confirm-slot-button/component"
 import { isSlotExpired } from "../../../shared/lib/isSlotExpired"
+import { ArrowRight } from 'lucide-react'
 
 import styles from './styles.module.css'
 
@@ -9,7 +10,8 @@ export const Slots = ({
   chosenDay,
   selectedSlotId,
   setSelectedSlotId,
-  setSelectedSlotTime
+  setSelectedSlotTime,
+  className
 }) => {
   const { availableSlots } = chosenDay
 
@@ -18,15 +20,6 @@ export const Slots = ({
   const selectedSlot = visibleSlots.find((slot) => slot.id === selectedSlotId)
 
   const hasAvailableSlots = visibleSlots.some((slot) => !slot.booked)
-
-  if (!visibleSlots.length) {
-    return (
-      <div>
-        <h3>Доступные слоты</h3>
-        <p>На эту дату нет актуальных слотов</p>
-      </div>
-    )
-  }
 
   const handleToggleSlotChoice = (slot) => {
     if (slot.booked) return
@@ -43,33 +36,41 @@ export const Slots = ({
   }
 
   return (
-    <div>
-      <h3>Доступные слоты</h3>
+    <div className={className}>
+      <h3 className={styles.sectionTitle}>Доступное время</h3>
 
       <div className={styles.slotsContainer}>
-        {hasAvailableSlots
-          ? visibleSlots.map((slot => (
+        {visibleSlots.length === 0 ? (
+          <p>На эту дату нет актуальных слотов</p>
+        ) : hasAvailableSlots ? (
+          visibleSlots.map((slot) => (
             <Slot
               key={slot.id}
               slot={slot}
               isBooked={slot.booked}
               className={`
-            ${styles.slotPill}
-            ${slot.booked && styles.bookedSlotPill}
-            ${selectedSlotId === slot.id && styles.selectedSlot}
-          `}
+                ${styles.slotPill}
+                ${slot.booked ? styles.bookedPill : ''}
+                ${selectedSlotId === slot.id ? styles.selectedSlotPill : ''}
+              `}
               onClick={() => handleToggleSlotChoice(slot)}
             />
-          )))
-          : <p>На эту дату все слоты уже заняты</p>}
+          ))
+        ) : (
+          <p>На эту дату все слоты уже заняты</p>
+        )}
       </div>
 
-      <ConfirmSlotButton
-        isHidden={!selectedSlot}
-        setCurrentStep={setCurrentStep}
-      >
-        Продолжить →
-      </ConfirmSlotButton>
+      <div className={styles.actionRow}>
+        <ConfirmSlotButton
+          isHidden={!selectedSlot}
+          setCurrentStep={setCurrentStep}>
+          <>
+            Продолжить
+            <ArrowRight size={18} strokeWidth={2} />
+          </>
+        </ConfirmSlotButton>
+      </div>
     </div>
   )
 }

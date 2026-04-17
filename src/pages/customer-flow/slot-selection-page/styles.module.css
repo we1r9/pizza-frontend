@@ -1,9 +1,80 @@
-.slotSelectionPage {
-  position: relative;
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.ordersPageButton {
-  position: absolute;
-  top: 0;
-  right: 0;
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.ordersButton {
+  align-self: flex-start;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px 0 30px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 420px;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.emptyStateFace {
+  font-size: 1.5rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.availableDatesRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.availableSlotsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }

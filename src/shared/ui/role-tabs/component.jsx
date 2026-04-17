@@ -1,5 +1,3 @@
-import { Tab } from "../tab/component"
-
 import styles from './styles.module.css'
 
 export const RoleTabs = ({
@@ -7,27 +5,53 @@ export const RoleTabs = ({
   setActiveRole
 }) => {
   return (
-    <div className={styles.tabsRow}>
-      <Tab
-        onClick={() => setActiveRole('customer')}
-        isActive={activeRole === 'customer'}
+    <div className={styles.tabContainer}>
+      <input
+        type='radio'
+        name='role-tab'
+        id='role-tab-customer'
+        className={`${styles.tabInput} ${styles.tab1}`}
+        checked={activeRole === 'customer'}
+        onChange={() => setActiveRole('customer')}
+      />
+      <label
+        className={styles.tabLabel}
+        htmlFor='role-tab-customer'
       >
         /customer
-      </Tab>
+      </label>
 
-      <Tab
-        onClick={() => setActiveRole('pizza-maker')}
-        isActive={activeRole === 'pizza-maker'}
+      <input
+        type='radio'
+        name='role-tab'
+        id='role-tab-pizza-maker'
+        className={`${styles.tabInput} ${styles.tab2}`}
+        checked={activeRole === 'pizza-maker'}
+        onChange={() => setActiveRole('pizza-maker')}
+      />
+      <label
+        className={styles.tabLabel}
+        htmlFor='role-tab-pizza-maker'
       >
         /pizza-maker
-      </Tab>
+      </label>
 
-      <Tab
-        onClick={() => setActiveRole('cashier')}
-        isActive={activeRole === 'cashier'}
+      <input
+        type='radio'
+        name='role-tab'
+        id='role-tab-cashier'
+        className={`${styles.tabInput} ${styles.tab3}`}
+        checked={activeRole === 'cashier'}
+        onChange={() => setActiveRole('cashier')}
+      />
+      <label
+        className={styles.tabLabel}
+        htmlFor='role-tab-cashier'
       >
         /cashier
-      </Tab>
+      </label>
+
+      <div className={styles.indicator}></div>
     </div>
   )
 }

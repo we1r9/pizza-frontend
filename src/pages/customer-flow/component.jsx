@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { isSlotExpired } from '../../shared/lib/isSlotExpired'
 import { SlotSelectionPage } from "./slot-selection-page/component"
 import { PizzaSelectionPage } from "./pizza-selection-page/component"
 import { PizzaDetailsPage } from "./pizza-details/component"
@@ -16,7 +17,13 @@ export const CustomerFlow = ({
 }) => {
   const [currentStep, setCurrentStep] = useState('slot')
 
-  const [selectedDayId, setSelectedDayId] = useState(orderDays[0]?.id ?? null)
+  const visibleOrderDays = orderDays.filter((day) =>
+    day.availableSlots.some(
+      (slot) => !isSlotExpired(day.date, slot.time) && slot.enabled
+    )
+  )
+
+  const [selectedDayId, setSelectedDayId] = useState(visibleOrderDays[0]?.id ?? null)
   const [selectedSlotId, setSelectedSlotId] = useState(null)
   const [selectedSlotTime, setSelectedSlotTime] = useState(null)
 
@@ -26,11 +33,11 @@ export const CustomerFlow = ({
   const [selectedOrder, setSelectedOrder] = useState(null)
   const [orderComment, setOrderComment] = useState('')
 
-  const actualSelectedDayId = orderDays.some((day) => day.id === selectedDayId)
+  const actualSelectedDayId = visibleOrderDays.some((day) => day.id === selectedDayId)
     ? selectedDayId
-    : orderDays[0]?.id ?? null
+    : visibleOrderDays[0]?.id ?? null
 
-  const chosenDay = orderDays.find((day) => day.id === actualSelectedDayId)
+  const chosenDay = visibleOrderDays.find((day) => day.id === actualSelectedDayId)
 
   let content
 
@@ -146,6 +153,6 @@ export const CustomerFlow = ({
   }
 
   return (
-    <div>{content}</div>
+    content
   )
 }
