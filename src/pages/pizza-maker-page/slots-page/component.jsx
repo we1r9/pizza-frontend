@@ -2,6 +2,7 @@ import { useState } from "react"
 import { formatDate } from "../../../shared/lib/formatDate"
 import { EditSlotsModal } from "./edit-slots-modal/component"
 import { AddSlotsModal } from "./add-slots-modal/component"
+import { isSlotExpired } from "../../../shared/lib/isSlotExpired"
 
 import styles from './styles.module.css'
 
@@ -13,14 +14,14 @@ export const PizzaMakerSlotsPage = ({
   const [isAdding, setIsAdding] = useState(false)
 
   const visibleDays = orderDays.filter((day) =>
-    day.availableSlots.some((slot) => !slot.expired)
+    day.availableSlots.some((slot) => !isSlotExpired(day.date, slot.time))
   )
 
   const renderDaySlots = (day) => {
-    const activeSlots = day.availableSlots.filter((slot) => !slot.expired && slot.enabled)
+    const activeSlots = day.availableSlots.filter((slot) => !isSlotExpired(day.date, slot.time) && slot.enabled)
 
     if (!activeSlots.length) {
-      return <p>Нет активных слотов на эту дату</p>
+      return <p>Все доступные слоты на эту дату выключены для отображения</p>
     }
 
     return activeSlots.map((slot) => (

@@ -5,9 +5,25 @@ import { PizzaMakerPage } from "./pages/pizza-maker-page/component"
 import { CashierPage } from "./pages/cashier/component"
 
 export const App = () => {
-  const [activeRole, setActiveRole] = useState('pizza-maker')
+  const [activeRole, setActiveRole] = useState(() => {
+    return sessionStorage.getItem('activeRole') || 'customer'
+  })
 
-  const [orderDays, setOrderDays] = useState([])
+  useEffect(() => {
+    sessionStorage.setItem('activeRole', activeRole)
+  }, [activeRole])
+
+
+  const [orderDays, setOrderDays] = useState(() => {
+    const savedOrderDays = localStorage.getItem('orderDays')
+
+    return savedOrderDays ? JSON.parse(savedOrderDays) : []
+  })
+
+  useEffect(() => {
+    localStorage.setItem('orderDays', JSON.stringify(orderDays))
+  }, [orderDays])
+
 
   const [orders, setOrders] = useState(() => {
     const savedOrders = localStorage.getItem('orders')

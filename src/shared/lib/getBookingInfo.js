@@ -1,3 +1,5 @@
+import { isSlotExpired } from "./isSlotExpired"
+
 export const getBookingInfo = (orderItems, chosenDay, selectedSlotId) => {
   if (!chosenDay) {
     return {
@@ -27,7 +29,7 @@ export const getBookingInfo = (orderItems, chosenDay, selectedSlotId) => {
   const selectedSlot = chosenDay.availableSlots[selectedSlotIndex]
 
   const selectedSlotIsValid =
-    !selectedSlot.expired &&
+    !isSlotExpired(chosenDay.date, selectedSlot.time) &&
     !selectedSlot.booked &&
     selectedSlot.enabled
 
@@ -45,7 +47,10 @@ export const getBookingInfo = (orderItems, chosenDay, selectedSlotId) => {
   for (let i = selectedSlotIndex - 1; i >= 0 && remainingSlotsToBook > 0; i--) {
     const slot = chosenDay.availableSlots[i]
 
-    const validSlot = !slot.expired && !slot.booked && slot.enabled
+    const validSlot =
+      !isSlotExpired(chosenDay.date, slot.time) &&
+      !slot.booked &&
+      slot.enabled
 
     if (!validSlot) continue
 

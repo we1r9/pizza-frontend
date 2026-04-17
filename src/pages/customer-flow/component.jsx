@@ -126,7 +126,6 @@ export const CustomerFlow = ({
         <OrdersPage
           setCurrentStep={setCurrentStep}
           orders={orders}
-          setOrders={setOrders}
           setSelectedOrder={setSelectedOrder}
         />
       )

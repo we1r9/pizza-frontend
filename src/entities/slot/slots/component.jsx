@@ -1,5 +1,6 @@
 import { Slot } from "../slot/component"
 import { ConfirmSlotButton } from "../confirm-slot-button/component"
+import { isSlotExpired } from "../../../shared/lib/isSlotExpired"
 
 import styles from './styles.module.css'
 
@@ -12,7 +13,7 @@ export const Slots = ({
 }) => {
   const { availableSlots } = chosenDay
 
-  const visibleSlots = availableSlots.filter((slot) => !slot.expired && slot.enabled)
+  const visibleSlots = availableSlots.filter((slot) => !isSlotExpired(chosenDay.date, slot.time) && slot.enabled)
 
   const selectedSlot = visibleSlots.find((slot) => slot.id === selectedSlotId)
 

@@ -4,6 +4,7 @@ import { formatDate } from '../../../../shared/lib/formatDate'
 import { AddableSlotsList } from '../addable-slots-list/component'
 import { getAddedSlotsText } from '../../../../shared/lib/getAddedSlotsText'
 import { availableDaysForCreation } from '../../../../shared/lib/availableDaysForCreation'
+import { isSlotExpired } from '../../../../shared/lib/isSlotExpired'
 
 import styles from './styles.module.css'
 
@@ -17,7 +18,7 @@ export const AddSlotsModal = ({
 
   const chosenDay = availableDaysForCreation[activeSelectIndex]
 
-  const activeSlots = chosenDay.availableSlots.filter((slot) => !slot.expired)
+  const activeSlots = chosenDay.availableSlots.filter((slot) => !isSlotExpired(chosenDay.date, slot.time))
 
   const existingDay = orderDays.find((day) => day.date === chosenDay.date)
 
@@ -30,6 +31,8 @@ export const AddSlotsModal = ({
       return !alreadyExists && !slot.booked && slot.enabled
     })
     .map((slot) => slot.id)
+
+  const hasSelectableSlots = selectableSlotIds.length > 0
 
   const allSelectableSlotsSelected =
     selectableSlotIds.length > 0 &&
@@ -134,14 +137,14 @@ export const AddSlotsModal = ({
           )}
         </div>
 
-        {activeSlots.length
+        {hasSelectableSlots
           ? <AddableSlotsList
             activeSlots={activeSlots}
             existingDay={existingDay}
             changedSlotIds={changedSlotIds}
             setChangedSlotIds={setChangedSlotIds}
           />
-          : <p className={styles.activeSlotsFallback}>На сегодня больше нет доступного времени для добавления слотов</p>}
+          : <p className={styles.activeSlotsFallback}>На эту дату больше нет слотов, которые можно добавить</p>}
 
         {changedSlotIds.length > 0 && (
           <div className={styles.saveChangesContainer}>

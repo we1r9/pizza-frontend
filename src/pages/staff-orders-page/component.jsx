@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { OrdersTabs } from "./orders-tabs/component"
 import { OrdersList } from "./orders-list/component"
 import { CurrentOrder } from "./current-order/component"
@@ -11,7 +11,19 @@ export const StaffOrdersPage = ({
   orders,
   setOrders
 }) => {
-  const [activeView, setActiveView] = useState('current')
+  const [activeView, setActiveView] = useState(() => {
+    const savedView = sessionStorage.getItem('staffOrdersActiveView')
+    return savedView === 'current' || savedView === 'completed'
+      ? savedView
+      : 'current'
+  })
+
+  useEffect(() => {
+    if (activeView === 'current' || activeView === 'completed') {
+      sessionStorage.setItem('staffOrdersActiveView', activeView)
+    }
+  }, [activeView])
+
   const [selectedOrderId, setSelectedOrderId] = useState(null)
 
   const sortOrdersByDateAndTime = (orders, direction = 'asc') => {

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { formatDate } from '../../../../shared/lib/formatDate'
+import { isSlotExpired } from '../../../../shared/lib/isSlotExpired'
 
 import styles from './styles.module.css'
 
@@ -13,13 +14,13 @@ export const EditSlotsModal = ({
   const [changedSlotIds, setChangedSlotIds] = useState([])
 
   const visibleDays = orderDays.filter((day) =>
-    day.availableSlots.some((slot) => !slot.expired)
+    day.availableSlots.some((slot) => !isSlotExpired(day.date, slot.time))
   )
   if (!visibleDays.length) return null
 
   const chosenDay = visibleDays[activeDayIndex]
 
-  const activeSlots = chosenDay.availableSlots.filter((slot) => !slot.expired)
+  const activeSlots = chosenDay.availableSlots.filter((slot) => !isSlotExpired(chosenDay.date, slot.time))
 
   const handleSaveChanges = () => {
     setOrderDays((prev) =>

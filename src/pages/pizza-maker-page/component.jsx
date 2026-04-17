@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ViewTabs } from "./view-tabs/component"
 import { PizzaMakerSlotsPage } from "./slots-page/component"
 import { StaffOrdersPage } from "../staff-orders-page/component"
@@ -10,7 +10,17 @@ export const PizzaMakerPage = ({
   orders,
   setOrders
 }) => {
-  const [activeView, setActiveView] = useState('orders')
+  const [activeView, setActiveView] = useState(() => {
+    const savedView = sessionStorage.getItem('pizzaMakerActiveView')
+
+    return savedView === 'orders' || savedView === 'slots'
+      ? savedView
+      : 'slots'
+  })
+
+  useEffect(() => {
+    sessionStorage.setItem('pizzaMakerActiveView', activeView)
+  }, [activeView])
 
   let content
 

@@ -5,9 +5,9 @@ import styles from './styles.module.css'
 export const OrdersPage = ({
   setCurrentStep,
   orders,
-  setOrders,
   setSelectedOrder
 }) => {
+  const sortedOrders = [...orders].reverse()
 
   return (
     <div>
@@ -16,12 +16,6 @@ export const OrdersPage = ({
           onClick={() => setCurrentStep('slot')}
         >
           ← Назад
-        </button>
-
-        <button
-          onClick={() => setOrders([])}
-        >
-          Очистить
         </button>
       </div>
 
@@ -35,7 +29,7 @@ export const OrdersPage = ({
           <h2>Заказы</h2>
 
           <div className={styles.ordersWrapper}>
-            {orders.map((order) => (
+            {sortedOrders.map((order) => (
               <div
                 key={order.id}
                 className={styles.orderContainer}
