@@ -3,6 +3,10 @@ import { SelectedSlotInfo } from "../../../entities/slot/selected-slot-info/comp
 import { PizzaGrid } from "../../../entities/pizza/pizza-grid/component"
 import { GoToCartButton } from "../../../entities/order/go-to-cart-button/component"
 
+import { ArrowLeft, ShoppingBasket } from 'lucide-react'
+
+import styles from './styles.module.css'
+
 export const PizzaSelectionPage = ({
   setCurrentStep,
   chosenDay,
@@ -11,30 +15,50 @@ export const PizzaSelectionPage = ({
   orderItems
 }) => {
 
+  const totalCost = orderItems.reduce(
+    (sum, orderItem) => sum + orderItem.price * orderItem.quantity, 0
+  )
+
   return (
-    <div>
-      <button
-        onClick={() => setCurrentStep('slot')}>
-        ← Назад
-      </button>
+    <>
+      <header className={styles.topBar}>
+        <button
+          type="button"
+          className={styles.backButton}
+          onClick={() => setCurrentStep('slot')}>
+          <ArrowLeft size={16} strokeWidth={2} />
+          Назад
+        </button>
 
-      <h3>Вы делаете заказ на</h3>
-      <SelectedSlotInfo
-        chosenDay={chosenDay}
-        selectedSlotTime={selectedSlotTime}
-      />
+        <div className={styles.selectedSlotInfo}>
+          <SelectedSlotInfo
+            chosenDay={chosenDay}
+            selectedSlotTime={selectedSlotTime}
+          />
+        </div>
+      </header>
 
-      <h3>Выберите товары</h3>
-      <PizzaGrid
-        pizzas={pizzas}
-        setSelectedPizza={setSelectedPizza}
-        setCurrentStep={setCurrentStep}
-      />
+      <main className={styles.content}>
+        <h1 className={styles.sectionTitle}>Выберите пиццу</h1>
 
-      <GoToCartButton
-        orderItems={orderItems}
-        onClick={() => setCurrentStep('order')}
-      />
-    </div>
+        <PizzaGrid
+          pizzas={pizzas}
+          setSelectedPizza={setSelectedPizza}
+          setCurrentStep={setCurrentStep}
+          orderItems={orderItems}
+        />
+
+        <div className={styles.actionRow}>
+          <GoToCartButton
+            orderItems={orderItems}
+            onClick={() => setCurrentStep('order')}>
+            <>
+              <span>{totalCost} ₽</span>
+              <ShoppingBasket size={18} strokeWidth={2} />
+            </>
+          </GoToCartButton>
+        </div>
+      </main>
+    </>
   )
 }

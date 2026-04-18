@@ -1,0 +1,45 @@
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.selectedSlotInfo {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  background-color: rgba(0, 0, 0, 0.02);
+  font-size: clamp(0.9rem, 3vw, 1rem);
+}
+
+.content {
+  margin: 0 10px;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  margin: 20px 0 15px;
+}
+
+.actionRow {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}

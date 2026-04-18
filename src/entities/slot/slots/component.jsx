@@ -61,7 +61,7 @@ export const Slots = ({
         )}
       </div>
 
-      <div className={styles.actionRow}>
+      <div className={`${styles.actionRow} ${visibleSlots.length <= 3 && styles.actionRowCentered}`}>
         <ConfirmSlotButton
           isHidden={!selectedSlot}
           setCurrentStep={setCurrentStep}>
