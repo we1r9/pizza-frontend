@@ -53,7 +53,7 @@ export const PizzaSelectionPage = ({
             orderItems={orderItems}
             onClick={() => setCurrentStep('order')}>
             <>
-              <span>{totalCost} ₽</span>
+              <span>{totalCost.toLocaleString('ru-RU').replace(/\s/g, '\u202F')} ₽</span>
               <ShoppingBasket size={18} strokeWidth={2} />
             </>
           </GoToCartButton>

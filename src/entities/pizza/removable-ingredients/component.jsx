@@ -1,49 +1,49 @@
-import { formatIngredients } from "../../../shared/lib/formatIngredients"
+import { X } from 'lucide-react'
+
+import styles from './styles.module.css'
 
 export const RemovableIngredients = ({
   removableIngredients,
   removedIngredients,
   setRemovedIngredients
 }) => {
+  const handleToggleIngredient = (ingredient) => {
+    const isRemoved = removedIngredients.includes(ingredient)
 
-  const handleIngredientChange = (ingredient, checked) => {
-    if (checked && !removedIngredients.includes(ingredient)) {
-      setRemovedIngredients((prev) => [...prev, ingredient])
+    if (isRemoved) {
+      setRemovedIngredients((prev) =>
+        prev.filter((item) => item !== ingredient)
+      )
       return
     }
 
-    setRemovedIngredients((prev) => (
-      prev.filter((item) => item !== ingredient)
-    ))
-
+    setRemovedIngredients((prev) => [...prev, ingredient])
   }
+
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+
   return (
-    <div>
-      {removableIngredients.map((ingredient) => (
-        <div key={ingredient}>
-          <input
-            onChange={(event) =>
-              handleIngredientChange(ingredient, event.target.checked)
-            }
-            id={ingredient}
-            type="checkbox"
-            checked={removedIngredients.includes(ingredient)}
-          />
+    <div className={styles.ingredientsRow}>
+      {removableIngredients.map((ingredient) => {
+        const isRemoved = removedIngredients.includes(ingredient)
 
-          <label htmlFor={ingredient}>{ingredient}</label>
-        </div>
-      ))}
-
-      <div>
-        {removedIngredients.length > 0 && (
-          <p>
-            Будет убрано из состава:{" "}
-            <span style={{ textDecoration: "underline" }}>
-              {formatIngredients(removedIngredients)}
+        return (
+          <button
+            key={ingredient}
+            type='button'
+            className={`${styles.ingredientPill} ${isRemoved && styles.removedIngredientPill}`}
+            onClick={() => handleToggleIngredient(ingredient)}>
+            <span className={styles.ingredientText}>
+              {capitalize(ingredient)}
             </span>
-          </p>
-        )}
-      </div>
+
+            <span
+              className={`${styles.removeIcon} ${isRemoved && styles.hidden}`}>
+              <X size={14} strokeWidth={2.2} />
+            </span>
+          </button>
+        )
+      })}
     </div>
   )
 }

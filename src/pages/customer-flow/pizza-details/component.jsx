@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { formatIngredients } from "../../../shared/lib/formatIngredients"
-import { AddToOrderButton } from "../../../entities/order/add-to-order-button/component"
 import { RemovableIngredients } from "../../../entities/pizza/removable-ingredients/component"
 import { ToppingsSelection } from "../../../entities/pizza/toppings-selection/component"
-import { QuantitySelector } from "../../../entities/pizza/quantity-selector/component"
+import { AddToOrderButton } from "../../../entities/order/add-to-order-button/component"
+
+import { X, Plus } from 'lucide-react'
 
 import styles from './styles.module.css'
 
@@ -14,17 +15,23 @@ export const PizzaDetailsPage = ({
 }) => {
   const [removedIngredients, setRemovedIngredients] = useState([])
   const [addedToppings, setAddedToppings] = useState([])
-  const [quantity, setQuantity] = useState(1)
 
   if (!selectedPizza) return null
+
+  const toppingsTotalPrice = addedToppings.reduce(
+    (total, topping) => total + topping.price,
+    0
+  )
+
+  const totalPrice = selectedPizza.price + toppingsTotalPrice
 
   const handleAddItemToOrder = () => {
     const orderItem = {
       id: crypto.randomUUID(),
       name: selectedPizza.name,
       image: selectedPizza.image,
-      price: selectedPizza.price,
-      quantity,
+      price: totalPrice,
+      quantity: 1,
       removedIngredients: [...removedIngredients],
       addedToppings: [...addedToppings]
     }
@@ -33,61 +40,73 @@ export const PizzaDetailsPage = ({
 
     setRemovedIngredients([])
     setAddedToppings([])
-    setQuantity(1)
     setCurrentStep('pizza')
   }
 
   return (
-    <div>
-      <button
-        onClick={() => setCurrentStep('pizza')}>
-        ← Назад
-      </button>
+    <>
+      <header className={styles.topBar}>
+        <button
+          type="button"
+          className={styles.backButton}
+          onClick={() => setCurrentStep('pizza')}>
+          <X size={20} strokeWidth={2.2} />
+        </button>
+      </header>
 
-      <h3>{selectedPizza.name}</h3>
+      <main className={styles.pageMain}>
+        <div className={styles.pizzaImageWrapper}>
+          <img
+            src={selectedPizza.image}
+            className={styles.pizzaImage}
+            alt={selectedPizza.name} />
+        </div>
 
-      <div className={styles.pizzaImageWrapper}>
-        <img
-          src={selectedPizza.image}
-          className={styles.pizzaImage}
-          alt={selectedPizza.name}
-        />
-      </div>
+        <h2 className={styles.pizzaName}>
+          {selectedPizza.name}
+        </h2>
 
-      <p>{selectedPizza.description}</p>
+        <div className={styles.descriptionWrapper}>
+          <p>{selectedPizza.description}</p>
+        </div>
 
-      <p>
-        <span>Состав: </span>
-        {formatIngredients(selectedPizza.ingredients)}
-      </p>
+        <p className={styles.ingredientsPill}>
+          <span className={styles.ingredientsLabel}>Состав: </span>
+          <span className={styles.ingredientsText}>
+            {formatIngredients(selectedPizza.ingredients)}
+          </span>
+        </p>
 
-      <hr />
+        <div className={styles.toppingsSelectionWrapper}>
+          <h3 className={styles.sectionTitle}>Добавить по вкусу</h3>
 
-      <h4>Убрать из состава</h4>
-      <RemovableIngredients
-        removableIngredients={selectedPizza.removableIngredients}
-        removedIngredients={removedIngredients}
-        setRemovedIngredients={setRemovedIngredients}
-      />
+          <ToppingsSelection
+            toppings={selectedPizza.toppings}
+            addedToppings={addedToppings}
+            setAddedToppings={setAddedToppings} />
+        </div>
 
-      <h4>Добавить топпинги</h4>
-      <ToppingsSelection
-        toppings={selectedPizza.toppings}
-        addedToppings={addedToppings}
-        setAddedToppings={setAddedToppings}
-      />
+        <div className={styles.removableIngredientsWrapper}>
+          <h3 className={styles.sectionTitle}>Убрать ингредиенты</h3>
 
-      <div className={styles.actionsRow}>
-        <QuantitySelector
-          className={styles.quantityControls}
-          quantity={quantity}
-          setQuantity={setQuantity}
-        />
+          <RemovableIngredients
+            removableIngredients={selectedPizza.removableIngredients}
+            removedIngredients={removedIngredients}
+            setRemovedIngredients={setRemovedIngredients} />
+        </div>
 
-        <AddToOrderButton onClick={handleAddItemToOrder}>
-          Добавить в заказ
-        </AddToOrderButton>
-      </div>
-    </div>
+        <div className={styles.actionsRow}>
+          <AddToOrderButton onClick={handleAddItemToOrder}>
+            <Plus size={22} strokeWidth={2} />
+
+            <span
+              key={totalPrice}
+              className={styles.priceValue}>
+              {totalPrice} ₽
+            </span>
+          </AddToOrderButton>
+        </div>
+      </main>
+    </>
   )
 }

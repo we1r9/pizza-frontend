@@ -1,34 +1,46 @@
+import styles from './styles.module.css'
+
 export const ToppingsSelection = ({
   toppings,
   addedToppings,
   setAddedToppings
 }) => {
+  const handleToggleTopping = (topping) => {
+    const isSelected = addedToppings.some((item) => item.id === topping.id)
 
-  const handleToppingChange = (topping, checked) => {
-    if (checked && !addedToppings.includes(topping)) {
-      setAddedToppings((prev) => [...prev, topping])
+    if (isSelected) {
+      setAddedToppings((prev) =>
+        prev.filter((item) => item.id !== topping.id)
+      )
       return
     }
 
-    setAddedToppings((prev) => (
-      prev.filter((item) => item !== topping)
-    ))
+    setAddedToppings((prev) => [...prev, topping])
   }
 
-  return (
-    <div>
-      {toppings.map((topping) => (
-        <div key={topping}>
-          <input
-            onChange={(event) => handleToppingChange(topping, event.target.checked)}
-            id={topping}
-            type="checkbox"
-            checked={addedToppings.includes(topping)}
-          />
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
-          <label htmlFor={topping}>{topping}</label>
-        </div>
-      ))}
+  return (
+    <div className={styles.toppingsRow}>
+      {toppings.map((topping) => {
+        const isSelected = addedToppings.some((item) => item.id === topping.id)
+
+        return (
+          <button
+            key={topping.id}
+            type='button'
+            className={`${styles.toppingPill} ${isSelected ? styles.selectedToppingPill : ''}`}
+            onClick={() => handleToggleTopping(topping)}>
+            <span className={styles.toppingName}>
+              {capitalize(topping.name)}
+            </span>
+
+            <span className={styles.toppingPrice}>
+              {topping.price} ₽
+            </span>
+          </button>
+        )
+      })}
     </div>
   )
 }

@@ -21,8 +21,16 @@ export const pizzas = [
       "масло"
     ],
     toppings: [
-      "ветчина",
-      "моцарелла"
+      {
+        id: "extra-ham",
+        name: "ветчина",
+        price: 90
+      },
+      {
+        id: "extra-mozzarella",
+        name: "моцарелла",
+        price: 80
+      }
     ],
     image: "/src/assets/altayskaya.png"
   },
@@ -44,7 +52,11 @@ export const pizzas = [
       "масло",
     ],
     toppings: [
-      "моцарелла"
+      {
+        id: "extra-mozzarella",
+        name: "моцарелла",
+        price: 80
+      }
     ],
     image: "/src/assets/cheese.png"
   },
@@ -64,8 +76,16 @@ export const pizzas = [
       "пепперони"
     ],
     toppings: [
-      "пепперони",
-      "моцарелла"
+      {
+        id: "extra-pepperoni",
+        name: "пепперони",
+        price: 90
+      },
+      {
+        id: "extra-mozzarella",
+        name: "моцарелла",
+        price: 80
+      }
     ],
     image: "/src/assets/pepperoni.png"
   }

@@ -1,0 +1,52 @@
+.ingredientsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: 3px;
+}
+
+.ingredientPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 2px solid #d0d0d0;
+  border-radius: 999px;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: border 0.2s ease, background-color 0.2s ease, gap 0.2s ease;
+}
+
+.removedIngredientPill {
+  border-color: rgb(250, 108, 6);
+}
+
+.ingredientText {
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.removeIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  margin-left: 0;
+  overflow: hidden;
+  line-height: 1;
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    width 0.2s ease,
+    margin-left 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hidden {
+  width: 0;
+  margin-left: 0;
+  opacity: 0;
+  transform: scale(0.6);
+}
