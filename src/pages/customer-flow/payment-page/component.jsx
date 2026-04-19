@@ -1,6 +1,10 @@
 import { getBookingInfo } from '../../../shared/lib/getBookingInfo'
 
+import { ArrowLeft, CreditCard, Wallet } from 'lucide-react'
+
 import styles from './styles.module.css'
+
+const generateOrderNumber = () => Math.floor(1000 + Math.random() * 9000)
 
 export const PaymentPage = ({
   setCurrentStep,
@@ -42,7 +46,7 @@ export const PaymentPage = ({
 
     const order = {
       id: crypto.randomUUID(),
-      orderNumber: Math.floor(1000 + Math.random() * 9000),
+      orderNumber: generateOrderNumber(),
       date: chosenDay.date,
       time: selectedSlotTime,
       paymentMethod,
@@ -58,57 +62,77 @@ export const PaymentPage = ({
   }
 
   return (
-    <div className={styles.paymentPage}>
-      <button
-        onClick={() => setCurrentStep('order')}>
-        ← Назад
-      </button>
-
-      <h2 className={styles.totalCostTitle}>К оплате:</h2>
-      <p className={styles.totalCost}>
-        {totalCost} ₽
-      </p>
-
-      <h2 className={styles.paymentOptionsTitle}>Способ оплаты</h2>
-      <div className={styles.paymentOptions}>
+    <>
+      <header>
         <button
-          onClick={() => setPaymentMethod('card')}
-          className={`
+          type="button"
+          className={styles.backButton}
+          onClick={() => setCurrentStep('order')}>
+          <ArrowLeft size={16} strokeWidth={2} />
+          Назад
+        </button>
+      </header>
+
+      <main className={styles.main}>
+        <h1 className={styles.paymentOptionsTitle}>Способ оплаты</h1>
+
+        <section className={styles.paymentOptions}>
+          <button
+            type="button"
+            onClick={() => setPaymentMethod('card')}
+            className={`
             ${styles.paymentOption}
             ${paymentMethod === 'card'
-              ? styles.active
-              : ''}
-          `}
-        >
+                ? styles.activePaymentOption
+                : ''}`}>
+            <span className={styles.paymentTitle}>
+              <CreditCard size={18} strokeWidth={2} />
+              Картой
+            </span>
 
-          <h4 className={styles.paymentTitle}>💳 Картой</h4>
+            <span className={styles.paymentDescription}>
+              Онлайн
+            </span>
+          </button>
 
-          <p className={styles.paymentDescription}>Онлайн</p>
-        </button>
-
-        <button
-          onClick={() => setPaymentMethod('on_receipt')}
-          className={`
+          <button
+            type="button"
+            onClick={() => setPaymentMethod('on_receipt')}
+            className={`
             ${styles.paymentOption}
             ${paymentMethod === 'on_receipt'
-              ? styles.active
-              : ''}
-          `}
-        >
+                ? styles.activePaymentOption
+                : ''}`}>
+            <span className={styles.paymentTitle}>
+              <Wallet size={18} strokeWidth={2} />
+              При получении
+            </span>
 
-          <h4 className={styles.paymentTitle}>💵 При получении</h4>
+            <span className={styles.paymentDescription}>
+              Наличными или картой
+            </span>
+          </button>
+        </section>
 
-          <p className={styles.paymentDescription}>Наличными или картой</p>
-        </button>
-      </div>
-      <button
-        onClick={handleAddOrder}
-        hidden={!paymentMethod}
-      >
-        {paymentMethod === 'card'
-          ? 'Оплатить'
-          : 'Подтвердить заказ'}
-      </button>
-    </div>
+        <section className={styles.summarySection}>
+          <div className={styles.summaryRow}>
+            <span className={styles.summaryLabel}>Итого</span>
+            <span className={styles.summaryValue}>
+              {totalCost.toLocaleString('ru-RU').replace(/\s/g, '\u202F')} ₽
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleAddOrder}
+            hidden={!paymentMethod}
+            className={styles.summaryButton}>
+            {paymentMethod === 'card'
+              ? 'Оплатить'
+              : 'Подтвердить заказ'}
+          </button>
+        </section>
+      </main>
+    </>
   )
 }

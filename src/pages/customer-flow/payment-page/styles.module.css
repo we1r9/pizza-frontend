@@ -1,52 +1,105 @@
-.paymentPage {
-  position: relative;
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-.totalCostTitle {
-  margin: 18px 0 12px;
-}
-
-.totalCost {
-  font-size: 18px;
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  margin: 0 10px;
 }
 
 .paymentOptionsTitle {
-  margin: 18px 0 15px;
+  margin: 20px 0 15px;
+  font-size: 1.4rem;
 }
 
 .paymentOptions {
   display: flex;
-  gap: 15px;
+  gap: 12px;
 }
 
 .paymentOption {
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
-  border-radius: 15px;
-  padding: 10px;
-  width: 190px;
-  margin-bottom: 20px;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-width: 140px;
+  padding: 10px 15px;
+  border: 2px solid #d0d0d0;
+  border-radius: 15px;
+  background-color: transparent;
   text-align: left;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
 
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+.activePaymentOption {
+  border-color: rgb(249, 122, 32);
 }
 
 .paymentTitle {
-  margin: 8px 5px;
-  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 15px;
+  font-size: clamp(0.95rem, 2.2vw, 1rem);
+  font-weight: 600;
 }
 
 .paymentDescription {
-  margin: 5px 5px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
-.active {
-  border-color: #4da3ff;
-  background-color: rgba(77, 163, 255, 0.12);
+.summarySection {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 360px;
+  margin: auto auto 0;
+}
+
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.summaryLabel {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.95);
+}
+
+.summaryValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.95);
+}
+
+.summaryButton {
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-color: rgb(249, 122, 32);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
