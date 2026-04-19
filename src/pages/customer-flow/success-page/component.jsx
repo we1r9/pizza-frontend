@@ -1,6 +1,8 @@
 import { OrderedItems } from '../../../entities/order/ordered-items/component'
 import { SelectedSlotInfo } from '../../../entities/slot/selected-slot-info/component'
 
+import { Plus, ArrowRight } from 'lucide-react'
+
 import styles from './styles.module.css'
 
 export const SuccessPage = ({
@@ -8,7 +10,6 @@ export const SuccessPage = ({
   chosenDay,
   selectedSlotTime,
   orderItems,
-  paymentMethod,
   setPaymentMethod,
   setOrderItems,
   setOrderComment,
@@ -19,55 +20,54 @@ export const SuccessPage = ({
     (sum, orderItem) => sum + orderItem.price * orderItem.quantity, 0
   )
 
-  return (
-    <div className={styles.successPage}>
-      <h2 className={styles.successTitle}>🎉 Заказ оформлен</h2>
+  const resetOrderFlow = () => {
+    setPaymentMethod(null)
+    setOrderItems([])
+    setOrderComment('')
+    setSelectedSlotId(null)
+    setSelectedSlotTime(null)
+  }
 
-      <h3 className={styles.orderDateTitle}>Дата и время заказа</h3>
+  return (
+    <main className={styles.main}>
+      <h1 className={styles.pageTitle}>Заказ оформлен 🎉</h1>
+
+      <p className={styles.orderDateLabel}>Время получения заказа:</p>
       <SelectedSlotInfo
         chosenDay={chosenDay}
         selectedSlotTime={selectedSlotTime}
-        className={styles.selectedSlotInfo}
-      />
+        className={styles.selectedSlotInfo} />
 
       <OrderedItems orderItems={orderItems} />
 
-      <h3 className={styles.summaryRow}>
-        Итого: {totalCost} ₽
-      </h3>
-
-      <div className={styles.paymentStatus}>
-        {paymentMethod === 'card'
-          ? '✅ Оплачено картой'
-          : '💵 Оплата при получении'}
+      <div className={styles.summaryRow}>
+        <span>Итого</span>
+        {totalCost} ₽
       </div>
 
       <div className={styles.actionsRow}>
         <button
+          type="button"
+          className={styles.actionButton}
           onClick={() => {
+            resetOrderFlow()
             setCurrentStep('slot')
-            setPaymentMethod(null)
-            setOrderItems([])
-            setOrderComment('')
-            setSelectedSlotId(null)
-            setSelectedSlotTime(null)
-          }}
-        >
-          + Новый заказ
+          }}>
+          <Plus size={18} strokeWidth={2} />
+          Новый заказ
         </button>
+
         <button
+          type="button"
+          className={styles.actionButton}
           onClick={() => {
+            resetOrderFlow()
             setCurrentStep('orders')
-            setPaymentMethod(null)
-            setOrderItems([])
-            setOrderComment('')
-            setSelectedSlotId(null)
-            setSelectedSlotTime(null)
-          }}
-        >
-          Мои заказы →
+          }}>
+          Мои заказы
+          <ArrowRight size={18} strokeWidth={2} />
         </button>
       </div>
-    </div>
+    </main>
   )
 }

@@ -1,34 +1,56 @@
-.successPage {
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 40px 10px;
 }
 
-.returnButton {
-  align-self: flex-start;
+.pageTitle {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
 }
 
-.successTitle {
-  margin: 2rem 0 10px;
-}
-
-.orderDateTitle {
-  margin: 0 0 5px;
+.orderDateLabel {
+  margin: 0 0 8px;
+  opacity: 0.9;
 }
 
 .selectedSlotInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 20px;
+  padding: 6px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  background-color: rgba(0, 0, 0, 0.02);
+  font-size: clamp(0.9rem, 3vw, 1rem);
 }
 
 .summaryRow {
-  margin: 15px 0 7px;
-}
-
-.paymentStatus {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 360px;
+  margin: 10px 0 20px;
+  font-weight: 500;
 }
 
 .actionsRow {
   display: flex;
-  gap: 10px;
+  gap: 7px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 0.9rem;
+  font-weight: 500;
+  gap: 4px;
+  cursor: pointer;
 }

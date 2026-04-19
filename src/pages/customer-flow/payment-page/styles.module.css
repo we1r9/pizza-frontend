@@ -48,6 +48,11 @@
   border-color: rgb(249, 122, 32);
 }
 
+.activeIcon {
+  color: rgb(249, 122, 32);
+  transition: color 0.3s ease;
+}
+
 .paymentTitle {
   display: flex;
   align-items: center;

@@ -86,7 +86,10 @@ export const PaymentPage = ({
                 ? styles.activePaymentOption
                 : ''}`}>
             <span className={styles.paymentTitle}>
-              <CreditCard size={18} strokeWidth={2} />
+              <CreditCard
+                size={18}
+                strokeWidth={2}
+                className={`${paymentMethod === 'card' ? styles.activeIcon : ''}`} />
               Картой
             </span>
 
@@ -104,7 +107,10 @@ export const PaymentPage = ({
                 ? styles.activePaymentOption
                 : ''}`}>
             <span className={styles.paymentTitle}>
-              <Wallet size={18} strokeWidth={2} />
+              <Wallet
+                size={18}
+                strokeWidth={2}
+                className={`${paymentMethod === 'on_receipt' ? styles.activeIcon : ''}`} />
               При получении
             </span>
 

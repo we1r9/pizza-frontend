@@ -1,23 +1,24 @@
-.orderItems {
+.itemsList {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
+  max-width: 400px;
 }
 
-.orderedItemCard {
+.itemWrapper {
   display: flex;
-  position: relative;
   align-items: center;
-  padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background-color: rgba(255, 255, 255, 0.03);
-  border-radius: 25px;
-  width: 400px;
+  gap: 15px;
+  padding: 10px 15px 7px 15px;
+  border: 1.5px solid rgb(225, 225, 225);
+  border-radius: 30px;
 }
 
 .imageWrapper {
-  width: 90px;
-  height: 90px;
+  position: relative;
+  width: 95px;
+  aspect-ratio: 1 / 1;
   flex-shrink: 0;
 }
 
@@ -25,35 +26,57 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 50%;
 }
 
-.orderItem {
-  margin-left: 1rem;
-  min-width: 0;
+.itemBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
 }
 
-.orderItemTitle {
-  margin: 0 0 4px;
+.itemMain {
+  display: flex;
+  flex-direction: column;
 }
 
-.addedToppings {
-  margin-bottom: 3px;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.itemTitle {
+  margin: 0;
+  font-size: 1rem;
 }
 
-.removedIngredients {
-  margin-bottom: 5px;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.modifiers {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 0;
+  opacity: 0.8;
+}
+
+.changes {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  font-size: clamp(0.75rem, 2.2vw, 0.85rem);
+  line-height: 1.25;
 }
 
 .price {
-  font-size: 0.8rem;
-  opacity: 0.75;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.itemMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  opacity: 0.8;
 }

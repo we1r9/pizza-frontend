@@ -13,12 +13,13 @@
 }
 
 .slotPill {
+  padding: 5px 10px;
   border: 2px solid #d0d0d0;
   border-radius: 999px;
-  padding: 5px 10px;
   background-color: transparent;
   color: rgba(0, 0, 0, 0.75);
   transition: border 0.25s ease;
+  cursor: pointer;
 }
 
 .bookedPill {

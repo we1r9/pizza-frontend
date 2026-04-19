@@ -1,10 +1,11 @@
 .dateButton {
+  padding: 5px 10px;
   border: 2px solid #d0d0d0;
   border-radius: 999px;
-  padding: 5px 10px;
   background-color: transparent;
-  transition: border 0.25s ease;
   color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: border 0.25s ease;
 }
 
 .selectedDateButton {
