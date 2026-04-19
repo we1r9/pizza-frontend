@@ -26,17 +26,49 @@ export const PizzaDetailsPage = ({
   const totalPrice = selectedPizza.price + toppingsTotalPrice
 
   const handleAddItemToOrder = () => {
-    const orderItem = {
-      id: crypto.randomUUID(),
-      name: selectedPizza.name,
-      image: selectedPizza.image,
-      price: totalPrice,
-      quantity: 1,
-      removedIngredients: [...removedIngredients],
-      addedToppings: [...addedToppings]
-    }
+    const normalizedRemovedIngredients = [...removedIngredients].sort()
 
-    setOrderItems((prev) => [...prev, orderItem])
+    const normalizedAddedToppingIds = [...addedToppings]
+      .map((topping) => topping.id)
+      .sort()
+
+    setOrderItems((prev) => {
+      const existingItem = prev.find((orderItem) => {
+        const orderItemRemovedIngredients = [...orderItem.removedIngredients].sort()
+
+        const orderItemAddedToppingIds = [...orderItem.addedToppings]
+          .map((topping) => topping.id)
+          .sort()
+
+        const sameName = orderItem.name === selectedPizza.name
+        const sameRemovedIngredients =
+          JSON.stringify(orderItemRemovedIngredients) === JSON.stringify(normalizedRemovedIngredients)
+        const sameAddedToppings =
+          JSON.stringify(orderItemAddedToppingIds) === JSON.stringify(normalizedAddedToppingIds)
+
+        return sameName && sameRemovedIngredients && sameAddedToppings
+      })
+
+      if (existingItem) {
+        return prev.map((orderItem) =>
+          orderItem.id === existingItem.id
+            ? { ...orderItem, quantity: orderItem.quantity + 1 }
+            : orderItem
+        )
+      }
+
+      const newOrderItem = {
+        id: crypto.randomUUID(),
+        name: selectedPizza.name,
+        image: selectedPizza.image,
+        price: totalPrice,
+        quantity: 1,
+        removedIngredients: [...removedIngredients],
+        addedToppings: [...addedToppings]
+      }
+
+      return [...prev, newOrderItem]
+    })
 
     setRemovedIngredients([])
     setAddedToppings([])

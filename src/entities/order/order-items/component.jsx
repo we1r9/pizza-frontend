@@ -1,83 +1,80 @@
-import { formatIngredients } from "../../../shared/lib/formatIngredients"
+import { Minus, Plus } from 'lucide-react'
 
 import styles from './styles.module.css'
 
 export const OrderItems = ({
   orderItems,
-  handleRemoveItem,
   onDecreaseQuantity,
   onIncreaseQuantity
 }) => {
-  const totalCost = orderItems.reduce(
-    (sum, orderItem) => sum + orderItem.price * orderItem.quantity, 0
-  )
 
   return (
     <div>
-      <div className={styles.totalRow}>
-        <h2>Ваш заказ</h2>
-        <h2 className={styles.totalCost}>
-          Итого: {totalCost} ₽
-        </h2>
-      </div>
-
       {orderItems.map((item) => (
-        <div
-          key={item.id}
-          className={styles.wrapper}
-        >
+        <article key={item.id}>
+          <div className={styles.itemWrapper}>
+            <div className={styles.imageWrapper}>
+              <img
+                src={item.image}
+                className={styles.image}
+                alt={item.name} />
+            </div>
 
-          <div className={styles.imageWrapper}>
-            <img
-              src={item.image}
-              className={styles.image}
-              alt={item.name}
-            />
-          </div>
+            <div className={styles.itemBody}>
+              <div className={styles.itemMain}>
+                <h3 className={styles.itemTitle}>{item.name}</h3>
 
-          <div className={styles.orderItem}>
-            <h3 className={styles.orderItemTitle}>{item.name}</h3>
+                <div className={styles.modifiers}>
+                  {item.addedToppings.length > 0 && (
+                    <p className={styles.changes}>
+                      <Plus size={13} strokeWidth={2} />
+                      <span>
+                        {item.addedToppings.map((topping) => topping.name).join(', ')}
+                      </span>
+                    </p>
+                  )}
 
-            {item.addedToppings.length > 0 && (
-              <p className={styles.addedToppings}>
-                Топпинги:{" "}
-                <span>{formatIngredients(item.addedToppings)}</span>
-              </p>
-            )}
+                  {item.removedIngredients.length > 0 && (
+                    <p className={styles.changes}>
+                      <Minus size={13} strokeWidth={2} />
+                      <span>
+                        {item.removedIngredients.join(', ')}
+                      </span>
+                    </p>
+                  )}
+                </div>
 
-            {item.removedIngredients.length > 0 && (
-              <p>
-                Будет убрано из состава:{" "}
-                <span className={styles.removedIngredients}>
-                  {formatIngredients(item.removedIngredients)}
+                <p className={styles.price}>
+                  {(item.price * item.quantity).toLocaleString('ru-RU').replace(/\s/g, '\u202F')} ₽
+                </p>
+              </div>
+
+              <div className={styles.quantityControlsWrapper}>
+                <button
+                  type='button'
+                  className={styles.quantityButton}
+                  onClick={() => onDecreaseQuantity(item.id)}>
+                  <Minus size={18} strokeWidth={2} />
+                </button>
+
+                <span
+                  key={item.quantity}
+                  className={styles.quantityValue}>
+                  {item.quantity}
                 </span>
-              </p>
-            )}
 
-            <p className={styles.price}>
-              {item.price * item.quantity} ₽
-              <span> • </span>
-              <span>{item.quantity} шт</span>
-            </p>
+                <button
+                  type='button'
+                  className={styles.quantityButton}
+                  onClick={() => onIncreaseQuantity(item.id)}>
+                  <Plus size={18} strokeWidth={2} />
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className={styles.quantityControls}>
-            <button
-              onClick={() => onDecreaseQuantity(item.id)}
-            >-</button>
-            <span>{item.quantity}</span>
-            <button
-              onClick={() => onIncreaseQuantity(item.id)}
-            >+</button>
-          </div>
-
-          <button
-            className={styles.removeItemButton}
-            onClick={() => handleRemoveItem(item.id)}
-          >
-            x
-          </button>
-        </div>
+          <hr className={styles.divider} />
+        </article>
       ))}
     </div>
   )

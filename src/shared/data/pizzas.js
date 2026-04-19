@@ -15,7 +15,6 @@ export const pizzas = [
       "масло"
     ],
     removableIngredients: [
-      "ветчина",
       "томаты",
       "базилик",
       "масло"

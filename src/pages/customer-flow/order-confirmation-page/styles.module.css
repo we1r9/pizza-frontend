@@ -1,7 +1,60 @@
-.emptyState {
+.topBar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.backButton {
+  display: inline-flex;
   align-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.selectedSlotInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  background-color: rgba(0, 0, 0, 0.02);
+  font-size: clamp(0.9rem, 3vw, 1rem);
+}
+
+.main {
+  margin: 0 10px;
+  padding-bottom: 40px;
+}
+
+.orderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 15px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.clearOrderButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
 }
 
 .commentSection {
@@ -11,32 +64,117 @@
 }
 
 .commentLabel {
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 
 .commentTextarea {
-  margin-top: 10px;
+  min-height: 40px;
+  margin: 10px 5px 0;
+  padding: 12px 14px;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.03);
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.4;
   resize: none;
+  outline: none;
+  transition: border 0.2s ease, background-color 0.2s ease;
 }
 
-.actionsRow {
+.commentTextarea::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.commentTextarea:focus {
+  border-color: rgb(250, 108, 6);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.confirmOrderWrapper {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.addMoreButton {
-  margin-left: 5px;
+  justify-content: center;
+  margin-top: 35px;
 }
 
 .confirmOrderButton {
-  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 25px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-color: rgb(250, 108, 6);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.canNotBook {
+.confirmOrderButton:disabled {
+  background-color: rgba(250, 108, 6, 0.3);
+  color: rgba(0, 0, 0, 0.33);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.confirmOrderButtonPrice {
+  display: inline-block;
+}
+
+.bookingLimitMessage {
   display: flex;
-  justify-content: flex-end;
-  margin: 10px 0;
+  justify-content: center;
+  margin: 10px 0 0;
+}
+
+.bookingLimitMessage span {
+  max-width: 80%;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.68);
+  overflow-wrap: break-word;
+}
+
+.emptyStateSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px 10px 30px;
+}
+
+.emptyStateTitle {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.emptyStateSubtitle {
+  margin: 0;
+  max-width: 420px;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.returnToChoiceButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 15px 0;
+  padding: 8px 12px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-color: rgb(250, 108, 6);
+  color: white;
   font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
