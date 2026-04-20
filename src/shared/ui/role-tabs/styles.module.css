@@ -8,6 +8,7 @@
   padding: 2px 2.5px 3px;
   background-color: #dadadb;
   border-radius: 15px;
+  cursor: pointer;
 }
 
 .indicator {
@@ -45,6 +46,7 @@
   border: 0;
   font-size: 0.85rem;
   opacity: 0.8;
+  cursor: pointer;
 }
 
 .tab1:checked ~ .indicator {

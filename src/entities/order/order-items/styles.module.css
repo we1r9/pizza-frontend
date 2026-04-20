@@ -94,6 +94,7 @@
 
 .divider {
   margin: 12px 0;
+  border-radius: 999px;
 }
 
 @keyframes pricePop {

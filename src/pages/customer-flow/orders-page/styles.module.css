@@ -1,3 +1,9 @@
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .backButton {
   display: inline-flex;
   align-items: center;
@@ -12,46 +18,68 @@
   cursor: pointer;
 }
 
-.orderWrapper {
+.clearOrdersButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.orders {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 40px 10px;
+  padding: 0 10px;
 }
 
-.orderContainer {
-  border: 1px solid white;
-  border-radius: 25px;
-  width: 300px;
-  padding: 20px 25px;
+.title {
+  margin: 0 0 12px;
+  font-size: 1.4rem;
 }
 
 .ordersWrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
+  width: 100%;
+  max-width: 330px;
+}
+
+.orderContainer {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 330px;
+  padding: 20px;
+  border: 1.5px solid rgb(225, 225, 225);
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 .orderNumber {
-  font-weight: normal;
-  margin: 0 0 7px;
-}
-
-.orderDateInfo {
-  font-weight: bold;
-  font-size: 18px;
   margin: 0 0 3px;
+  font-size: 1.03rem;
 }
 
-.orderEmoji {
-  font-size: 40px;
-  line-height: 1;
+.orderDateTimeInfo {
+  font-weight: 500;
+  font-size: 1.075rem;
+  margin: 0 0 3px;
 }
 
 .orderImages {
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.orderImages::-webkit-scrollbar {
+  display: none;
 }
 
 .orderImageWrapper {
@@ -68,11 +96,6 @@
   object-fit: cover;
 }
 
-hr {
-  margin: 15px 0;
-  opacity: 0.3;
-}
-
 .totalCostRow {
   display: flex;
   justify-content: space-between;
@@ -81,35 +104,66 @@ hr {
 .totalCostTitle,
 .totalCost {
   margin: 0;
+  font-weight: 500;
 }
 
-.statusRow {
+.orderStatusRow {
   display: flex;
   justify-content: center;
 }
 
-.orderStatus {
+.orderStatusBadge {
+  display: inline-flex;
+  align-items: center;
   margin: 0;
-  font-weight: normal;
-  font-size: 18px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: rgba(0, 0, 0, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.2;
 }
 
-.actionsRow {
-  display: flex;
-  justify-content: space-between;
+.orderStatusPending {
+  border: 1px solid rgba(249, 178, 32, 0.45);
+  background-color: rgba(248, 224, 102, 0.15);
+}
+
+.orderStatusReady {
+  border: 1px solid rgba(52, 168, 83, 0.3);
+  background-color: rgba(68, 209, 106, 0.15);
+}
+
+.orderStatusCompleted {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+hr {
+  margin: 15px 0;
+  border-radius: 999px;
+  opacity: 0.25;
 }
 
 .emptyState {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 150px;
-  gap: 10px;
+  margin: 40px 10px;
 }
 
 .emptyStateTitle {
-  font-size: 1.3rem;
+  max-width: 330px;
+  margin: 0 0 5px;
+  text-align: center;
+  font-size: 1.4rem;
   font-weight: bold;
+}
+
+.emptyStateText {
+  max-width: 330px;
+  margin: 0 0 7px;
+  text-align: center;
+  font-size: 1rem;
 }
 
 .emptyStateEmoji {
