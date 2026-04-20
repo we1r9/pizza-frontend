@@ -28,8 +28,11 @@
   font-weight: 600;
 }
 
-.toppingPrice {
+.toppingsMeta {
+  display: flex;
+  justify-content: space-between;
   margin-top: 4px;
+  gap: 12px;
   font-size: 0.85rem;
   opacity: 0.7;
 }

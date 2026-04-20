@@ -1,14 +1,28 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 15px 5px 40px;
+}
+
+.orderSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dateTitle {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
 .orderWrapper {
   display: flex;
   flex-direction: column;
   padding: 16px;
-  border: 1px solid #d0d0d0;
-  border-radius: 16px;
-  margin-bottom: 12px;
-}
-
-.orderWrapperCompleted {
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1.5px solid rgb(225, 225, 225);
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 .orderHeader {
@@ -16,54 +30,101 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
+  margin-bottom: 10px;
+}
+
+.orderInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .orderTitle {
-  margin: 0;
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 20px;
+  gap: 8px;
+  font-size: 1.15rem;
 }
 
-.orderStatus {
+.orderNumberBadge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
   padding: 3px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
-  font-size: 13px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.04);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.orderStatusRow {
+  display: flex;
+  justify-content: center;
+}
+
+.orderStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.orderStatusPending {
+  border: 1px solid rgba(249, 178, 32, 0.45);
+  background-color: rgba(248, 224, 102, 0.15);
+}
+
+.orderStatusReady {
+  border: 1px solid rgba(52, 168, 83, 0.3);
+  background-color: rgba(68, 209, 106, 0.15);
 }
 
 .orderStatusCompleted {
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  opacity: 0.7;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
-.orderTime {
-  margin: 6px 0 12px;
-}
-
-.orderTimeCompleted {
-  opacity: 0.7;
+.orderTimeBadge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.04);
+  line-height: 1.2;
 }
 
 .orderItem {
-  padding: 8px 0;
+  padding: 8px 0 10px;
   border-top: 1px solid #ececec;
-}
-
-.orderItemCompleted {
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .orderItemRow {
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  margin-bottom: 3px;
+}
+
+.itemTitle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
 .orderItemMeta {
-  margin: 6px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
   font-size: 0.9rem;
+  margin: 0 3px 0;
   opacity: 0.7;
 }
 
@@ -74,7 +135,45 @@
   margin-top: 5px;
 }
 
-.orderFooterCompleted {
-  opacity: 0.85;
+.paymentStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: rgba(0, 0, 0, 0.72);
   font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.paymentStatusContent {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.paymentStatusPaid {
+  border: 1px solid rgba(52, 168, 83, 0.2);
+  background-color: rgba(52, 168, 83, 0.08);
+}
+
+.paymentStatusUnpaid {
+  border: 1px solid rgba(249, 32, 32, 0.28);
+  background-color: rgba(249, 102, 102, 0.12);
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emptyText {
+  margin: 5px 0 0;
+  font-size: 16px;
+}
+
+.emptyStateEmoji {
+  margin: 7px 0 0;
+  font-size: 24px;
 }

@@ -23,12 +23,14 @@ export const pizzas = [
       {
         id: "extra-ham",
         name: "ветчина",
-        price: 90
+        price: 90,
+        weight: 60
       },
       {
         id: "extra-mozzarella",
         name: "моцарелла",
-        price: 80
+        price: 80,
+        weight: 70
       }
     ],
     image: "/src/assets/altayskaya.png"
@@ -54,7 +56,8 @@ export const pizzas = [
       {
         id: "extra-mozzarella",
         name: "моцарелла",
-        price: 80
+        price: 80,
+        weight: 70
       }
     ],
     image: "/src/assets/cheese.png"
@@ -78,12 +81,14 @@ export const pizzas = [
       {
         id: "extra-pepperoni",
         name: "пепперони",
-        price: 90
+        price: 90,
+        weight: 55
       },
       {
         id: "extra-mozzarella",
         name: "моцарелла",
-        price: 80
+        price: 80,
+        weight: 70
       }
     ],
     image: "/src/assets/pepperoni.png"

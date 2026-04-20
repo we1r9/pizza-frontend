@@ -35,9 +35,10 @@ export const ToppingsSelection = ({
               {capitalize(topping.name)}
             </span>
 
-            <span className={styles.toppingPrice}>
-              {topping.price} ₽
-            </span>
+            <div className={styles.toppingsMeta}>
+              <span>{topping.weight}г</span>
+              <span>{topping.price} ₽</span>
+            </div>
           </button>
         )
       })}

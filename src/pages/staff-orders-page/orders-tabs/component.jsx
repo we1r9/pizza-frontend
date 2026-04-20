@@ -1,5 +1,3 @@
-import { Tab } from "../../../shared/ui/tab/component"
-
 import styles from './styles.module.css'
 
 export const OrdersTabs = ({
@@ -8,19 +6,23 @@ export const OrdersTabs = ({
 }) => {
   return (
     <div className={styles.ordersTabsRow}>
-      <Tab
+      <button
         onClick={() => setActiveView('current')}
-        isActive={activeView === 'current'}
-      >
+        className={`
+          ${styles.ordersPill}
+          ${activeView === 'current' && styles.activeOrdersPill}
+        `}>
         Активные
-      </Tab>
+      </button>
 
-      <Tab
+      <button
         onClick={() => setActiveView('completed')}
-        isActive={activeView === 'completed'}
-      >
+        className={`
+          ${styles.ordersPill}
+          ${activeView === 'completed' && styles.activeOrdersPill}
+        `}>
         Завершенные
-      </Tab>
+      </button>
     </div>
   )
 }

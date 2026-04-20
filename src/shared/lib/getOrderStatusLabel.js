@@ -5,7 +5,7 @@ export const getOrderStatusLabel = (status) => {
     case 'in_progress':
       return 'Готовится'
     case 'ready':
-      return 'Готов к выдаче'
+      return 'Готов'
     case 'completed':
       return 'Выдан'
     default:

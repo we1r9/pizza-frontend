@@ -3,3 +3,20 @@
   justify-content: center;
   gap: 10px;
 }
+
+.ordersPill {
+  align-self: flex-start;
+  padding: 6px 10px;
+  border: 1.5px solid rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border 0.25s ease;
+}
+
+.activeOrdersPill {
+  font-weight: 500;
+  border-color: rgb(249, 122, 32);
+}

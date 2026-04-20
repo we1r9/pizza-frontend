@@ -107,29 +107,30 @@ export const StaffOrdersPage = ({
     <div>
       <OrdersTabs
         activeView={activeView}
-        setActiveView={setActiveView}
-      />
+        setActiveView={setActiveView} />
 
-      <h2>
-        {ordersTitle}
+      <div className={sharedStyles.ordersTitleWrapper}>
+        <span className={sharedStyles.ordersTitle}>
+          {ordersTitle}
+        </span>
         {ordersCount > 0 && (
           <span className={sharedStyles.ordersCountBadge}>
             {ordersCount}
           </span>
         )}
-      </h2>
+      </div>
 
       {activeView === 'current'
         ? <OrdersList
           orders={currentOrders}
-          emptyText='Сейчас нет активных заказов. Новые заказы появятся здесь.'
+          emptyText='Сейчас нет активных заказов'
           orderView='current-order'
           setActiveView={setActiveView}
           setSelectedOrderId={setSelectedOrderId}
         />
         : <OrdersList
           orders={completedOrders}
-          emptyText='Пока что нет завершенных заказов.'
+          emptyText='Пока что нет завершенных заказов'
           orderView='completed-order'
           setActiveView={setActiveView}
           setSelectedOrderId={setSelectedOrderId}
