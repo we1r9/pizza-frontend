@@ -1,59 +1,79 @@
 import { OrderedItems } from '../../../entities/order/ordered-items/component'
-import { formatDate } from '../../../shared/lib/formatDate'
+import { SelectedSlotInfo } from '../../../entities/slot/selected-slot-info/component'
+import { Stepper } from '../../../entities/order/stepper/component'
+
+import { ArrowLeft, Check } from 'lucide-react'
+
 import styles from './styles.module.css'
 
 export const OrderDetailsPage = ({
   setCurrentStep,
   selectedOrder
 }) => {
+
   return (
-    <div>
-      <button
-        onClick={() => setCurrentStep('orders')}
-      >
-        ← Назад
-      </button>
+    <>
+      <header>
+        <button
+          type="button"
+          className={styles.backButton}
+          onClick={() => setCurrentStep('orders')}>
+          <ArrowLeft size={16} strokeWidth={2} />
+          Назад
+        </button>
+      </header>
 
-      <div className={styles.pageWrapper}>
-        <h2 className={styles.orderNumber}>Заказ №{selectedOrder.orderNumber}</h2>
+      <main className={styles.main}>
+        <h2 className={styles.orderNumber}>
+          Заказ №{selectedOrder.orderNumber}
+        </h2>
 
-        <div className={styles.orderDateInfo}>
+        <div className={styles.orderDateTime}>
+          <SelectedSlotInfo
+            chosenDay={selectedOrder}
+            selectedSlotTime={selectedOrder.time} />
+        </div>
+
+        <Stepper selectedOrder={selectedOrder} />
+
+        <OrderedItems orderItems={selectedOrder.items} />
+
+        <div className={styles.summaryRow}>
+          Итого
           <span>
-            {formatDate(selectedOrder.date)}
-          </span>
-          <span> • </span>
-          <span>
-            {selectedOrder.time}
+            {selectedOrder.totalCost.toLocaleString('ru-RU').replace(/\s/g, '\u202F')} ₽
           </span>
         </div>
 
-        <span className={styles.orderStatus}>
-          {selectedOrder.status === 'new' && 'Принят в работу'}
-          {selectedOrder.status === 'in_progress' && 'Готовится'}
-          {selectedOrder.status === 'ready' && 'Готов к выдаче'}
-          {selectedOrder.status === 'completed' && 'Выдан'}
-        </span>
-
-        <span className={styles.orderItemsTitle}>Товары в заказе</span>
-        <OrderedItems orderItems={selectedOrder.items} />
-
-        <span className={styles.orderSummary}>
-          Итого: {selectedOrder.totalCost} ₽
-        </span>
-
-        <span className={styles.paymentStatus}>
-          {selectedOrder.paymentMethod === 'card'
-            ? '✅ Оплачено картой'
-            : '💵 Оплата при получении'}
+        <span
+          className={`
+            ${styles.paymentStatusWrapper}
+            ${selectedOrder.paymentMethod === 'card'
+              ? styles.paymentStatusPaid
+              : styles.paymentStatusUnpaid
+            }
+          `}
+        >
+          {selectedOrder.paymentMethod === 'card' ? (
+            <span className={styles.paymentStatusContent}>
+              <Check size={14} strokeWidth={2.5} />
+              Оплачено картой
+            </span>
+          ) : (
+            <span className={styles.paymentStatusContent}>
+              Оплата при получении
+            </span>
+          )}
         </span>
 
         {selectedOrder.orderComment.length > 0 && (
           <div className={styles.orderComment}>
             <span className={styles.orderCommentLabel}>Комментарий</span>
+
             <p className={styles.orderCommentText}>{selectedOrder.orderComment}</p>
           </div>
         )}
-      </div>
-    </div>
+      </main >
+    </>
   )
 }

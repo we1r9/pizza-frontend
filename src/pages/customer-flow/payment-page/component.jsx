@@ -67,7 +67,10 @@ export const PaymentPage = ({
         <button
           type="button"
           className={styles.backButton}
-          onClick={() => setCurrentStep('order')}>
+          onClick={() => {
+            setCurrentStep('order')
+            setPaymentMethod(null)
+          }}>
           <ArrowLeft size={16} strokeWidth={2} />
           Назад
         </button>
@@ -120,24 +123,25 @@ export const PaymentPage = ({
           </button>
         </section>
 
-        <section className={styles.summarySection}>
-          <div className={styles.summaryRow}>
-            <span className={styles.summaryLabel}>Итого</span>
-            <span className={styles.summaryValue}>
-              {totalCost.toLocaleString('ru-RU').replace(/\s/g, '\u202F')} ₽
-            </span>
-          </div>
+        {paymentMethod && (
+          <section className={styles.summarySection}>
+            <div className={styles.summaryRow}>
+              <span className={styles.summaryLabel}>Итого</span>
+              <span className={styles.summaryValue}>
+                {totalCost.toLocaleString('ru-RU').replace(/\s/g, '\u202F')} ₽
+              </span>
+            </div>
 
-          <button
-            type="button"
-            onClick={handleAddOrder}
-            hidden={!paymentMethod}
-            className={styles.summaryButton}>
-            {paymentMethod === 'card'
-              ? 'Оплатить'
-              : 'Подтвердить заказ'}
-          </button>
-        </section>
+            <button
+              type="button"
+              onClick={handleAddOrder}
+              className={styles.summaryButton}>
+              {paymentMethod === 'card'
+                ? 'Оплатить'
+                : 'Подтвердить заказ'}
+            </button>
+          </section>
+        )}
       </main>
     </>
   )

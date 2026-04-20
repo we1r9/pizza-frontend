@@ -1,72 +1,105 @@
-.pageWrapper {
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
-}
-
-.orderStatus {
-  position: relative;
-  padding: 6px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 999px;
-  font-size: 14px;
-  margin: 0 0 15px;
-}
-
-.orderStatus::after {
-  content: '';
-  position: absolute;
-  background-color: rgb(0, 255, 0);
-  box-shadow: 0 0 7px rgb(255, 255, 255);
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  top: -3px;
-  right: 0;
+  margin: 40px 10px;
 }
 
 .orderNumber {
-  margin: 0 0 10px;
-}
-
-.orderDateInfo {
   margin: 0 0 15px;
+  font-size: 1.4rem;
 }
 
-.orderItemsTitle {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 0 0 10px;
+.orderDateTime {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 25px;
+  padding: 6px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  background-color: rgba(0, 0, 0, 0.02);
+  font-size: clamp(0.9rem, 3vw, 1rem);
 }
 
-.orderSummary {
-  margin: 30px 0 10px;
-  font-weight: bold;
-  font-size: 1.1rem;
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 380px;
+  margin: 10px 0 12px;
+  font-weight: 500;
 }
 
-.paymentStatus {
+.paymentStatusWrapper {
+  display: inline-flex;
+  align-items: center;
   margin: 0 0 15px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: rgba(0, 0, 0, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.paymentStatusContent {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.paymentStatusPaid {
+  border: 1px solid rgba(52, 168, 83, 0.2);
+  background-color: rgba(52, 168, 83, 0.08);
+}
+
+.paymentStatusUnpaid {
+  border: 1px solid rgba(249, 178, 32, 0.28);
+  background-color: rgba(249, 200, 102, 0.12);
 }
 
 .orderComment {
-  width: 100%;
-  max-width: 300px;
+  width: 55%;
+  max-width: 400px;
   padding: 14px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(0, 0, 0, 0.14);
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .orderCommentLabel {
   display: block;
   margin-bottom: 8px;
-  font-size: 14px;
-  opacity: 0.75;
+  font-size: 0.87rem;
+  opacity: 0.7;
 }
 
 .orderCommentText {
   margin: 0;
+  font-size: 0.97rem;
   line-height: 1.4;
+}
+
+@media (max-width: 460px) {
+  .summaryRow {
+    width: 95%;
+    margin: 10px 0 15px;
+  }
+
+  .orderComment {
+    width: 70%;
+  }
 }

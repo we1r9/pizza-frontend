@@ -1,0 +1,103 @@
+.stepper {
+  display: flex;
+  width: min(80%, 520px);
+  margin-bottom: 25px;
+}
+
+.stepperItem {
+  display: flex;
+  align-items: flex-start;
+}
+
+.stepperItemGrow {
+  flex: 1;
+}
+
+.stepperCore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.stepCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d0d0d0;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.stepCircleActive {
+  border-color: rgb(249, 122, 32);
+  background-color: rgb(249, 122, 32);
+}
+
+.stepCircleMark {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.stepCheckMark {
+  margin-top: 3px;
+}
+
+.stepCircleDot {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background-color: #d0d0d0;
+}
+
+.stepLine {
+  flex: 1;
+  height: 2px;
+  margin: 12px 8px 0;
+  background-color: #d0d0d0;
+  border-radius: 999px;
+}
+
+.stepLineActive {
+  background-color: rgb(249, 122, 32);
+}
+
+.stepLabel {
+  margin-top: 10px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+
+.stepLabelActive {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.stepperCompleted .stepCircle {
+  border-color: #d0d0d0;
+  background-color: white;
+}
+
+.stepperCompleted .stepCircleMark {
+  color: #b7b7b7;
+}
+
+.stepperCompleted .stepLine {
+  background-color: #d0d0d0;
+}
+
+.stepperCompleted .stepLabel {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+@media (max-width: 400px) {
+  .stepper {
+    width: 90%;
+  }
+}

@@ -27,11 +27,13 @@
   font-size: clamp(0.9rem, 3vw, 1rem);
 }
 
+
+
 .summaryRow {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 360px;
+  max-width: 380px;
   margin: 10px 0 20px;
   font-weight: 500;
 }
@@ -53,4 +55,10 @@
   font-weight: 500;
   gap: 4px;
   cursor: pointer;
+}
+
+@media (max-width: 460px) {
+  .summaryRow {
+    width: 95%;
+  }
 }

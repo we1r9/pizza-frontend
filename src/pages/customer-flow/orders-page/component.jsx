@@ -1,5 +1,7 @@
 import { formatDate } from "../../../shared/lib/formatDate"
 
+import { ArrowLeft } from "lucide-react"
+
 import styles from './styles.module.css'
 
 export const OrdersPage = ({
@@ -13,9 +15,11 @@ export const OrdersPage = ({
     <div>
       <div className={styles.actionsRow}>
         <button
-          onClick={() => setCurrentStep('slot')}
-        >
-          ← Назад
+          type="button"
+          className={styles.backButton}
+          onClick={() => setCurrentStep('slot')}>
+          <ArrowLeft size={16} strokeWidth={2} />
+          Назад
         </button>
       </div>
 
