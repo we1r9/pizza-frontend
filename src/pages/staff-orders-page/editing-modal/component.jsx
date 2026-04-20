@@ -1,6 +1,8 @@
 import { useEffect } from "react"
 import { createPortal } from "react-dom"
 
+import { X } from 'lucide-react'
+
 import styles from './styles.module.css'
 
 export const EditingModal = ({
@@ -40,34 +42,36 @@ export const EditingModal = ({
     <div className={styles.wrapper}>
       <div
         onClick={onClose}
-        className={styles.overlay}
-      />
+        className={styles.overlay} />
 
-      <div className={styles.modal}>
+      <div
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true">
         <button
           type='button'
           onClick={onClose}
           className={styles.closeButton}
-        >
-          ×
+          aria-label="Закрыть окно">
+          <X size={20} strokeWidth={2.2} />
         </button>
 
         {editingType === 'status' && (
-          <h3 className={styles.title}>
-            Подтвердить изменение статуса заказа
-          </h3>
+          <h2 className={styles.title}>
+            Подтвердить изменение
+          </h2>
         )}
 
         {editingType === 'payment' && (
-          <h3 className={styles.title}>
-            Подтвердить изменение статуса оплаты
-          </h3>
+          <h2 className={styles.title}>
+            Подтвердить изменение
+          </h2>
         )}
 
         {editingType === 'return' && (
-          <h3 className={styles.title}>
+          <h2 className={styles.title}>
             Вернуть заказ в работу?
-          </h3>
+          </h2>
         )}
 
         {editingType === 'status' && (
@@ -94,8 +98,7 @@ export const EditingModal = ({
         <button
           type='button'
           onClick={handleConfirm}
-          className={styles.confirmButton}
-        >
+          className={styles.confirmButton}>
           Подтвердить
         </button>
       </div>

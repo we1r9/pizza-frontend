@@ -1,61 +1,70 @@
 .wrapper {
-  position: fixed;
-  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  z-index: 19;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal {
   position: relative;
-  z-index: 20;
-  width: min(420px, calc(100vw - 32px));
-  padding: 24px;
-  border-radius: 12px;
-  background-color: white;
-  color: #1f1f1f;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  transform: translateY(-20%);
+  width: min(420px, 100%);
+  padding: 30px 20px 20px 20px;
+  border-radius: 25px;
+  background-color: white;
+  color: #1f1f1f;
 }
 
 .closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
   border: none;
-  background: transparent;
-  color: #1f1f1f;
-  font-size: 20px;
+  color: rgba(0, 0, 0, 0.72);
   cursor: pointer;
 }
 
 .title {
-  margin: 0;
-  font-size: 20px;
+  margin: 0 0 10px;
+  font-size: 1.22rem;
 }
 
 .text {
-  margin: 0;
-  line-height: 1.4;
+  margin: 0 0 15px 0;
+  font-size: 0.98rem;
 }
 
 .statusValue {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .confirmButton {
   align-self: flex-end;
   padding: 8px 14px;
-  border: 1px solid #d0d0d0;
+  border: 1.5px solid rgba(156, 65, 0, 0.275);
   border-radius: 999px;
-  background-color: white;
-  color: #1f1f1f;
+  background-color: rgb(249, 122, 32);
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
 }

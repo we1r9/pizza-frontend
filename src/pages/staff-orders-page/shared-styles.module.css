@@ -22,14 +22,13 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   padding: 18px;
   border: 1px solid #d0d0d0;
   border-radius: 25px;
 }
 
 .sectionTitle {
-  margin: 0;
+  margin: 0 0 10px;
   font-size: 1.3rem;
 }
 
@@ -49,7 +48,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .pill {
@@ -86,11 +85,11 @@
 
 .actionButton {
   padding: 8px 14px;
-  border: 1px solid #d0d0d0;
+  border: 1.5px solid rgba(156, 65, 0, 0.275);
+  background-color: rgb(249, 122, 32);
+  color: white;
   border-radius: 999px;
   font-size: 0.95rem;
-  background-color: white;
-  color: #1f1f1f;
   cursor: pointer;
 }
 
@@ -101,6 +100,7 @@
 .actionWarning {
   align-self: flex-end;
   margin-top: 5px;
+  margin: 5px 3px 0;
   opacity: 0.7;
   font-size: 0.9rem;
 }

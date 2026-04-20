@@ -42,7 +42,7 @@ export const OrderStatusControls = ({
               className={`${sharedStyles.pill} ${order.status === 'ready' ? sharedStyles.savedPill : ''} ${currentOrderStatus === 'ready' ? sharedStyles.selectedPill : ''}`}
               onClick={() => onSelectStatus('ready')}
             >
-              Готов к выдаче
+              Готов
             </button>
 
             {showCompletedOption && (

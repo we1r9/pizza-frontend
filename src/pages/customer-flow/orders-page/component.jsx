@@ -121,7 +121,7 @@ export const OrdersPage = ({
                   >
                     {order.status === 'new' && 'Принят в работу'}
                     {order.status === 'in_progress' && 'Готовится'}
-                    {order.status === 'ready' && 'Готов к выдаче'}
+                    {order.status === 'ready' && 'Готов'}
                     {order.status === 'completed' && 'Выдан'}
                   </span>
                 </div>
