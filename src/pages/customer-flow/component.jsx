@@ -145,7 +145,6 @@ export const CustomerFlow = ({
         <OrderDetailsPage
           setCurrentStep={setCurrentStep}
           selectedOrder={selectedOrder}
-          orderComment={orderComment}
         />
       )
       break
@@ -154,7 +153,5 @@ export const CustomerFlow = ({
       content = null
   }
 
-  return (
-    content
-  )
+  return content
 }

@@ -14,14 +14,14 @@ export const OrdersList = ({
 }) => {
   if (!orders.length) {
     return (
-      <div className={styles.emptyState}>
+      <main className={styles.emptyState}>
         <p className={styles.emptyText}>
           {emptyText}
         </p>
         <span className={styles.emptyStateEmoji}>
           (•◡•)
         </span>
-      </div>
+      </main>
     )
   }
 
@@ -44,7 +44,6 @@ export const OrdersList = ({
 
           {ordersByDate.map((order) => (
             <article
-              type="button"
               key={order.id}
               className={styles.orderWrapper}
               onClick={() => {

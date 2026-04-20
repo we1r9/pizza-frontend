@@ -53,19 +53,15 @@ export const CompletedOrder = ({
   }
 
   return (
-    <div className={sharedStyles.orderPage}>
+    <main className={sharedStyles.main}>
       <OrderOverview
         order={order}
         showOrderStatus={false}
       />
 
-      <OrderItemsSection
-        order={order}
-      />
+      <OrderItemsSection order={order} />
 
-      <OrderCustomerInfo
-        order={order}
-      />
+      <OrderCustomerInfo order={order} />
 
       {activeRole === 'pizza-maker' && (
         <OrderStatusControls
@@ -91,6 +87,6 @@ export const CompletedOrder = ({
       {toastMessage && (
         <Toast toastMessage={toastMessage} />
       )}
-    </div>
+    </main>
   )
 }

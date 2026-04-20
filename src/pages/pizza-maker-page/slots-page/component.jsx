@@ -3,12 +3,15 @@ import { formatDate } from "../../../shared/lib/formatDate"
 import { EditSlotsModal } from "./edit-slots-modal/component"
 import { AddSlotsModal } from "./add-slots-modal/component"
 import { isSlotExpired } from "../../../shared/lib/isSlotExpired"
+import { PizzaMakerViewTabs } from "../pizza-maker-view-tabs/component"
 
 import styles from './styles.module.css'
 
 export const PizzaMakerSlotsPage = ({
   orderDays,
-  setOrderDays
+  setOrderDays,
+  pizzaMakerActiveView,
+  setPizzaMakerActiveView
 }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [isAdding, setIsAdding] = useState(false)
@@ -36,6 +39,10 @@ export const PizzaMakerSlotsPage = ({
 
   return (
     <div>
+      <PizzaMakerViewTabs
+        pizzaMakerActiveView={pizzaMakerActiveView}
+        setPizzaMakerActiveView={setPizzaMakerActiveView}
+      />
       <div className={styles.actionsRow}>
         {visibleDays.length > 0 && (
           <button onClick={() => setIsEditing(true)}>

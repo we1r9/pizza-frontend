@@ -1,35 +1,44 @@
 .itemsList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
-.itemCard {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
+.orderItem {
+  padding: 8px 0 10px;
+  border-top: 1px solid #ececec;
 }
 
-.itemHeader {
+.orderItem:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.orderItem:last-child {
+  padding-bottom: 0;
+}
+
+.orderItemRow {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   gap: 12px;
+  margin-bottom: 3px;
 }
 
-.itemName {
-  font-size: 20px;
+.itemTitle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
 .itemPrice {
   white-space: nowrap;
-  font-weight: 600;
 }
 
-.itemMeta {
-  margin: 0;
-  opacity: 0.8;
+.orderItemMeta {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0 3px 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
 }

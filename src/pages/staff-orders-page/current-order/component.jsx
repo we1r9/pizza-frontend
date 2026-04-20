@@ -29,15 +29,6 @@ export const CurrentOrder = ({
 
   const { toastMessage, showToast } = useToast()
 
-  if (!order) {
-    return (
-      <div>
-        <p>Заказ не найден.</p>
-        <p>Возможно, он был перемещен в другой список.</p>
-      </div>
-    )
-  }
-
   const handleSaveOrderStatus = () => {
     setOrders((prev) =>
       prev.map((current) =>
@@ -91,7 +82,7 @@ export const CurrentOrder = ({
   }
 
   return (
-    <div className={sharedStyles.orderPage}>
+    <main className={sharedStyles.main}>
       <OrderOverview order={order} />
 
       <OrderItemsSection order={order} />
@@ -134,6 +125,6 @@ export const CurrentOrder = ({
       {toastMessage && (
         <Toast toastMessage={toastMessage} />
       )}
-    </div>
+    </main>
   )
 }

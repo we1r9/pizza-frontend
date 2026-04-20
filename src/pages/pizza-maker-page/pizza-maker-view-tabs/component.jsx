@@ -1,25 +1,25 @@
 import styles from './styles.module.css'
 
-export const ViewTabs = ({
-  activeView,
-  setActiveView
+export const PizzaMakerViewTabs = ({
+  pizzaMakerActiveView,
+  setPizzaMakerActiveView
 }) => {
   return (
     <div className={styles.viewTabsRow}>
       <button
-        onClick={() => setActiveView('orders')}
+        onClick={() => setPizzaMakerActiveView('orders')}
         className={`
           ${styles.viewPill}
-          ${activeView === 'orders' && styles.activeViewPill}
+          ${pizzaMakerActiveView === 'orders' && styles.activeViewPill}
         `}>
         Заказы
       </button>
 
       <button
-        onClick={() => setActiveView('slots')}
+        onClick={() => setPizzaMakerActiveView('slots')}
         className={`
           ${styles.viewPill}
-          ${activeView === 'slots' && styles.activeViewPill}
+          ${pizzaMakerActiveView === 'slots' && styles.activeViewPill}
         `}>
         Управление слотами
       </button>

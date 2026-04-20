@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { ViewTabs } from "./view-tabs/component"
 import { PizzaMakerSlotsPage } from "./slots-page/component"
 import { StaffOrdersPage } from "../staff-orders-page/component"
 
@@ -10,7 +9,7 @@ export const PizzaMakerPage = ({
   orders,
   setOrders
 }) => {
-  const [activeView, setActiveView] = useState(() => {
+  const [pizzaMakerActiveView, setPizzaMakerActiveView] = useState(() => {
     const savedView = sessionStorage.getItem('pizzaMakerActiveView')
 
     return savedView === 'orders' || savedView === 'slots'
@@ -19,18 +18,21 @@ export const PizzaMakerPage = ({
   })
 
   useEffect(() => {
-    sessionStorage.setItem('pizzaMakerActiveView', activeView)
-  }, [activeView])
+    sessionStorage.setItem('pizzaMakerActiveView', pizzaMakerActiveView)
+  }, [pizzaMakerActiveView])
+
 
   let content
 
-  switch (activeView) {
+  switch (pizzaMakerActiveView) {
     case 'orders':
       content = (
         <StaffOrdersPage
           activeRole={activeRole}
           orders={orders}
           setOrders={setOrders}
+          pizzaMakerActiveView={pizzaMakerActiveView}
+          setPizzaMakerActiveView={setPizzaMakerActiveView}
         />
       )
       break
@@ -40,6 +42,8 @@ export const PizzaMakerPage = ({
         <PizzaMakerSlotsPage
           orderDays={orderDays}
           setOrderDays={setOrderDays}
+          pizzaMakerActiveView={pizzaMakerActiveView}
+          setPizzaMakerActiveView={setPizzaMakerActiveView}
         />
       )
       break
@@ -48,14 +52,5 @@ export const PizzaMakerPage = ({
       content = null
   }
 
-  return (
-    <div>
-      <ViewTabs
-        activeView={activeView}
-        setActiveView={setActiveView}
-      />
-
-      {content}
-    </div>
-  )
+  return content
 }

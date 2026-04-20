@@ -10,11 +10,12 @@ export const PaymentStatusControls = ({
 
   return (
     <section className={sharedStyles.section}>
-      <h3 className={sharedStyles.sectionTitle}>Управление статусом оплаты</h3>
+      <h2 className={sharedStyles.sectionTitle}>
+        Управление оплатой
+      </h2>
 
       <div className={sharedStyles.controlsBlock}>
         <div className={sharedStyles.controlGroup}>
-
           <div className={sharedStyles.buttonsRow}>
             <button
               type='button'

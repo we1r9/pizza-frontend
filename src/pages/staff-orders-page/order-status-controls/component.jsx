@@ -15,7 +15,9 @@ export const OrderStatusControls = ({
 
   return (
     <section className={sharedStyles.section}>
-      <h3 className={sharedStyles.sectionTitle}>Управление статусом заказа</h3>
+      <h2 className={sharedStyles.sectionTitle}>
+        Управление статусом
+      </h2>
 
       <div className={sharedStyles.controlsBlock}>
         <div className={sharedStyles.controlGroup}>
@@ -23,8 +25,7 @@ export const OrderStatusControls = ({
             <button
               type='button'
               className={`${sharedStyles.pill} ${order.status === 'new' ? sharedStyles.savedPill : ''} ${currentOrderStatus === 'new' ? sharedStyles.selectedPill : ''}`}
-              onClick={() => onSelectStatus('new')}
-            >
+              onClick={() => onSelectStatus('new')}>
               Новый
             </button>
 
@@ -69,7 +70,9 @@ export const OrderStatusControls = ({
           </button>
 
           {isCompletedBlocked && (
-            <span className={sharedStyles.actionWarning}>Невозможно выдать неоплаченный заказ</span>
+            <span className={sharedStyles.actionWarning}>
+              Нельзя выдать неоплаченный заказ
+            </span>
           )}
         </div>
       )}

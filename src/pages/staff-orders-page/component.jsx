@@ -3,13 +3,18 @@ import { OrdersTabs } from "./orders-tabs/component"
 import { OrdersList } from "./orders-list/component"
 import { CurrentOrder } from "./current-order/component"
 import { CompletedOrder } from "./completed-order/component"
+import { PizzaMakerViewTabs } from "../pizza-maker-page/pizza-maker-view-tabs/component"
+
+import { ArrowLeft } from "lucide-react"
 
 import sharedStyles from './shared-styles.module.css'
 
 export const StaffOrdersPage = ({
   activeRole,
   orders,
-  setOrders
+  setOrders,
+  pizzaMakerActiveView,
+  setPizzaMakerActiveView
 }) => {
   const [activeView, setActiveView] = useState(() => {
     const savedView = sessionStorage.getItem('staffOrdersActiveView')
@@ -69,10 +74,16 @@ export const StaffOrdersPage = ({
 
   if (activeView === 'current-order') {
     return (
-      <div>
-        <button onClick={handleReturn}>
-          ← Назад
-        </button>
+      <>
+        <header>
+          <button
+            type="button"
+            className={sharedStyles.backButton}
+            onClick={handleReturn}>
+            <ArrowLeft size={16} strokeWidth={2} />
+            Назад
+          </button>
+        </header>
 
         <CurrentOrder
           key={selectedOrderId}
@@ -81,16 +92,22 @@ export const StaffOrdersPage = ({
           activeRole={activeRole}
           setOrders={setOrders}
         />
-      </div>
+      </>
     )
   }
 
   if (activeView === 'completed-order') {
     return (
-      <div>
-        <button onClick={handleReturn}>
-          ← Назад
-        </button>
+      <>
+        <header>
+          <button
+            type="button"
+            className={sharedStyles.backButton}
+            onClick={handleReturn}>
+            <ArrowLeft size={16} strokeWidth={2} />
+            Назад
+          </button>
+        </header>
 
         <CompletedOrder
           key={selectedOrderId}
@@ -99,20 +116,29 @@ export const StaffOrdersPage = ({
           activeRole={activeRole}
           setOrders={setOrders}
         />
-      </div>
+      </>
     )
   }
 
   return (
-    <div>
-      <OrdersTabs
-        activeView={activeView}
-        setActiveView={setActiveView} />
+    <>
+      <header>
+        {activeRole === 'pizza-maker' && (
+          <PizzaMakerViewTabs
+            pizzaMakerActiveView={pizzaMakerActiveView}
+            setPizzaMakerActiveView={setPizzaMakerActiveView} />
+        )}
+
+        <OrdersTabs
+          activeView={activeView}
+          setActiveView={setActiveView} />
+      </header>
 
       <div className={sharedStyles.ordersTitleWrapper}>
         <span className={sharedStyles.ordersTitle}>
           {ordersTitle}
         </span>
+
         {ordersCount > 0 && (
           <span className={sharedStyles.ordersCountBadge}>
             {ordersCount}
@@ -136,6 +162,6 @@ export const StaffOrdersPage = ({
           setSelectedOrderId={setSelectedOrderId}
         />
       }
-    </div>
+    </>
   )
 }
