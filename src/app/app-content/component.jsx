@@ -1,3 +1,5 @@
+import { AnimatePresence, motion as Motion } from 'framer-motion'
+
 import { CustomerFlow } from "../../pages/customer-flow/component"
 import { PizzaMakerPage } from "../../pages/pizza-maker-page/component"
 import { CashierPage } from "../../pages/cashier/component"
@@ -9,9 +11,11 @@ export const AppContent = ({
   orders,
   setOrders
 }) => {
+  let content
+
   switch (activeRole) {
     case 'customer':
-      return (
+      content = (
         <CustomerFlow
           orderDays={orderDays}
           orders={orders}
@@ -19,9 +23,10 @@ export const AppContent = ({
           setOrderDays={setOrderDays}
         />
       )
+      break
 
     case 'pizza-maker':
-      return (
+      content = (
         <PizzaMakerPage
           orderDays={orderDays}
           setOrderDays={setOrderDays}
@@ -30,17 +35,34 @@ export const AppContent = ({
           setOrders={setOrders}
         />
       )
+      break
 
     case 'cashier':
-      return (
+      content = (
         <CashierPage
           activeRole={activeRole}
           orders={orders}
           setOrders={setOrders}
         />
       )
+      break
 
     default:
-      return null
+      content = null
   }
+
+  return (
+    <AnimatePresence mode="wait">
+      <Motion.div
+        key={activeRole}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
+        style={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+      >
+        {content}
+      </Motion.div>
+    </AnimatePresence>
+  )
 }
