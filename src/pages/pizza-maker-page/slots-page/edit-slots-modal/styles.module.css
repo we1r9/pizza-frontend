@@ -1,42 +1,70 @@
 .wrapper {
+  position: fixed;
+  inset: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 9999;
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal {
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 75%;
-  position: absolute;
-  top: 25%;
+  max-height: calc(100vh - 40px);
+  width: min(460px, 100%);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 30px 20px 20px;
+  border-radius: 25px;
   background-color: white;
-  padding: 2rem;
-  border-radius: 10px;
+  color: #1f1f1f;
 }
 
 .closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  right: 5px;
-  top: 5px;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.72);
+  cursor: pointer;
 }
 
 .daysButtonsRow {
   display: flex;
+  flex-wrap: wrap;
+  width: 90%;
   gap: 10px;
   margin: 0 0 15px;
 }
 
-.fallback {
-  color: black;
+.dayButton {
+  padding: 4px 10px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 999px;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: border-color 0.25s ease;
+}
+
+.selectedDayButton {
+  border: 1.5px solid rgb(249, 122, 32);
 }
 
 .slotsContainer {
@@ -47,20 +75,25 @@
 }
 
 .slotPill {
-  border: 2px solid #d0d0d0;
-  border-radius: 999px;
   padding: 5px 10px;
-  background-color: transparent;
-  color: #1f1f1f;
-  transition: border .2s ease;
+  font-size: 0.833rem;
+  border: 1.5px solid rgba(52, 168, 83, 0.3);
+  background-color: rgba(52, 168, 83, 0.13);
+  border-radius: 999px;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
-.enabledSlotPill {
-  background-color: #b3fbb8;
+.bookedPill {
+  border: 1.5px solid rgba(249, 178, 32, 0.45);
+  background-color: rgba(248, 224, 102, 0.15);
+  cursor: not-allowed;
 }
 
 .disabledSlotPill {
-  background-color: #ff9595;
+  border: 1.5px solid rgba(249, 32, 32, 0.28);
+  background-color: rgba(249, 102, 102, 0.12);
 }
 
 .saveChangesContainer {
@@ -69,9 +102,13 @@
 }
 
 .saveChangesButton {
-  border: 1px solid #d0d0d0;
+  align-self: flex-end;
+  margin-top: 5px;
+  padding: 6px 10px;
+  border: 1.5px solid rgba(156, 65, 0, 0.275);
   border-radius: 999px;
-  padding: 5px 12px;
-  font-size: 14px;
-  background-color: transparent;
+  background-color: rgb(249, 122, 32);
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
 }

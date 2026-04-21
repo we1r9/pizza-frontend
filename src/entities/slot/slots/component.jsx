@@ -41,7 +41,9 @@ export const Slots = ({
 
       <div className={styles.slotsContainer}>
         {visibleSlots.length === 0 ? (
-          <p>На эту дату нет актуальных слотов</p>
+          <p className={styles.emptyStateText}>
+            На эту дату нет актуальных слотов
+          </p>
         ) : hasAvailableSlots ? (
           visibleSlots.map((slot) => (
             <Slot

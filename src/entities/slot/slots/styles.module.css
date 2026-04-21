@@ -12,6 +12,10 @@
   width: 100%;
 }
 
+.emptyStateText {
+  margin: 0;
+}
+
 .slotPill {
   padding: 5px 10px;
   border: 1.5px solid #d0d0d0;

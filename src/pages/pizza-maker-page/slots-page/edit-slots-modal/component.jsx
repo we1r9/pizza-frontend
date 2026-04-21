@@ -1,26 +1,47 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { formatDate } from '../../../../shared/lib/formatDate'
 import { isSlotExpired } from '../../../../shared/lib/isSlotExpired'
+
+import { X } from 'lucide-react'
 
 import styles from './styles.module.css'
 
 export const EditSlotsModal = ({
   onClose,
   orderDays,
-  setOrderDays
+  setOrderDays,
+  showToast
 }) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [])
+
+  const isDayOver = (date) => {
+    const endOfDay = new Date(`${date}T23:59:59.999`)
+    return endOfDay < new Date()
+  }
+
   const [activeDayIndex, setActiveDayIndex] = useState(0)
   const [changedSlotIds, setChangedSlotIds] = useState([])
 
   const visibleDays = orderDays.filter((day) =>
-    day.availableSlots.some((slot) => !isSlotExpired(day.date, slot.time))
+    !isDayOver(day.date) &&
+    day.availableSlots.some(
+      (slot) => !isSlotExpired(day.date, slot.time) || slot.booked
+    )
   )
   if (!visibleDays.length) return null
 
   const chosenDay = visibleDays[activeDayIndex]
 
-  const activeSlots = chosenDay.availableSlots.filter((slot) => !isSlotExpired(chosenDay.date, slot.time))
+  const activeSlots = chosenDay.availableSlots.filter(
+    (slot) => !isSlotExpired(chosenDay.date, slot.time) || slot.booked
+  )
 
   const handleSaveChanges = () => {
     setOrderDays((prev) =>
@@ -55,12 +76,17 @@ export const EditSlotsModal = ({
         className={styles.overlay}>
       </div>
 
-      <div className={styles.modal}>
+      <div
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+      >
         <button
+          type='button'
           onClick={onClose}
           className={styles.closeButton}
-        >
-          x
+          aria-label="Закрыть окно">
+          <X size={20} strokeWidth={2.2} />
         </button>
 
         <div className={styles.daysButtonsRow}>
@@ -71,7 +97,10 @@ export const EditSlotsModal = ({
                 setActiveDayIndex(index)
                 setChangedSlotIds([])
               }}
-              disabled={activeDayIndex === index}
+              className={`
+                ${styles.dayButton}
+                ${activeDayIndex === index && styles.selectedDayButton}
+              `}
             >
               {formatDate(orderDay.date)}
             </button>
@@ -79,30 +108,26 @@ export const EditSlotsModal = ({
         </div>
 
         <div className={styles.slotsContainer}>
-          {!activeSlots.length ? (
-            <p className={styles.fallback}>
-              На эту дату больше нет актуальных слотов
-            </p>
-          ) : (
-            activeSlots.map((slot) => {
-              const isToggled = changedSlotIds.includes(slot.id)
-              const displayEnabled = isToggled ? !slot.enabled : slot.enabled
+          {activeSlots.map((slot) => {
+            const isToggled = changedSlotIds.includes(slot.id)
+            const displayEnabled = isToggled ? !slot.enabled : slot.enabled
 
-              return (
-                <button
-                  key={slot.id}
-                  disabled={slot.booked}
-                  className={`${styles.slotPill} ${displayEnabled
-                    ? styles.enabledSlotPill
-                    : styles.disabledSlotPill
-                    }`}
-                  onClick={() => handleToggleSlot(slot.id)}
-                >
-                  {slot.time}
-                </button>
-              )
-            })
-          )}
+            return (
+              <button
+                key={slot.id}
+                disabled={slot.booked}
+                className={`${styles.slotPill} ${slot.booked
+                  ? styles.bookedPill
+                  : !displayEnabled
+                    ? styles.disabledSlotPill
+                    : ''
+                  }`}
+                onClick={() => handleToggleSlot(slot.id)}
+              >
+                {slot.time}
+              </button>
+            )
+          })}
         </div>
 
         <div className={styles.saveChangesContainer}>
@@ -111,6 +136,7 @@ export const EditSlotsModal = ({
               className={styles.saveChangesButton}
               onClick={() => {
                 handleSaveChanges()
+                showToast('Слоты успешно обновлены')
                 onClose()
               }}
             >

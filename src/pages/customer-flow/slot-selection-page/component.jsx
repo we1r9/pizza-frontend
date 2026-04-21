@@ -1,5 +1,6 @@
 import { DateTabs } from "../../../entities/slot/date-tabs/component"
 import { Slots } from "../../../entities/slot/slots/component"
+import { isSlotExpired } from "../../../shared/lib/isSlotExpired"
 
 import styles from './styles.module.css'
 
@@ -14,7 +15,16 @@ export const SlotSelectionPage = ({
   setSelectedSlotTime
 }) => {
 
-  if (!chosenDay) {
+  const availableDays = orderDays.filter((day) =>
+    day.availableSlots.some(
+      (slot) =>
+        !isSlotExpired(day.date, slot.time) &&
+        slot.enabled &&
+        !slot.booked
+    )
+  )
+
+  if (!availableDays.length) {
     return (
       <div className={styles.page}>
         <header className={styles.topBar}>

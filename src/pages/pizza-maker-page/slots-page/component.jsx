@@ -4,6 +4,8 @@ import { EditSlotsModal } from "./edit-slots-modal/component"
 import { AddSlotsModal } from "./add-slots-modal/component"
 import { isSlotExpired } from "../../../shared/lib/isSlotExpired"
 import { PizzaMakerViewTabs } from "../pizza-maker-view-tabs/component"
+import { Toast } from "../../../shared/ui/toast/component"
+import { useToast } from "../../../hooks/useToast"
 
 import { Pencil, Plus } from 'lucide-react'
 
@@ -18,7 +20,15 @@ export const PizzaMakerSlotsPage = ({
   const [isEditing, setIsEditing] = useState(false)
   const [isAdding, setIsAdding] = useState(false)
 
+  const { toastMessage, showToast } = useToast()
+
+  const isDayOver = (date) => {
+    const endOfDay = new Date(`${date}T23:59:59.999`)
+    return endOfDay < new Date()
+  }
+
   const visibleDays = orderDays.filter((day) =>
+    !isDayOver(day.date) &&
     day.availableSlots.some(
       (slot) => !isSlotExpired(day.date, slot.time) || slot.booked
     )
@@ -121,6 +131,7 @@ export const PizzaMakerSlotsPage = ({
           onClose={() => setIsEditing(false)}
           orderDays={orderDays}
           setOrderDays={setOrderDays}
+          showToast={showToast}
         />}
 
       {isAdding &&
@@ -129,6 +140,10 @@ export const PizzaMakerSlotsPage = ({
           orderDays={orderDays}
           setOrderDays={setOrderDays}
         />}
+
+      {toastMessage && (
+        <Toast toastMessage={toastMessage} />
+      )}
     </>
   )
 }

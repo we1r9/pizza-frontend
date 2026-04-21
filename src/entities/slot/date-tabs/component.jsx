@@ -20,7 +20,7 @@ export const DateTabs = ({
       {orderDays
         .filter((day) =>
           day.availableSlots.some(
-            (slot) => !isSlotExpired(day.date, slot.time) && slot.enabled
+            (slot) => !isSlotExpired(day.date, slot.time) && slot.enabled && !slot.booked
           )
         )
         .map((day) => (
