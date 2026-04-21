@@ -124,17 +124,17 @@
 }
 
 .orderStatusPending {
-  border: 1px solid rgba(249, 178, 32, 0.45);
+  border: 1.5px solid rgba(249, 178, 32, 0.45);
   background-color: rgba(248, 224, 102, 0.15);
 }
 
 .orderStatusReady {
-  border: 1px solid rgba(52, 168, 83, 0.3);
+  border: 1.5px solid rgba(52, 168, 83, 0.3);
   background-color: rgba(68, 209, 106, 0.15);
 }
 
 .orderStatusCompleted {
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
   background-color: rgba(0, 0, 0, 0.04);
 }
 

@@ -92,7 +92,11 @@ export const PaymentPage = ({
               <CreditCard
                 size={18}
                 strokeWidth={2}
-                className={`${paymentMethod === 'card' ? styles.activeIcon : ''}`} />
+                className={`
+                  ${styles.paymentIcon}
+                  ${paymentMethod === 'card' ? styles.activePaymentIcon : ''}
+                `}
+              />
               Картой
             </span>
 
@@ -113,7 +117,11 @@ export const PaymentPage = ({
               <Wallet
                 size={18}
                 strokeWidth={2}
-                className={`${paymentMethod === 'on_receipt' ? styles.activeIcon : ''}`} />
+                className={`
+                  ${styles.paymentIcon}
+                  ${paymentMethod === 'on_receipt' ? styles.activePaymentIcon : ''}
+                `}
+              />
               При получении
             </span>
 

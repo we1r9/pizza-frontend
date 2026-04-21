@@ -1,4 +1,109 @@
+.emptyActiveSlotsText {
+  margin: 0;
+  font-size: 0.96rem;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.slotPill {
+  padding: 5px 10px;
+  font-size: 0.833rem;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 999px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.bookedPill {
+  border: 1.5px solid rgba(249, 178, 32, 0.45);
+  background-color: rgba(248, 224, 102, 0.15);
+}
+
 .actionsRow {
   display: flex;
+  justify-content: center;
   gap: 10px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1.5px solid rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.editSlotsButton {
+  gap: 5px;
+}
+
+.addSlotsButton {
+  gap: 2px;
+}
+
+.addSlotsButtonStart {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1.5px solid rgba(156, 65, 0, 0.275);
+  border-radius: 999px;
+  background-color: rgb(249, 122, 32);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  margin: 20px 0 10px;
+  font-size: 1.4rem;
+}
+
+.fallbackSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 10px;
+  text-align: center;
+}
+
+.emptyStateTitle {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.emptyStateText {
+  margin: 0 0 15px;
+  font-size: 1rem;
+  line-height: 1.35;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.dateTitle {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+}
+
+.slotsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
 }

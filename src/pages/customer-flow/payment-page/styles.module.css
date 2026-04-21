@@ -36,7 +36,7 @@
   align-items: flex-start;
   min-width: 140px;
   padding: 10px 15px;
-  border: 2px solid #d0d0d0;
+  border: 1.5px solid #d0d0d0;
   border-radius: 15px;
   background-color: transparent;
   text-align: left;
@@ -48,9 +48,13 @@
   border-color: rgb(249, 122, 32);
 }
 
-.activeIcon {
-  color: rgb(249, 122, 32);
+.paymentIcon {
+  color: black;
   transition: color 0.3s ease;
+}
+
+.activePaymentIcon {
+  color: rgb(249, 122, 32);
 }
 
 .paymentTitle {

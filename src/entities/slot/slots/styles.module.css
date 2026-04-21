@@ -14,7 +14,7 @@
 
 .slotPill {
   padding: 5px 10px;
-  border: 2px solid #d0d0d0;
+  border: 1.5px solid #d0d0d0;
   border-radius: 999px;
   background-color: transparent;
   color: rgba(0, 0, 0, 0.75);
@@ -23,12 +23,14 @@
 }
 
 .bookedPill {
-  opacity: 0.3;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.4);
+  opacity: 0.7;
   cursor: not-allowed;
 }
 
 .selectedSlotPill {
-  border: 2px solid rgb(249, 122, 32);
+  border: 1.5px solid rgb(249, 122, 32);
 }
 
 .actionRow {

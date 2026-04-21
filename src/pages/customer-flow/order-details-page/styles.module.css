@@ -63,12 +63,12 @@
 }
 
 .paymentStatusPaid {
-  border: 1px solid rgba(52, 168, 83, 0.2);
+  border: 1.5px solid rgba(52, 168, 83, 0.2);
   background-color: rgba(52, 168, 83, 0.08);
 }
 
 .paymentStatusUnpaid {
-  border: 1px solid rgba(249, 178, 32, 0.28);
+  border: 1.5px solid rgba(249, 178, 32, 0.28);
   background-color: rgba(249, 200, 102, 0.12);
 }
 

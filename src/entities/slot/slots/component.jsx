@@ -15,7 +15,7 @@ export const Slots = ({
 }) => {
   const { availableSlots } = chosenDay
 
-  const visibleSlots = availableSlots.filter((slot) => !isSlotExpired(chosenDay.date, slot.time) && slot.enabled)
+  const visibleSlots = availableSlots.filter((slot) => !isSlotExpired(chosenDay.date, slot.time) && slot.enabled && !slot.booked)
 
   const selectedSlot = visibleSlots.find((slot) => slot.id === selectedSlotId)
 
