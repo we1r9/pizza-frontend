@@ -18,7 +18,8 @@ export const PizzaCard = ({
         <img
           src={pizza.image}
           className={styles.image}
-          alt={pizza.name} />
+          alt={pizza.name}
+          loading="eager" />
 
         <span className={styles.addButton}>
           {selectedPizzaCount > 0 ? selectedPizzaCount : <Plus size='1em' strokeWidth={2.5} />}

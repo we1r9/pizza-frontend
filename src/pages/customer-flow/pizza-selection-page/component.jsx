@@ -1,4 +1,6 @@
+import { useEffect } from 'react'
 import { pizzas } from "../../../shared/data/pizzas"
+import { preloadImages } from '../../../shared/lib/preloadImages'
 import { SelectedSlotInfo } from "../../../entities/slot/selected-slot-info/component"
 import { PizzaGrid } from "../../../entities/pizza/pizza-grid/component"
 import { GoToCartButton } from "../../../entities/order/go-to-cart-button/component"
@@ -14,6 +16,9 @@ export const PizzaSelectionPage = ({
   setSelectedPizza,
   orderItems
 }) => {
+  useEffect(() => {
+    preloadImages(pizzas.map((pizza) => pizza.image))
+  }, [])
 
   const totalCost = orderItems.reduce(
     (sum, orderItem) => sum + orderItem.price * orderItem.quantity, 0

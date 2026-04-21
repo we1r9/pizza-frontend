@@ -1,3 +1,7 @@
+import altayskayaImage from '../../assets/altayskaya.png'
+import cheeseImage from '../../assets/cheese.png'
+import pepperoniImage from '../../assets/pepperoni.png'
+
 export const pizzas = [
   {
     id: "pizza-altayskaya",
@@ -33,7 +37,7 @@ export const pizzas = [
         weight: 70
       }
     ],
-    image: "/src/assets/altayskaya.png"
+    image: altayskayaImage
   },
   {
     id: "pizza-cheese",
@@ -60,7 +64,7 @@ export const pizzas = [
         weight: 70
       }
     ],
-    image: "/src/assets/cheese.png"
+    image: cheeseImage
   },
   {
     id: "pizza-pepperoni",
@@ -91,6 +95,6 @@ export const pizzas = [
         weight: 70
       }
     ],
-    image: "/src/assets/pepperoni.png"
+    image: pepperoniImage
   }
 ]
