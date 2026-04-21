@@ -1,38 +1,65 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { formatDate } from '../../../../shared/lib/formatDate'
 import { AddableSlotsList } from '../addable-slots-list/component'
-import { getAddedSlotsText } from '../../../../shared/lib/getAddedSlotsText'
 import { availableDaysForCreation } from '../../../../shared/lib/availableDaysForCreation'
 import { isSlotExpired } from '../../../../shared/lib/isSlotExpired'
+
+import { X } from 'lucide-react'
 
 import styles from './styles.module.css'
 
 export const AddSlotsModal = ({
   onClose,
   orderDays,
-  setOrderDays
+  setOrderDays,
+  showToast
 }) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [])
+
   const [changedSlotIds, setChangedSlotIds] = useState([])
   const [activeSelectIndex, setActiveSelectIndex] = useState(0)
 
-  const chosenDay = availableDaysForCreation[activeSelectIndex]
+  const filteredDays = availableDaysForCreation.filter((day) => {
+    const existingDay = orderDays.find((d) => d.date === day.date)
 
-  const activeSlots = chosenDay.availableSlots.filter((slot) => !isSlotExpired(chosenDay.date, slot.time))
+    const activeSlots = day.availableSlots.filter(
+      (slot) => !isSlotExpired(day.date, slot.time)
+    )
 
-  const existingDay = orderDays.find((day) => day.date === chosenDay.date)
-
-  const selectableSlotIds = activeSlots
-    .filter((slot) => {
+    return activeSlots.some((slot) => {
       const alreadyExists = existingDay?.availableSlots.some(
         (existingSlot) => existingSlot.id === slot.id
       )
 
       return !alreadyExists && !slot.booked && slot.enabled
     })
-    .map((slot) => slot.id)
+  })
 
-  const hasSelectableSlots = selectableSlotIds.length > 0
+  if (!filteredDays.length) return null
+  const safeActiveSelectIndex = filteredDays[activeSelectIndex] ? activeSelectIndex : 0
+
+  const chosenDay = filteredDays[safeActiveSelectIndex]
+
+  const existingDay = orderDays.find((day) => day.date === chosenDay.date)
+
+  const activeSlots = chosenDay.availableSlots.filter((slot) => {
+    const alreadyExists = existingDay?.availableSlots.some(
+      (existingSlot) => existingSlot.id === slot.id
+    )
+
+    return !isSlotExpired(chosenDay.date, slot.time) && !alreadyExists
+  })
+
+  const selectableSlotIds = activeSlots
+    .filter((slot) => !slot.booked && slot.enabled)
+    .map((slot) => slot.id)
 
   const allSelectableSlotsSelected =
     selectableSlotIds.length > 0 &&
@@ -90,27 +117,33 @@ export const AddSlotsModal = ({
     <div className={styles.wrapper}>
       <div
         onClick={onClose}
-        className={styles.overlay}>
+        className={styles.overlay}
+      >
       </div>
 
-      <div className={styles.modal}>
+      <div
+        role="dialog"
+        aria-modal="true"
+        className={styles.modal}
+      >
         <button
+          type='button'
           onClick={onClose}
           className={styles.closeButton}
-        >
-          x
+          aria-label="Закрыть окно">
+          <X size={20} strokeWidth={2.2} />
         </button>
 
         <div className={styles.actionsRow}>
           <select
             className={styles.daySelect}
-            value={activeSelectIndex}
+            value={safeActiveSelectIndex}
             onChange={(e) => {
               setActiveSelectIndex(Number(e.target.value))
               setChangedSlotIds([])
             }}
           >
-            {availableDaysForCreation.map((orderDay, index) => (
+            {filteredDays.map((orderDay, index) => (
               <option
                 key={orderDay.id}
                 value={index}
@@ -137,26 +170,22 @@ export const AddSlotsModal = ({
           )}
         </div>
 
-        {hasSelectableSlots
-          ? <AddableSlotsList
-            activeSlots={activeSlots}
-            existingDay={existingDay}
-            changedSlotIds={changedSlotIds}
-            setChangedSlotIds={setChangedSlotIds}
-          />
-          : <p className={styles.activeSlotsFallback}>На эту дату больше нет слотов, которые можно добавить</p>}
+        <AddableSlotsList
+          activeSlots={activeSlots}
+          existingDay={existingDay}
+          changedSlotIds={changedSlotIds}
+          setChangedSlotIds={setChangedSlotIds}
+        />
 
         {changedSlotIds.length > 0 && (
           <div className={styles.saveChangesContainer}>
-            <span
-              className={styles.totalAddedSlotsText}
-            >
-              {getAddedSlotsText(changedSlotIds.length, chosenDay.date)}
-            </span>
             <button
+              type="button"
               className={styles.saveChangesButton}
-              onClick={handleAddSlots}
-            >
+              onClick={() => {
+                handleAddSlots()
+                showToast('Слоты успешно добавлены')
+              }}>
               Добавить
             </button>
           </div>

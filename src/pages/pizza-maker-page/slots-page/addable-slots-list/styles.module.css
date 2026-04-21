@@ -1,31 +1,21 @@
 .slotsContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 0 0 14px;
+  gap: 6px;
+  margin: 0 0 10px;
 }
 
 .slotPill {
-  border: 2px solid #d0d0d0;
+  border: 1.5px solid #d0d0d0;
   border-radius: 999px;
   padding: 5px 10px;
+  font-size: 0.833rem;
   background-color: transparent;
-  color: #1f1f1f;
-  transition: border .2s ease;
-}
-
-.existingSlotPill {
-  background-color: #f1f1f1;
-  color: #8a8a8a;
-  opacity: 0.45;
-  cursor: not-allowed;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 
 .selectedSlotPill {
-  border: 2px solid rgb(249, 122, 32);
-}
-
-.unselectedSlotPill {
-  background-color: transparent;
-  color: rgba(0, 0, 0, 0.7);
+  border: 1.5px solid rgb(249, 122, 32);
 }

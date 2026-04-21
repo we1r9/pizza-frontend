@@ -1,42 +1,85 @@
 .wrapper {
+  position: fixed;
+  inset: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 9999;
 }
 
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal {
-  position: absolute;
-  top: 25%;
-  width: 75%;
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  border-radius: 10px;
+  max-height: calc(100vh - 40px);
+  width: min(460px, 100%);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 45px 20px 20px;
+  border-radius: 25px;
   background-color: white;
+  color: #1f1f1f;
 }
 
 .closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.72);
+  cursor: pointer;
+}
+
+.actionsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 15px;
 }
 
 .daySelect {
-  width: 120px;
-  margin: 0 0 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 4px 28px 4px 10px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 999px;
+  background-color: transparent;
+  color: #000000BF;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23000000BF' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+}
+
+.daySelect:focus {
   outline: none;
 }
 
-.fallback {
-  color: black;
+.selectButton {
+  padding: 4px 10px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 999px;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: border-color 0.25s ease;
 }
 
 .saveChangesContainer {
@@ -47,27 +90,13 @@
 }
 
 .saveChangesButton {
-  border: 1px solid #d0d0d0;
+  align-self: flex-end;
+  margin-top: 5px;
+  padding: 6px 10px;
+  border: 1.5px solid rgba(156, 65, 0, 0.275);
   border-radius: 999px;
-  padding: 5px 12px;
-  font-size: 14px;
-  background-color: transparent;
-}
-
-.totalAddedSlotsText {
-  color: black;
-  font-size: 14px;
-}
-
-.activeSlotsFallback {
-  color: black;
-}
-
-.actionsRow {
-  display: flex;
-  justify-content: space-between;
-}
-
-.selectButton {
-  align-self: flex-start;
+  background-color: rgb(249, 122, 32);
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
 }

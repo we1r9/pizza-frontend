@@ -27,20 +27,24 @@ export const PizzaMakerSlotsPage = ({
     return endOfDay < new Date()
   }
 
-  const visibleDays = orderDays.filter((day) =>
-    !isDayOver(day.date) &&
-    day.availableSlots.some(
-      (slot) => !isSlotExpired(day.date, slot.time) || slot.booked
+  const visibleDays = [...orderDays]
+    .filter((day) =>
+      !isDayOver(day.date) &&
+      day.availableSlots.some(
+        (slot) => !isSlotExpired(day.date, slot.time) || slot.booked
+      )
     )
-  )
+    .sort((a, b) => new Date(a.date) - new Date(b.date))
 
   const hasVisibleDays = visibleDays.length > 0
 
   const renderDaySlots = (day) => {
-    const displaySlots = day.availableSlots.filter(
-      (slot) =>
-        (!isSlotExpired(day.date, slot.time) || slot.booked) && slot.enabled
-    )
+    const displaySlots = [...day.availableSlots]
+      .filter(
+        (slot) =>
+          (!isSlotExpired(day.date, slot.time) || slot.booked) && slot.enabled
+      )
+      .sort((a, b) => a.time.localeCompare(b.time))
 
     if (!displaySlots.length) {
       return (
@@ -139,6 +143,7 @@ export const PizzaMakerSlotsPage = ({
           onClose={() => setIsAdding(false)}
           orderDays={orderDays}
           setOrderDays={setOrderDays}
+          showToast={showToast}
         />}
 
       {toastMessage && (
