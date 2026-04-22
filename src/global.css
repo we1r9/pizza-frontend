@@ -9,3 +9,22 @@ select {
 body {
   margin: 0;
 }
+
+button,
+a,
+input,
+textarea,
+select,
+label,
+div,
+span {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+  outline: none;
+}

@@ -87,7 +87,7 @@ export const OrdersPage = ({
                   {order.items.map((item) => (
                     <div key={item.id} className={styles.orderImageWrapper}>
                       <img
-                        src={item.image}
+                        src={item.roundedImage}
                         alt={item.name}
                         className={styles.orderImage} />
                     </div>

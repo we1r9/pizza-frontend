@@ -36,7 +36,7 @@ export const ToppingsSelection = ({
             </span>
 
             <div className={styles.toppingsMeta}>
-              <span>{topping.weight}г</span>
+              <span>{topping.weight} г</span>
               <span>{topping.price} ₽</span>
             </div>
           </button>

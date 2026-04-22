@@ -61,6 +61,7 @@ export const PizzaDetailsPage = ({
         id: crypto.randomUUID(),
         name: selectedPizza.name,
         image: selectedPizza.image,
+        roundedImage: selectedPizza.roundedImage,
         price: totalPrice,
         quantity: 1,
         removedIngredients: [...removedIngredients],

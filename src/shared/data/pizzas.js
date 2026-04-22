@@ -1,6 +1,10 @@
-import altayskayaImage from '../../assets/altayskaya.png'
-import cheeseImage from '../../assets/cheese.png'
-import pepperoniImage from '../../assets/pepperoni.png'
+import altayskayaImage from '../../assets/altayskaya.webp'
+import cheeseImage from '../../assets/cheese.webp'
+import pepperoniImage from '../../assets/pepperoni.webp'
+
+import altayskayaRoundedImage from '../../assets/altayskaya-rounded.webp'
+import cheeseRoundedImage from '../../assets/cheese-rounded.webp'
+import pepperoniRoundedImage from '../../assets/pepperoni-rounded.webp'
 
 export const pizzas = [
   {
@@ -37,7 +41,8 @@ export const pizzas = [
         weight: 70
       }
     ],
-    image: altayskayaImage
+    image: altayskayaImage,
+    roundedImage: altayskayaRoundedImage
   },
   {
     id: "pizza-cheese",
@@ -64,7 +69,8 @@ export const pizzas = [
         weight: 70
       }
     ],
-    image: cheeseImage
+    image: cheeseImage,
+    roundedImage: cheeseRoundedImage
   },
   {
     id: "pizza-pepperoni",
@@ -95,6 +101,7 @@ export const pizzas = [
         weight: 70
       }
     ],
-    image: pepperoniImage
+    image: pepperoniImage,
+    roundedImage: pepperoniRoundedImage
   }
 ]

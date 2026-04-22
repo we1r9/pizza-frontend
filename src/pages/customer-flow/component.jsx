@@ -1,5 +1,9 @@
-import { useState } from "react"
+import { AnimatePresence, motion as Motion } from 'framer-motion'
+
+import { useEffect, useState } from "react"
 import { isSlotExpired } from '../../shared/lib/isSlotExpired'
+import { preloadImages } from "../../shared/lib/preloadImages"
+import { pizzas } from "../../shared/data/pizzas"
 import { SlotSelectionPage } from "./slot-selection-page/component"
 import { PizzaSelectionPage } from "./pizza-selection-page/component"
 import { PizzaDetailsPage } from "./pizza-details/component"
@@ -15,6 +19,10 @@ export const CustomerFlow = ({
   setOrders,
   setOrderDays
 }) => {
+  useEffect(() => {
+    preloadImages(pizzas.map((pizza) => pizza.image))
+  }, [])
+
   const [currentStep, setCurrentStep] = useState('slot')
 
   const visibleOrderDays = orderDays.filter((day) =>
@@ -153,5 +161,18 @@ export const CustomerFlow = ({
       content = null
   }
 
-  return content
+  return (
+    <AnimatePresence mode="wait">
+      <Motion.div
+        key={currentStep}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
+        style={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+      >
+        {content}
+      </Motion.div>
+    </AnimatePresence>
+  )
 }

@@ -15,7 +15,7 @@ export const OrderItems = ({
           <div className={styles.itemWrapper}>
             <div className={styles.imageWrapper}>
               <img
-                src={item.image}
+                src={item.roundedImage}
                 className={styles.image}
                 alt={item.name} />
             </div>

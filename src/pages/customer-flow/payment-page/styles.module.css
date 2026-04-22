@@ -31,6 +31,8 @@
 }
 
 .paymentOption {
+  appearance: none;
+  -webkit-appearance: none;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -64,10 +66,12 @@
   margin-bottom: 15px;
   font-size: clamp(0.95rem, 2.2vw, 1rem);
   font-weight: 600;
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .paymentDescription {
   font-size: 14px;
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .summarySection {
