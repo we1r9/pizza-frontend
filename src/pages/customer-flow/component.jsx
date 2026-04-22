@@ -20,7 +20,9 @@ export const CustomerFlow = ({
   setOrderDays
 }) => {
   useEffect(() => {
-    preloadImages(pizzas.map((pizza) => pizza.image))
+    preloadImages(
+      pizzas.flatMap((pizza) => [pizza.image, pizza.roundedImage].filter(Boolean))
+    )
   }, [])
 
   const [currentStep, setCurrentStep] = useState('slot')

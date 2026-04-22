@@ -17,7 +17,9 @@ export const OrderItems = ({
               <img
                 src={item.roundedImage}
                 className={styles.image}
-                alt={item.name} />
+                alt={item.name}
+                loading="eager"
+                />
             </div>
 
             <div className={styles.itemBody}>
