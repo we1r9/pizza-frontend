@@ -2,12 +2,35 @@ import { Plus } from 'lucide-react'
 
 import styles from './styles.module.css'
 
+interface Topping {
+  id: string
+  name: string
+  price: number
+  weight: number
+}
+
+interface Pizza {
+  id: string
+  name: string
+  price: number
+  weight: number
+  image: string
+  ingredients: string[]
+  removableIngredients: string[]
+  toppings: Topping[]
+}
+
+interface PizzaCardProps {
+  pizza: Pizza
+  onClick: () => void
+  selectedPizzaCount: number
+}
+
 export const PizzaCard = ({
   pizza,
   onClick,
-  selectedPizzaCount
-}) => {
-
+  selectedPizzaCount,
+}: PizzaCardProps) => {
   return (
     <article className={styles.card}>
       <button
