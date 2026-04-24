@@ -3,7 +3,7 @@ import { AnimatePresence, motion as Motion } from 'framer-motion'
 import { useEffect, useState } from "react"
 import { isSlotExpired } from '../../shared/lib/isSlotExpired'
 import { preloadImages } from "../../shared/lib/preloadImages"
-import { pizzas } from "../../shared/data/pizzas"
+import { usePizzas } from "../../entities/pizza/usePizzas"
 import { SlotSelectionPage } from "./slot-selection-page/component"
 import { PizzaSelectionPage } from "./pizza-selection-page/component"
 import { PizzaDetailsPage } from "./pizza-details/component"
@@ -19,11 +19,15 @@ export const CustomerFlow = ({
   setOrders,
   setOrderDays
 }) => {
+  const { pizzas, loading, error, refetch } = usePizzas()
+
   useEffect(() => {
-    preloadImages(
-      pizzas.flatMap((pizza) => [pizza.image, pizza.roundedImage].filter(Boolean))
-    )
-  }, [])
+    if (pizzas.length > 0) {
+      preloadImages(
+        pizzas.flatMap((pizza) => [pizza.image, pizza.roundedImage].filter(Boolean))
+      )
+    }
+  }, [pizzas])
 
   const [currentStep, setCurrentStep] = useState('slot')
 
@@ -76,6 +80,10 @@ export const CustomerFlow = ({
           selectedSlotTime={selectedSlotTime}
           setSelectedPizza={setSelectedPizza}
           orderItems={orderItems}
+          pizzas={pizzas}
+          loading={loading}
+          error={error}
+          refetch={refetch}
         />
       )
       break
