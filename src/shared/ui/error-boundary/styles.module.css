@@ -1,0 +1,44 @@
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+.errorEmoji {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+.errorTitle {
+  max-width: 330px;
+  margin: 0 0 5px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+.errorText {
+  max-width: 330px;
+  margin: 0 0 15px;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.refreshButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 24px;
+  border: 1.5px solid rgba(156, 65, 0, 0.275);
+  border-radius: 999px;
+  background-color: rgb(249, 122, 32);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}

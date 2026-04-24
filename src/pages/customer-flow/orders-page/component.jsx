@@ -7,15 +7,13 @@ import styles from './styles.module.css'
 export const OrdersPage = ({
   setCurrentStep,
   orders,
-  setOrders,
-  setOrderDays,
   setSelectedOrder
 }) => {
   const sortedOrders = [...orders].reverse()
 
   return (
     <>
-      <header className={styles.topBar}>
+      <header>
         <button
           type="button"
           className={styles.backButton}
@@ -23,19 +21,6 @@ export const OrdersPage = ({
           <ArrowLeft size={16} strokeWidth={2} />
           Назад
         </button>
-
-        {orders.length > 0 && (
-          <button
-            type="button"
-            className={styles.clearOrdersButton}
-            onClick={() => {
-              setOrders([])
-              setOrderDays([])
-            }}
-            aria-label="Очистить все заказы">
-            <Trash2 size={22} strokeWidth={2} />
-          </button>
-        )}
       </header>
 
       {!orders.length ? (
