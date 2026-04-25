@@ -1,12 +1,11 @@
+import { useAppContext } from '../context'
 import { RoleTabs } from '../../shared/ui/role-tabs/component'
 
 import styles from './styles.module.css'
 
-export const Layout = ({
-  children,
-  activeRole,
-  setActiveRole
-}) => {
+export const Layout = ({ children }) => {
+  const { activeRole, setActiveRole } = useAppContext()
+
   return (
     <div className={styles.app}>
       <RoleTabs

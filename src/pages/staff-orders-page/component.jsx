@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useAppContext } from "../../app/context"
 import { OrdersTabs } from "./orders-tabs/component"
 import { OrdersList } from "./orders-list/component"
 import { CurrentOrder } from "./current-order/component"
@@ -10,12 +11,10 @@ import { ArrowLeft } from "lucide-react"
 import sharedStyles from './shared-styles.module.css'
 
 export const StaffOrdersPage = ({
-  activeRole,
-  orders,
-  setOrders,
   pizzaMakerActiveView,
   setPizzaMakerActiveView
 }) => {
+  const { activeRole, orders } = useAppContext()
   const [activeView, setActiveView] = useState(() => {
     const savedView = sessionStorage.getItem('staffOrdersActiveView')
     return savedView === 'current' || savedView === 'completed'
@@ -88,10 +87,7 @@ export const StaffOrdersPage = ({
 
         <CurrentOrder
           key={selectedOrderId}
-          orders={orders}
           orderId={selectedOrderId}
-          activeRole={activeRole}
-          setOrders={setOrders}
         />
       </>
     )
@@ -113,10 +109,7 @@ export const StaffOrdersPage = ({
 
         <CompletedOrder
           key={selectedOrderId}
-          orders={orders}
           orderId={selectedOrderId}
-          activeRole={activeRole}
-          setOrders={setOrders}
         />
       </>
     )

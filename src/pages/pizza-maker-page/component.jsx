@@ -2,13 +2,7 @@ import { useEffect, useState } from "react"
 import { PizzaMakerSlotsPage } from "./slots-page/component"
 import { StaffOrdersPage } from "../staff-orders-page/component"
 
-export const PizzaMakerPage = ({
-  orderDays,
-  setOrderDays,
-  activeRole,
-  orders,
-  setOrders
-}) => {
+export const PizzaMakerPage = () => {
   const [pizzaMakerActiveView, setPizzaMakerActiveView] = useState(() => {
     const savedView = sessionStorage.getItem('pizzaMakerActiveView')
 
@@ -28,9 +22,6 @@ export const PizzaMakerPage = ({
     case 'orders':
       content = (
         <StaffOrdersPage
-          activeRole={activeRole}
-          orders={orders}
-          setOrders={setOrders}
           pizzaMakerActiveView={pizzaMakerActiveView}
           setPizzaMakerActiveView={setPizzaMakerActiveView}
         />
@@ -40,8 +31,6 @@ export const PizzaMakerPage = ({
     case 'slots':
       content = (
         <PizzaMakerSlotsPage
-          orderDays={orderDays}
-          setOrderDays={setOrderDays}
           pizzaMakerActiveView={pizzaMakerActiveView}
           setPizzaMakerActiveView={setPizzaMakerActiveView}
         />

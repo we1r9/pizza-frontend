@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useAppContext } from "../../../app/context"
 import { formatDate } from "../../../shared/lib/formatDate"
 import { EditSlotsModal } from "./edit-slots-modal/component"
 import { AddSlotsModal } from "./add-slots-modal/component"
@@ -12,11 +13,10 @@ import { Pencil, Plus } from 'lucide-react'
 import styles from './styles.module.css'
 
 export const PizzaMakerSlotsPage = ({
-  orderDays,
-  setOrderDays,
   pizzaMakerActiveView,
   setPizzaMakerActiveView
 }) => {
+  const { orderDays, setOrderDays } = useAppContext()
   const [isEditing, setIsEditing] = useState(false)
   const [isAdding, setIsAdding] = useState(false)
 

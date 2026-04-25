@@ -1,3 +1,4 @@
+import { useAppContext } from '../../../app/context'
 import { getBookingInfo } from '../../../shared/lib/getBookingInfo'
 
 import { ArrowLeft, CreditCard, Wallet } from 'lucide-react'
@@ -14,10 +15,9 @@ export const PaymentPage = ({
   chosenDay,
   selectedSlotId,
   selectedSlotTime,
-  setOrders,
-  setOrderDays,
   orderComment
 }) => {
+  const { setOrders, setOrderDays } = useAppContext()
   const totalCost = orderItems.reduce(
     (sum, orderItem) => sum + orderItem.price * orderItem.quantity, 0
   )

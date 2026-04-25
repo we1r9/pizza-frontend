@@ -1,3 +1,4 @@
+import { useAppContext } from "../../../app/context"
 import { formatDate } from "../../../shared/lib/formatDate"
 
 import { ArrowLeft, Trash2 } from "lucide-react"
@@ -6,9 +7,9 @@ import styles from './styles.module.css'
 
 export const OrdersPage = ({
   setCurrentStep,
-  orders,
   setSelectedOrder
 }) => {
+  const { orders } = useAppContext()
   const sortedOrders = [...orders].reverse()
 
   return (

@@ -1,50 +1,26 @@
 import { AnimatePresence, motion as Motion } from 'framer-motion'
 
+import { useAppContext } from '../context'
 import { CustomerFlow } from "../../pages/customer-flow/component"
 import { PizzaMakerPage } from "../../pages/pizza-maker-page/component"
 import { CashierPage } from "../../pages/cashier/component"
 
-export const AppContent = ({
-  activeRole,
-  orderDays,
-  setOrderDays,
-  orders,
-  setOrders
-}) => {
+export const AppContent = () => {
+  const { activeRole } = useAppContext()
+
   let content
 
   switch (activeRole) {
     case 'customer':
-      content = (
-        <CustomerFlow
-          orderDays={orderDays}
-          orders={orders}
-          setOrders={setOrders}
-          setOrderDays={setOrderDays}
-        />
-      )
+      content = <CustomerFlow />
       break
 
     case 'pizza-maker':
-      content = (
-        <PizzaMakerPage
-          orderDays={orderDays}
-          setOrderDays={setOrderDays}
-          activeRole={activeRole}
-          orders={orders}
-          setOrders={setOrders}
-        />
-      )
+      content = <PizzaMakerPage />
       break
 
     case 'cashier':
-      content = (
-        <CashierPage
-          activeRole={activeRole}
-          orders={orders}
-          setOrders={setOrders}
-        />
-      )
+      content = <CashierPage />
       break
 
     default:

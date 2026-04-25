@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useAppContext } from '../../../app/context'
 import { EditingModal } from '../editing-modal/component'
 import { getOrderStatusLabel } from '../../../shared/lib/getOrderStatusLabel'
 import { OrderOverview } from '../order-overview/component'
@@ -11,12 +12,8 @@ import { PaymentStatusControls } from '../payment-status-controls/component'
 
 import sharedStyles from '../shared-styles.module.css'
 
-export const CurrentOrder = ({
-  orders,
-  orderId,
-  setOrders,
-  activeRole
-}) => {
+export const CurrentOrder = ({ orderId }) => {
+  const { activeRole, orders, setOrders } = useAppContext()
   const order = orders.find((order) => order.id === orderId)
 
   const [currentOrderStatus, setCurrentOrderStatus] = useState(order?.status ?? 'new')

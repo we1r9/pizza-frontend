@@ -1,6 +1,7 @@
 import { AnimatePresence, motion as Motion } from 'framer-motion'
 
 import { useEffect, useState } from "react"
+import { useAppContext } from "../../app/context"
 import { isSlotExpired } from '../../shared/lib/isSlotExpired'
 import { preloadImages } from "../../shared/lib/preloadImages"
 import { usePizzas } from "../../entities/pizza/usePizzas"
@@ -13,12 +14,8 @@ import { SuccessPage } from "./success-page/component"
 import { OrdersPage } from "./orders-page/component"
 import { OrderDetailsPage } from "./order-details-page/component"
 
-export const CustomerFlow = ({
-  orderDays,
-  orders,
-  setOrders,
-  setOrderDays
-}) => {
+export const CustomerFlow = () => {
+  const { orderDays } = useAppContext()
   const { pizzas, loading, error, refetch } = usePizzas()
 
   useEffect(() => {
@@ -122,8 +119,6 @@ export const CustomerFlow = ({
           chosenDay={chosenDay}
           selectedSlotId={selectedSlotId}
           selectedSlotTime={selectedSlotTime}
-          setOrders={setOrders}
-          setOrderDays={setOrderDays}
           orderComment={orderComment}
         />
       )
@@ -150,7 +145,6 @@ export const CustomerFlow = ({
       content = (
         <OrdersPage
           setCurrentStep={setCurrentStep}
-          orders={orders}
           setSelectedOrder={setSelectedOrder}
         />
       )
