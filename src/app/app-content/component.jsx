@@ -3,7 +3,7 @@ import { AnimatePresence, motion as Motion } from 'framer-motion'
 import { useAppContext } from '../context'
 import { CustomerFlow } from "../../pages/customer-flow/component"
 import { PizzaMakerPage } from "../../pages/pizza-maker-page/component"
-import { CashierPage } from "../../pages/cashier/component"
+import { CashierPage } from "../../pages/cashier-page/component"
 
 export const AppContent = () => {
   const { activeRole } = useAppContext()

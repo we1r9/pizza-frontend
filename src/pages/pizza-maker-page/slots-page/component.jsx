@@ -6,7 +6,7 @@ import { AddSlotsModal } from "./add-slots-modal/component"
 import { isSlotExpired } from "../../../shared/lib/isSlotExpired"
 import { PizzaMakerViewTabs } from "../pizza-maker-view-tabs/component"
 import { Toast } from "../../../shared/ui/toast/component"
-import { useToast } from "../../../hooks/useToast"
+import { useToast } from "../../../shared/hooks/useToast"
 
 import { Pencil, Plus } from 'lucide-react'
 

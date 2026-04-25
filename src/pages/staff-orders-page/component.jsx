@@ -5,6 +5,7 @@ import { OrdersList } from "./orders-list/component"
 import { CurrentOrder } from "./current-order/component"
 import { CompletedOrder } from "./completed-order/component"
 import { PizzaMakerViewTabs } from "../pizza-maker-page/pizza-maker-view-tabs/component"
+import { sortOrdersByDateAndTime } from "../../shared/lib/sortOrdersByDateAndTime"
 
 import { ArrowLeft } from "lucide-react"
 
@@ -29,21 +30,6 @@ export const StaffOrdersPage = ({
   }, [activeView])
 
   const [selectedOrderId, setSelectedOrderId] = useState(null)
-
-  const sortOrdersByDateAndTime = (orders, direction = 'asc') => {
-    return [...orders].sort((a, b) => {
-      const dateCompare =
-        direction === 'asc'
-          ? new Date(a.date) - new Date(b.date)
-          : new Date(b.date) - new Date(a.date)
-
-      if (dateCompare !== 0) return dateCompare
-
-      return direction === 'asc'
-        ? a.time.localeCompare(b.time)
-        : b.time.localeCompare(a.time)
-    })
-  }
 
   const currentOrders = sortOrdersByDateAndTime(
     orders.filter((order) =>

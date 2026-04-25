@@ -7,7 +7,7 @@ import { OrderItemsSection } from '../order-items-section/component'
 import { OrderCustomerInfo } from '../order-customer-info/component'
 import { Toast } from '../../../shared/ui/toast/component'
 import { OrderStatusControls } from '../order-status-controls/component'
-import { useToast } from '../../../hooks/useToast'
+import { useToast } from '../../../shared/hooks/useToast'
 import { PaymentStatusControls } from '../payment-status-controls/component'
 
 import sharedStyles from '../shared-styles.module.css'

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../../shared/lib/supabase'
+import { supabase } from '../../../shared/api/supabase'
 
-import altayskayaImage from '../../assets/altayskaya.webp'
-import cheeseImage from '../../assets/cheese.webp'
-import pepperoniImage from '../../assets/pepperoni.webp'
-import altayskayaRoundedImage from '../../assets/altayskaya-rounded.webp'
-import cheeseRoundedImage from '../../assets/cheese-rounded.webp'
-import pepperoniRoundedImage from '../../assets/pepperoni-rounded.webp'
+import altayskayaImage from '../../../assets/altayskaya.webp'
+import cheeseImage from '../../../assets/cheese.webp'
+import pepperoniImage from '../../../assets/pepperoni.webp'
+import altayskayaRoundedImage from '../../../assets/altayskaya-rounded.webp'
+import cheeseRoundedImage from '../../../assets/cheese-rounded.webp'
+import pepperoniRoundedImage from '../../../assets/pepperoni-rounded.webp'
 
 const imageMap = {
   'altayskaya.webp': altayskayaImage,

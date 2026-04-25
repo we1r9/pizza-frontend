@@ -1,7 +1,7 @@
 import { useAppContext } from "../../../app/context"
 import { formatDate } from "../../../shared/lib/formatDate"
 
-import { ArrowLeft, Trash2 } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 
 import styles from './styles.module.css'
 
