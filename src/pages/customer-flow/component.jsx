@@ -30,7 +30,7 @@ export const CustomerFlow = () => {
 
   const visibleOrderDays = orderDays.filter((day) =>
     day.availableSlots.some(
-      (slot) => !isSlotExpired(day.date, slot.time) && slot.enabled
+      (slot) => !isSlotExpired(day.date, slot.time) && slot.enabled && !slot.booked
     )
   )
 
@@ -72,7 +72,6 @@ export const CustomerFlow = () => {
       content = (
         <PizzaSelectionPage
           setCurrentStep={setCurrentStep}
-          orderDays={orderDays}
           chosenDay={chosenDay}
           selectedSlotTime={selectedSlotTime}
           setSelectedPizza={setSelectedPizza}
@@ -103,6 +102,7 @@ export const CustomerFlow = () => {
           selectedSlotTime={selectedSlotTime}
           orderItems={orderItems}
           setOrderItems={setOrderItems}
+          orderComment={orderComment}
           setOrderComment={setOrderComment}
           setCurrentStep={setCurrentStep}
         />

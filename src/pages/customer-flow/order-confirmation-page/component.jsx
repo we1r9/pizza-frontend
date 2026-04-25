@@ -12,6 +12,7 @@ export const OrderConfirmationPage = ({
   selectedSlotTime,
   orderItems,
   setOrderItems,
+  orderComment,
   setOrderComment,
   setCurrentStep
 }) => {
@@ -122,6 +123,7 @@ export const OrderConfirmationPage = ({
             id="order-comment"
             className={styles.commentTextarea}
             placeholder="Например: порезать на 6 кусочков."
+            value={orderComment}
             onChange={(e) => setOrderComment(e.target.value)} />
         </section>
 

@@ -76,6 +76,7 @@ export const EditSlotsModal = ({
         className={styles.modal}
         role="dialog"
         aria-modal="true"
+        aria-label="Редактирование слотов"
       >
         <button
           type="button"

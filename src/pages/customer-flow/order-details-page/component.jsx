@@ -49,7 +49,7 @@ export const OrderDetailsPage = ({
         <span
           className={`
             ${styles.paymentStatusWrapper}
-            ${selectedOrder.paymentMethod === 'card'
+            ${selectedOrder.paymentStatus === 'paid'
               ? styles.paymentStatusPaid
               : styles.paymentStatusUnpaid
             }
@@ -59,6 +59,11 @@ export const OrderDetailsPage = ({
             <span className={styles.paymentStatusContent}>
               <Check size={14} strokeWidth={2.5} aria-hidden="true" />
               Оплачено картой
+            </span>
+          ) : selectedOrder.paymentStatus === 'paid' ? (
+            <span className={styles.paymentStatusContent}>
+              <Check size={14} strokeWidth={2.5} aria-hidden="true" />
+              Оплачено при получении
             </span>
           ) : (
             <span className={styles.paymentStatusContent}>
