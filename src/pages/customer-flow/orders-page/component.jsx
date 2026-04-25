@@ -1,5 +1,5 @@
-import { useAppContext } from "../../../app/context"
-import { formatDate } from "../../../shared/lib/formatDate"
+import { useAppContext } from "@/app/context"
+import { formatDate } from "@/shared/lib/formatDate"
 
 import { ArrowLeft } from "lucide-react"
 

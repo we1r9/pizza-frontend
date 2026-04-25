@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { PizzaMakerSlotsPage } from "./slots-page/component"
-import { StaffOrdersPage } from "../staff-orders-page/component"
+import { StaffOrdersPage } from "@/pages/staff-orders-page/component"
 
 export const PizzaMakerPage = () => {
   const [pizzaMakerActiveView, setPizzaMakerActiveView] = useState(() => {

@@ -1,5 +1,5 @@
-import { OrderedItems } from '../../../entities/order/ordered-items/component'
-import { SelectedSlotInfo } from '../../../entities/slot/selected-slot-info/component'
+import { OrderedItems } from '@/entities/order/ordered-items/component'
+import { SelectedSlotInfo } from '@/entities/slot/selected-slot-info/component'
 
 import { Plus, ArrowRight } from 'lucide-react'
 

@@ -1,4 +1,4 @@
-import { formatDate } from "../../../shared/lib/formatDate"
+import { formatDate } from "@/shared/lib/formatDate"
 
 export const SelectedSlotInfo = ({
   chosenDay,

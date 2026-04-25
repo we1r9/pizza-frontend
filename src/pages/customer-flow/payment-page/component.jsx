@@ -1,5 +1,5 @@
-import { useAppContext } from '../../../app/context'
-import { getBookingInfo } from '../../../shared/lib/getBookingInfo'
+import { useAppContext } from '@/app/context'
+import { getBookingInfo } from '@/shared/lib/getBookingInfo'
 
 import { ArrowLeft, CreditCard, Wallet } from 'lucide-react'
 

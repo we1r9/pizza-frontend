@@ -1,6 +1,6 @@
-import { OrderedItems } from '../../../entities/order/ordered-items/component'
-import { SelectedSlotInfo } from '../../../entities/slot/selected-slot-info/component'
-import { Stepper } from '../../../entities/order/stepper/component'
+import { OrderedItems } from '@/entities/order/ordered-items/component'
+import { SelectedSlotInfo } from '@/entities/slot/selected-slot-info/component'
+import { Stepper } from '@/entities/order/stepper/component'
 
 import { ArrowLeft, Check } from 'lucide-react'
 

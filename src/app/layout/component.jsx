@@ -1,5 +1,5 @@
-import { useAppContext } from '../context'
-import { RoleTabs } from '../../shared/ui/role-tabs/component'
+import { useAppContext } from '@/app/context'
+import { RoleTabs } from '@/shared/ui/role-tabs/component'
 
 import styles from './styles.module.css'
 

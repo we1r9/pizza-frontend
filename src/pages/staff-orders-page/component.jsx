@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
-import { useAppContext } from "../../app/context"
+import { useEffect, useMemo, useState } from "react"
+import { useAppContext } from "@/app/context"
 import { OrdersTabs } from "./orders-tabs/component"
 import { OrdersList } from "./orders-list/component"
 import { CurrentOrder } from "./current-order/component"
 import { CompletedOrder } from "./completed-order/component"
-import { PizzaMakerViewTabs } from "../pizza-maker-page/pizza-maker-view-tabs/component"
-import { sortOrdersByDateAndTime } from "../../shared/lib/sortOrdersByDateAndTime"
+import { PizzaMakerViewTabs } from "@/pages/pizza-maker-page/pizza-maker-view-tabs/component"
+import { sortOrdersByDateAndTime } from "@/shared/lib/sortOrdersByDateAndTime"
 
 import { ArrowLeft } from "lucide-react"
 
@@ -31,18 +31,26 @@ export const StaffOrdersPage = ({
 
   const [selectedOrderId, setSelectedOrderId] = useState(null)
 
-  const currentOrders = sortOrdersByDateAndTime(
-    orders.filter((order) =>
-      order.status === 'new' ||
-      order.status === 'in_progress' ||
-      order.status === 'ready'
+  const currentOrders = useMemo(() =>
+    sortOrdersByDateAndTime(
+      orders.filter((order) =>
+        order.status === 'new' ||
+        order.status === 'in_progress' ||
+        order.status === 'ready'
+      ),
+      'asc'
     ),
-    'asc'
+    [orders]
   )
 
-  const completedOrders = sortOrdersByDateAndTime(
-    orders.filter((order) => order.status === 'completed'),
-    'desc'
+  const completedOrders = useMemo(() =>
+    sortOrdersByDateAndTime(
+      orders.filter((order) =>
+        order.status === 'completed'
+      ),
+      'desc'
+    ),
+    [orders]
   )
 
   const isCurrentView = activeView === 'current'

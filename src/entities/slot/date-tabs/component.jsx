@@ -1,5 +1,5 @@
-import { formatDate } from "../../../shared/lib/formatDate"
-import { isSlotExpired } from '../../../shared/lib/isSlotExpired'
+import { formatDate } from "@/shared/lib/formatDate"
+import { isSlotExpired } from '@/shared/lib/isSlotExpired'
 
 import styles from './styles.module.css'
 

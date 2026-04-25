@@ -1,13 +1,13 @@
 import { useState } from "react"
-import { useAppContext } from "../../../app/context"
-import { getOrderStatusLabel } from "../../../shared/lib/getOrderStatusLabel"
+import { useAppContext } from "@/app/context"
+import { getOrderStatusLabel } from "@/shared/lib/getOrderStatusLabel"
 import { EditingModal } from "../editing-modal/component"
 import { OrderOverview } from "../order-overview/component"
 import { OrderItemsSection } from "../order-items-section/component"
 import { OrderCustomerInfo } from "../order-customer-info/component"
-import { Toast } from "../../../shared/ui/toast/component"
+import { Toast } from "@/shared/ui/toast/component"
 import { OrderStatusControls } from "../order-status-controls/component"
-import { useToast } from "../../../shared/hooks/useToast"
+import { useToast } from "@/shared/hooks/useToast"
 
 import sharedStyles from '../shared-styles.module.css'
 

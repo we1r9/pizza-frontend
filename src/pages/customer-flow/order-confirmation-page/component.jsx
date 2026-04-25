@@ -1,6 +1,6 @@
-import { OrderItems } from "../../../entities/order/order-items/component"
-import { SelectedSlotInfo } from "../../../entities/slot/selected-slot-info/component"
-import { getBookingInfo } from "../../../shared/lib/getBookingInfo"
+import { OrderItems } from "@/entities/order/order-items/component"
+import { SelectedSlotInfo } from "@/entities/slot/selected-slot-info/component"
+import { getBookingInfo } from "@/shared/lib/getBookingInfo"
 
 import { ArrowLeft, Trash2 } from 'lucide-react'
 

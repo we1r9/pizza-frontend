@@ -1,6 +1,6 @@
-import { DateTabs } from "../../../entities/slot/date-tabs/component"
-import { Slots } from "../../../entities/slot/slots/component"
-import { isSlotExpired } from "../../../shared/lib/isSlotExpired"
+import { DateTabs } from "@/entities/slot/date-tabs/component"
+import { Slots } from "@/entities/slot/slots/component"
+import { isSlotExpired } from "@/shared/lib/isSlotExpired"
 
 import styles from './styles.module.css'
 

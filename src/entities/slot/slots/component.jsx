@@ -1,6 +1,6 @@
 import { Slot } from "../slot/component"
 import { ConfirmSlotButton } from "../confirm-slot-button/component"
-import { isSlotExpired } from "../../../shared/lib/isSlotExpired"
+import { isSlotExpired } from "@/shared/lib/isSlotExpired"
 import { ArrowRight } from 'lucide-react'
 
 import styles from './styles.module.css'

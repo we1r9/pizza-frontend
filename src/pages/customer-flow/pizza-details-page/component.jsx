@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { formatIngredients } from "../../../shared/lib/formatIngredients"
-import { RemovableIngredients } from "../../../entities/pizza/removable-ingredients/component"
-import { ToppingsSelection } from "../../../entities/pizza/toppings-selection/component"
-import { AddToOrderButton } from "../../../entities/order/add-to-order-button/component"
+import { formatIngredients } from "@/shared/lib/formatIngredients"
+import { RemovableIngredients } from "@/entities/pizza/removable-ingredients/component"
+import { ToppingsSelection } from "@/entities/pizza/toppings-selection/component"
+import { AddToOrderButton } from "@/entities/order/add-to-order-button/component"
 
 import { X, Plus } from 'lucide-react'
 

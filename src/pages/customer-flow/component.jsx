@@ -1,10 +1,10 @@
 import { AnimatePresence, motion as Motion } from 'framer-motion'
 
 import { useEffect, useState } from "react"
-import { useAppContext } from "../../app/context"
-import { isSlotExpired } from '../../shared/lib/isSlotExpired'
-import { preloadImages } from "../../shared/lib/preloadImages"
-import { usePizzas } from "../../entities/pizza/model/usePizzas"
+import { useAppContext } from "@/app/context"
+import { isSlotExpired } from '@/shared/lib/isSlotExpired'
+import { preloadImages } from "@/shared/lib/preloadImages"
+import { usePizzas } from "@/entities/pizza/model/usePizzas"
 import { SlotSelectionPage } from "./slot-selection-page/component"
 import { PizzaSelectionPage } from "./pizza-selection-page/component"
 import { PizzaDetailsPage } from "./pizza-details-page/component"

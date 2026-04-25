@@ -1,12 +1,12 @@
 import { useState } from "react"
-import { useAppContext } from "../../../app/context"
-import { formatDate } from "../../../shared/lib/formatDate"
+import { useAppContext } from "@/app/context"
+import { formatDate } from "@/shared/lib/formatDate"
 import { EditSlotsModal } from "./edit-slots-modal/component"
 import { AddSlotsModal } from "./add-slots-modal/component"
-import { isSlotExpired } from "../../../shared/lib/isSlotExpired"
+import { isSlotExpired } from "@/shared/lib/isSlotExpired"
 import { PizzaMakerViewTabs } from "../pizza-maker-view-tabs/component"
-import { Toast } from "../../../shared/ui/toast/component"
-import { useToast } from "../../../shared/hooks/useToast"
+import { Toast } from "@/shared/ui/toast/component"
+import { useToast } from "@/shared/hooks/useToast"
 
 import { Pencil, Plus } from 'lucide-react'
 

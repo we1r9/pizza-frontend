@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { formatDate } from '../../../../shared/lib/formatDate'
-import { isSlotExpired } from '../../../../shared/lib/isSlotExpired'
+import { formatDate } from '@/shared/lib/formatDate'
+import { isSlotExpired } from '@/shared/lib/isSlotExpired'
 
 import { X } from 'lucide-react'
 

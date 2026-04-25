@@ -1,5 +1,5 @@
-import { formatDate } from '../../../shared/lib/formatDate'
-import { getOrderStatusLabel } from '../../../shared/lib/getOrderStatusLabel'
+import { formatDate } from '@/shared/lib/formatDate'
+import { getOrderStatusLabel } from '@/shared/lib/getOrderStatusLabel'
 
 import { X, Plus, Minus, Check } from 'lucide-react'
 

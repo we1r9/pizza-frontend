@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { formatDate } from '../../../../shared/lib/formatDate'
+import { formatDate } from '@/shared/lib/formatDate'
 import { AddableSlotsList } from '../addable-slots-list/component'
-import { availableDaysForCreation } from '../../../../shared/lib/availableDaysForCreation'
-import { isSlotExpired } from '../../../../shared/lib/isSlotExpired'
+import { availableDaysForCreation } from '@/shared/lib/availableDaysForCreation'
+import { isSlotExpired } from '@/shared/lib/isSlotExpired'
 
 import { X } from 'lucide-react'
 

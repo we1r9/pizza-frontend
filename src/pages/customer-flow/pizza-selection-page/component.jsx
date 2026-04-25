@@ -1,6 +1,6 @@
-import { SelectedSlotInfo } from "../../../entities/slot/selected-slot-info/component"
-import { PizzaGrid } from "../../../entities/pizza/pizza-grid/component"
-import { GoToCartButton } from "../../../entities/order/go-to-cart-button/component"
+import { SelectedSlotInfo } from "@/entities/slot/selected-slot-info/component"
+import { PizzaGrid } from "@/entities/pizza/pizza-grid/component"
+import { GoToCartButton } from "@/entities/order/go-to-cart-button/component"
 
 import { ArrowLeft, ShoppingBasket, RotateCcw } from 'lucide-react'
 
