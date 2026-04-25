@@ -45,9 +45,11 @@ export const EditingModal = ({
         className={styles.overlay} />
 
       <div
-        className={styles.modal}
         role="dialog"
-        aria-modal="true">
+        aria-modal="true"
+        aria-labelledby="editing-modal-title"
+        className={styles.modal}
+      >
         <button
           type="button"
           aria-label="Закрыть окно"
@@ -58,19 +60,28 @@ export const EditingModal = ({
         </button>
 
         {editingType === 'status' && (
-          <h2 className={styles.title}>
+          <h2
+            id="editing-modal-title"
+            className={styles.title}
+          >
             Подтвердить изменение
           </h2>
         )}
 
         {editingType === 'payment' && (
-          <h2 className={styles.title}>
+          <h2
+            id="editing-modal-title"
+            className={styles.title}
+          >
             Подтвердить изменение
           </h2>
         )}
 
         {editingType === 'return' && (
-          <h2 className={styles.title}>
+          <h2
+            id="editing-modal-title"
+            className={styles.title}
+          >
             Вернуть заказ в работу?
           </h2>
         )}

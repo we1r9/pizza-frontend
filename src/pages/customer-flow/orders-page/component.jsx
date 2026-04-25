@@ -34,25 +34,38 @@ export const OrdersPage = ({
             Здесь появятся Ваши заказы
           </p>
 
-          <span className={styles.emptyStateEmoji}>
+          <span
+            aria-hidden="true"
+            className={styles.emptyStateEmoji}
+          >
             {'(•◡•)'}
           </span>
         </main>
       ) : (
         <main className={styles.orders}>
-          <h2 className={styles.title}>
+          <h1 className={styles.title}>
             Мои заказы
-          </h2>
+          </h1>
 
           <div className={styles.ordersWrapper}>
             {sortedOrders.map((order) => (
               <article
+                role="button"
                 key={order.id}
+                tabIndex={0}
                 className={styles.orderContainer}
                 onClick={() => {
                   setCurrentStep('order-details')
                   setSelectedOrder(order)
-                }}>
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    setCurrentStep('order-details')
+                    setSelectedOrder(order)
+                  }
+                }}
+              >
                 <p className={styles.orderNumber}>
                   №{order.orderNumber}
                 </p>
@@ -61,7 +74,7 @@ export const OrdersPage = ({
                   <span>
                     {formatDate(order.date)}
                   </span>
-                  <span> • </span>
+                  <span aria-hidden="true"> • </span>
                   <span>
                     {order.time}
                   </span>

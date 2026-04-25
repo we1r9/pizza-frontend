@@ -1,7 +1,9 @@
 .stepper {
   display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
   width: min(80%, 520px);
-  margin-bottom: 25px;
 }
 
 .stepperItem {

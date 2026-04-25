@@ -15,7 +15,7 @@ export const DateTabs = ({
   return (
     <div
       className={className}
-      role="group"
+      role="tablist"
       aria-label="Выбор даты заказа">
       {orderDays
         .filter((day) =>
@@ -26,6 +26,8 @@ export const DateTabs = ({
         .map((day) => (
           <button
             type="button"
+            role="tab"
+            aria-selected={selectedDayId === day.id}
             key={day.id}
             className={`
               ${styles.dateButton}

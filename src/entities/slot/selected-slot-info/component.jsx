@@ -10,7 +10,7 @@ export const SelectedSlotInfo = ({
       <span>
         {formatDate(chosenDay.date)}
       </span>
-      <span> • </span>
+      <span aria-hidden="true"> • </span>
       <span>
         {selectedSlotTime}
       </span>

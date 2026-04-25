@@ -43,14 +43,20 @@ export const PizzaSelectionPage = ({
 
       <main className={styles.content}>
         {loading && (
-          <div className={styles.spinnerWrapper}>
-            <div className={styles.spinner} />
+          <div
+            role="status"
+            aria-label="Загрузка меню"
+            className={styles.spinnerWrapper}
+          >
+            <div
+              aria-hidden="true"
+              className={styles.spinner} />
           </div>
         )}
 
         {error && (
           <div className={styles.errorFallback}>
-            <span className={styles.errorEmoji}>
+            <span aria-hidden="true" className={styles.errorEmoji}>
               *_^
             </span>
             <h2 className={styles.errorTitle}>

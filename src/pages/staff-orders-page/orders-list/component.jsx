@@ -18,7 +18,10 @@ export const OrdersList = ({
         <p className={styles.emptyText}>
           {emptyText}
         </p>
-        <span className={styles.emptyStateEmoji}>
+        <span
+          aria-hidden="true"
+          className={styles.emptyStateEmoji}
+        >
           (•◡•)
         </span>
       </main>
@@ -44,11 +47,20 @@ export const OrdersList = ({
 
           {ordersByDate.map((order) => (
             <article
+              role="button"
               key={order.id}
+              tabIndex={0}
               className={styles.orderWrapper}
               onClick={() => {
                 setActiveView(orderView)
                 setSelectedOrderId(order.id)
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setActiveView(orderView)
+                  setSelectedOrderId(order.id)
+                }
               }}
             >
               <div className={styles.orderHeader}>
@@ -94,7 +106,7 @@ export const OrdersList = ({
                       <div className={styles.itemTitle}>
                         <span>{item.name}</span>
 
-                        <X size={12} strokeWidth={2} />
+                        <X size={12} strokeWidth={2} aria-hidden="true" />
 
                         <span>{item.quantity}</span>
                       </div>
@@ -106,7 +118,7 @@ export const OrdersList = ({
 
                     {item.addedToppings?.length > 0 && (
                       <div className={styles.orderItemMeta}>
-                        <Plus size={12} strokeWidth={2} />
+                        <Plus size={12} strokeWidth={2} aria-hidden="true" />
 
                         {item.addedToppings.map((topping) => topping.name).join(', ')}
                       </div>
@@ -114,7 +126,7 @@ export const OrdersList = ({
 
                     {item.removedIngredients?.length > 0 && (
                       <div className={styles.orderItemMeta}>
-                        <Minus size={12} strokeWidth={2} />
+                        <Minus size={12} strokeWidth={2} aria-hidden="true" />
 
                         {item.removedIngredients.join(', ')}
                       </div>
@@ -134,12 +146,12 @@ export const OrdersList = ({
                 >
                   {order.paymentStatus === 'paid' ? (
                     <span className={styles.paymentStatusContent}>
-                      <Check size={14} strokeWidth={2.5} />
+                      <Check size={14} strokeWidth={2.5} aria-hidden="true" />
                       Оплачено
                     </span>
                   ) : (
                     <span className={styles.paymentStatusContent}>
-                      <X size={14} strokeWidth={2.5} />
+                      <X size={14} strokeWidth={2.5} aria-hidden="true" />
                       Не оплачено
                     </span>
                   )}

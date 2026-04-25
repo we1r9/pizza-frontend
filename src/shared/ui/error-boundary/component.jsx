@@ -20,7 +20,7 @@ export class ErrorBoundary extends Component {
           className={styles.errorPage}
           role="alert"
         >
-          <span className={styles.errorEmoji}>
+          <span aria-hidden="true" className={styles.errorEmoji}>
             *_^
           </span>
 

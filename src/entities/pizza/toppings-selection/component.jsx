@@ -28,6 +28,7 @@ export const ToppingsSelection = ({
         return (
           <button
             type="button"
+            aria-pressed={isSelected}
             key={topping.id}
             className={`
               ${styles.toppingPill}

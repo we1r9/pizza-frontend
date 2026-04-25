@@ -15,7 +15,8 @@ export const Stepper = ({ selectedOrder }) => {
   const isCompletedOrder = selectedOrder.status === 'completed'
 
   return (
-    <div
+    <ol
+      aria-label={`Статус заказа: ${statusSteps[currentStepIndex]?.label ?? ''}`}
       className={`
         ${styles.stepper}
         ${isCompletedOrder ? styles.stepperCompleted : ''}
@@ -27,8 +28,9 @@ export const Stepper = ({ selectedOrder }) => {
         const isLast = index === statusSteps.length - 1
 
         return (
-          <div
+          <li
             key={step.key}
+            aria-current={index === currentStepIndex ? 'step' : undefined}
             className={`
               ${styles.stepperItem}
               ${!isLast ? styles.stepperItemGrow : ''}
@@ -71,9 +73,9 @@ export const Stepper = ({ selectedOrder }) => {
                 `}
               />
             )}
-          </div>
+          </li>
         )
       })}
-    </div>
+    </ol>
   )
 }

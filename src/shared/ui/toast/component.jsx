@@ -2,7 +2,11 @@ import styles from './styles.module.css'
 
 export const Toast = ({ toastMessage }) => {
   return (
-    <div className={styles.toast}>
+    <div
+      role="status"
+      aria-live="polite"
+      className={styles.toast}
+    >
       {toastMessage}
     </div>
   )

@@ -25,9 +25,9 @@ export const OrderDetailsPage = ({
       </header>
 
       <main className={styles.main}>
-        <h2 className={styles.orderNumber}>
+        <h1 className={styles.orderNumber}>
           Заказ №{selectedOrder.orderNumber}
-        </h2>
+        </h1>
 
         <div className={styles.orderDateTime}>
           <SelectedSlotInfo
@@ -57,7 +57,7 @@ export const OrderDetailsPage = ({
         >
           {selectedOrder.paymentMethod === 'card' ? (
             <span className={styles.paymentStatusContent}>
-              <Check size={14} strokeWidth={2.5} />
+              <Check size={14} strokeWidth={2.5} aria-hidden="true" />
               Оплачено картой
             </span>
           ) : (

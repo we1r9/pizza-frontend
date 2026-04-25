@@ -124,6 +124,7 @@ export const AddSlotsModal = ({
       <div
         role="dialog"
         aria-modal="true"
+        aria-label="Добавление слотов"
         className={styles.modal}
       >
         <button
@@ -137,6 +138,7 @@ export const AddSlotsModal = ({
 
         <div className={styles.actionsRow}>
           <select
+            aria-label="Выбрать день"
             className={styles.daySelect}
             value={safeActiveSelectIndex}
             onChange={(e) => {

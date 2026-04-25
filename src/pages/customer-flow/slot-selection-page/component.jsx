@@ -28,7 +28,8 @@ export const SlotSelectionPage = ({
     return (
       <div className={styles.page}>
         <header className={styles.topBar}>
-          <span className={styles.logo}>🍕</span>
+          <span aria-hidden="true" className={styles.logo}>🍕</span>
+
           <button
             type="button"
             className={styles.ordersButton}
@@ -48,7 +49,12 @@ export const SlotSelectionPage = ({
             <p className={styles.subtitle}>
               Загляните к нам позже
             </p>
-            <p className={styles.emptyStateFace}>(ಠ‿ಠ)</p>
+            <p
+              aria-hidden="true"
+              className={styles.emptyStateFace}
+            >
+              (ಠ‿ಠ)
+            </p>
           </div>
         </section>
       </div>

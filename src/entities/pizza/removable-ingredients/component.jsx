@@ -30,6 +30,7 @@ export const RemovableIngredients = ({
         return (
           <button
             type="button"
+            aria-pressed={isRemoved}
             key={ingredient}
             className={`
               ${styles.ingredientPill}

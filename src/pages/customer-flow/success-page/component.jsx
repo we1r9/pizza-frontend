@@ -30,7 +30,9 @@ export const SuccessPage = ({
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.pageTitle}>Заказ оформлен 🎉</h1>
+      <h1 className={styles.pageTitle}>
+        Заказ оформлен <span aria-hidden="true">🎉</span>
+      </h1>
 
       <p className={styles.orderDateLabel}>Время получения заказа:</p>
       <SelectedSlotInfo

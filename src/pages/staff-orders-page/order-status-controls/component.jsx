@@ -24,6 +24,7 @@ export const OrderStatusControls = ({
           <div className={sharedStyles.buttonsRow}>
             <button
               type="button"
+              aria-pressed={currentOrderStatus === 'new'}
               className={`
                 ${sharedStyles.pill}
                 ${order.status === 'new' ? sharedStyles.savedPill : ''}
@@ -35,6 +36,7 @@ export const OrderStatusControls = ({
 
             <button
               type="button"
+              aria-pressed={currentOrderStatus === 'in_progress'}
               className={`
                 ${sharedStyles.pill}
                 ${order.status === 'in_progress' ? sharedStyles.savedPill : ''}
@@ -46,6 +48,7 @@ export const OrderStatusControls = ({
 
             <button
               type="button"
+              aria-pressed={currentOrderStatus === 'ready'}
               className={`
                 ${sharedStyles.pill}
                 ${order.status === 'ready' ? sharedStyles.savedPill : ''}
@@ -58,6 +61,7 @@ export const OrderStatusControls = ({
             {showCompletedOption && (
               <button
                 type="button"
+                aria-pressed={currentOrderStatus === 'completed'}
                 className={`
                   ${sharedStyles.pill}
                   ${order.status === 'completed' ? sharedStyles.savedPill : ''}

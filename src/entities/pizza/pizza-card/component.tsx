@@ -35,13 +35,14 @@ export const PizzaCard = ({
     <article className={styles.card}>
       <button
         type="button"
+        aria-label={`Выбрать ${pizza.name}`}
         className={styles.imageButton}
         onClick={onClick}
       >
         <img
           src={pizza.image}
           className={styles.image}
-          alt={pizza.name}
+          alt=""
           loading="eager"
         />
 

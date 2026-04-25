@@ -5,9 +5,11 @@ export const PizzaMakerViewTabs = ({
   setPizzaMakerActiveView
 }) => {
   return (
-    <div className={styles.viewTabsRow}>
+    <div role="tablist" className={styles.viewTabsRow}>
       <button
         type="button"
+        role="tab"
+        aria-selected={pizzaMakerActiveView === 'orders'}
         className={`
           ${styles.viewPill}
           ${pizzaMakerActiveView === 'orders' && styles.activeViewPill}
@@ -19,6 +21,8 @@ export const PizzaMakerViewTabs = ({
 
       <button
         type="button"
+        role="tab"
+        aria-selected={pizzaMakerActiveView === 'slots'}
         className={`
           ${styles.viewPill}
           ${pizzaMakerActiveView === 'slots' && styles.activeViewPill}

@@ -5,9 +5,11 @@ export const OrdersTabs = ({
   setActiveView
 }) => {
   return (
-    <div className={styles.ordersTabsRow}>
+    <div role="tablist" className={styles.ordersTabsRow}>
       <button
         type="button"
+        role="tab"
+        aria-selected={activeView === 'current'}
         className={`
           ${styles.ordersPill}
           ${activeView === 'current' && styles.activeOrdersPill}
@@ -19,6 +21,8 @@ export const OrdersTabs = ({
 
       <button
         type="button"
+        role="tab"
+        aria-selected={activeView === 'completed'}
         className={`
           ${styles.ordersPill}
           ${activeView === 'completed' && styles.activeOrdersPill}

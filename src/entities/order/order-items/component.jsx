@@ -54,6 +54,7 @@ export const OrderItems = ({
               <div className={styles.quantityControlsWrapper}>
                 <button
                   type="button"
+                  aria-label={`Уменьшить количество ${item.name}`}
                   className={styles.quantityButton}
                   onClick={() => onDecreaseQuantity(item.id)}
                 >
@@ -68,6 +69,7 @@ export const OrderItems = ({
 
                 <button
                   type="button"
+                  aria-label={`Увеличить количество ${item.name}`}
                   className={styles.quantityButton}
                   onClick={() => onIncreaseQuantity(item.id)}
                 >

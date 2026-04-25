@@ -24,7 +24,7 @@ export const OrderedItems = ({ orderItems }) => {
                   <div className={styles.modifiers}>
                     {item.addedToppings.length > 0 && (
                       <p className={styles.changes}>
-                        <Plus size={13} strokeWidth={2} />
+                        <Plus size={13} strokeWidth={2} aria-hidden="true" />
                         <span>
                           {item.addedToppings.map((topping) => topping.name).join(', ')}
                         </span>
@@ -33,7 +33,7 @@ export const OrderedItems = ({ orderItems }) => {
 
                     {item.removedIngredients.length > 0 && (
                       <p className={styles.changes}>
-                        <Minus size={13} strokeWidth={2} />
+                        <Minus size={13} strokeWidth={2} aria-hidden="true" />
                         <span>
                           {item.removedIngredients.join(', ')}
                         </span>
@@ -49,7 +49,7 @@ export const OrderedItems = ({ orderItems }) => {
                 </span>
                 
                 <span className={styles.quantity}>
-                  <X size={12} strokeWidth={2} />
+                  <X size={12} strokeWidth={2} aria-hidden="true" />
                   {item.quantity}
                 </span>
               </div>
