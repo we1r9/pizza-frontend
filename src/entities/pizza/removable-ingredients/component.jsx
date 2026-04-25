@@ -1,3 +1,5 @@
+import { capitalize } from '@/shared/lib/capitalize'
+
 import { X } from 'lucide-react'
 
 import styles from './styles.module.css'
@@ -19,8 +21,6 @@ export const RemovableIngredients = ({
 
     setRemovedIngredients((prev) => [...prev, ingredient])
   }
-
-  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
   return (
     <div className={styles.ingredientsRow}>

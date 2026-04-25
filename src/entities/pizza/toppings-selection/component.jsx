@@ -1,3 +1,5 @@
+import { capitalize } from '@/shared/lib/capitalize'
+
 import styles from './styles.module.css'
 
 export const ToppingsSelection = ({
@@ -17,8 +19,6 @@ export const ToppingsSelection = ({
 
     setAddedToppings((prev) => [...prev, topping])
   }
-
-  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
   return (
     <div className={styles.toppingsRow}>

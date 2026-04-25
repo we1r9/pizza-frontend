@@ -64,7 +64,7 @@ export const SlotSelectionPage = ({
   return (
     <div className={styles.page}>
       <header className={styles.topBar}>
-        <span className={styles.logo}>🍕</span>
+        <span aria-hidden="true" className={styles.logo}>🍕</span>
         <button
           type="button"
           className={styles.ordersButton}

@@ -1,6 +1,6 @@
-import { AnimatePresence, motion as Motion } from 'framer-motion'
-
 import { useEffect, useState } from "react"
+
+import { AnimatePresence, motion as Motion } from 'framer-motion'
 import { useAppContext } from "@/app/context"
 import { isSlotExpired } from '@/shared/lib/isSlotExpired'
 import { preloadImages } from "@/shared/lib/preloadImages"
@@ -131,7 +131,6 @@ export const CustomerFlow = () => {
           chosenDay={chosenDay}
           selectedSlotTime={selectedSlotTime}
           orderItems={orderItems}
-          paymentMethod={paymentMethod}
           setPaymentMethod={setPaymentMethod}
           setOrderItems={setOrderItems}
           setOrderComment={setOrderComment}

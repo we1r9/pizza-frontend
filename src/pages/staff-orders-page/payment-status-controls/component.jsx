@@ -19,6 +19,7 @@ export const PaymentStatusControls = ({
           <div className={sharedStyles.buttonsRow}>
             <button
               type="button"
+              aria-pressed={currentPaymentStatus === 'unpaid'}
               className={`
                 ${sharedStyles.pill}
                 ${order.paymentStatus === 'unpaid' ? sharedStyles.savedPill : ''}
@@ -31,6 +32,7 @@ export const PaymentStatusControls = ({
 
             <button
               type="button"
+              aria-pressed={currentPaymentStatus === 'paid'}
               className={`
                 ${sharedStyles.pill}
                 ${order.paymentStatus === 'paid' ? sharedStyles.savedPill : ''}

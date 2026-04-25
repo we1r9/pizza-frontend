@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { formatDate } from '@/shared/lib/formatDate'
 import { AddableSlotsList } from '../addable-slots-list/component'
-import { availableDaysForCreation } from '@/shared/lib/availableDaysForCreation'
+import { getAvailableDaysForCreation } from '@/shared/lib/availableDaysForCreation'
 import { isSlotExpired } from '@/shared/lib/isSlotExpired'
 
 import { X } from 'lucide-react'
@@ -26,7 +26,7 @@ export const AddSlotsModal = ({
   const [changedSlotIds, setChangedSlotIds] = useState([])
   const [activeSelectIndex, setActiveSelectIndex] = useState(0)
 
-  const filteredDays = availableDaysForCreation.filter((day) => {
+  const filteredDays = getAvailableDaysForCreation().filter((day) => {
     const existingDay = orderDays.find((d) => d.date === day.date)
 
     const activeSlots = day.availableSlots.filter(
@@ -176,7 +176,6 @@ export const AddSlotsModal = ({
 
         <AddableSlotsList
           activeSlots={activeSlots}
-          existingDay={existingDay}
           changedSlotIds={changedSlotIds}
           setChangedSlotIds={setChangedSlotIds}
         />

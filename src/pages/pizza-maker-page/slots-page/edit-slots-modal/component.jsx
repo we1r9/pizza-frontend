@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { formatDate } from '@/shared/lib/formatDate'
+import { isDayOver } from '@/shared/lib/isDayOver'
 import { isSlotExpired } from '@/shared/lib/isSlotExpired'
 
 import { X } from 'lucide-react'
@@ -20,11 +21,6 @@ export const EditSlotsModal = ({
       document.body.style.overflow = ''
     }
   }, [])
-
-  const isDayOver = (date) => {
-    const endOfDay = new Date(`${date}T23:59:59.999`)
-    return endOfDay < new Date()
-  }
 
   const [activeDayIndex, setActiveDayIndex] = useState(0)
   const [changedSlotIds, setChangedSlotIds] = useState([])

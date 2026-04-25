@@ -44,7 +44,7 @@ export const SuccessPage = ({
 
       <div className={styles.summaryRow}>
         <span>Итого</span>
-        {totalCost} ₽
+        {totalCost.toLocaleString('ru-RU').replace(/\s/g, ' ')} ₽
       </div>
 
       <div className={styles.actionsRow}>

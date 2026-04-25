@@ -4,6 +4,7 @@ import { formatDate } from "@/shared/lib/formatDate"
 import { EditSlotsModal } from "./edit-slots-modal/component"
 import { AddSlotsModal } from "./add-slots-modal/component"
 import { isSlotExpired } from "@/shared/lib/isSlotExpired"
+import { isDayOver } from "@/shared/lib/isDayOver"
 import { PizzaMakerViewTabs } from "../pizza-maker-view-tabs/component"
 import { Toast } from "@/shared/ui/toast/component"
 import { useToast } from "@/shared/hooks/useToast"
@@ -21,11 +22,6 @@ export const PizzaMakerSlotsPage = ({
   const [isAdding, setIsAdding] = useState(false)
 
   const { toastMessage, showToast } = useToast()
-
-  const isDayOver = (date) => {
-    const endOfDay = new Date(`${date}T23:59:59.999`)
-    return endOfDay < new Date()
-  }
 
   const visibleDays = [...orderDays]
     .filter((day) =>
@@ -73,7 +69,7 @@ export const PizzaMakerSlotsPage = ({
       />
 
       <div className={styles.actionsRow}>
-        {hasVisibleDays > 0 && (
+        {hasVisibleDays && (
           <>
             <button
               type="button"

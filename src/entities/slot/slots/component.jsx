@@ -19,11 +19,7 @@ export const Slots = ({
 
   const selectedSlot = visibleSlots.find((slot) => slot.id === selectedSlotId)
 
-  const hasAvailableSlots = visibleSlots.some((slot) => !slot.booked)
-
   const handleToggleSlotChoice = (slot) => {
-    if (slot.booked) return
-
     if (selectedSlotId === slot.id) {
       setSelectedSlotId(null)
       setSelectedSlotTime(null)
@@ -44,7 +40,7 @@ export const Slots = ({
           <p className={styles.emptyStateText}>
             На эту дату нет актуальных слотов
           </p>
-        ) : hasAvailableSlots ? (
+        ) : (
           visibleSlots.map((slot) => (
             <Slot
               key={slot.id}
@@ -58,8 +54,6 @@ export const Slots = ({
               onClick={() => handleToggleSlotChoice(slot)}
             />
           ))
-        ) : (
-          <p>На эту дату все слоты уже заняты</p>
         )}
       </div>
 

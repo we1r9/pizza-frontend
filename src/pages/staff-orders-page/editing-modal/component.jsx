@@ -59,32 +59,12 @@ export const EditingModal = ({
           <X size={20} strokeWidth={2.2} />
         </button>
 
-        {editingType === 'status' && (
-          <h2
-            id="editing-modal-title"
-            className={styles.title}
-          >
-            Подтвердить изменение
-          </h2>
-        )}
-
-        {editingType === 'payment' && (
-          <h2
-            id="editing-modal-title"
-            className={styles.title}
-          >
-            Подтвердить изменение
-          </h2>
-        )}
-
-        {editingType === 'return' && (
-          <h2
-            id="editing-modal-title"
-            className={styles.title}
-          >
-            Вернуть заказ в работу?
-          </h2>
-        )}
+        <h2
+          id="editing-modal-title"
+          className={styles.title}
+        >
+          {editingType === 'return' ? 'Вернуть заказ в работу?' : 'Подтвердить изменение'}
+        </h2>
 
         {editingType === 'status' && (
           <p className={styles.text}>
