@@ -5,13 +5,15 @@ export const GoToCartButton = ({
   orderItems,
   onClick
 }) => {
-  
+
   return (
     <div>
       {orderItems.length > 0 && (
         <button
+          type="button"
+          className={styles.goToCartButton}
           onClick={onClick}
-          className={styles.goToCartButton}>
+        >
           {children}
         </button>
       )}

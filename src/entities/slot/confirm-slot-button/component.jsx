@@ -10,6 +10,7 @@ export const ConfirmSlotButton = ({
   return (
     <div>
       <button
+        type="button"
         className={styles.confirmSlotButton}
         onClick={() => setCurrentStep('pizza')}
       >

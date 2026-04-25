@@ -76,15 +76,24 @@ export const PizzaMakerSlotsPage = ({
         {hasVisibleDays > 0 && (
           <>
             <button
-              className={`${styles.actionButton} ${styles.editSlotsButton}`}
-              onClick={() => setIsEditing(true)}>
+              type="button"
+              className={`
+                ${styles.actionButton}
+                ${styles.editSlotsButton}
+              `}
+              onClick={() => setIsEditing(true)}
+            >
               <Pencil size={11.5} strokeWidth={2} />
               Редактировать
             </button>
 
             <button
-              className={`${styles.actionButton} ${styles.addSlotsButton}`}
-              onClick={() => setIsAdding(true)}>
+              type="button"
+              className={`
+                ${styles.actionButton}
+                ${styles.addSlotsButton}`}
+              onClick={() => setIsAdding(true)}
+            >
               <Plus size={16} strokeWidth={2} />
               Добавить слоты
             </button>
@@ -107,10 +116,11 @@ export const PizzaMakerSlotsPage = ({
             </p>
 
             <button
+              type="button"
               className={styles.addSlotsButtonStart}
-              onClick={() => setIsAdding(true)}>
+              onClick={() => setIsAdding(true)}
+            >
               <Plus size={16} strokeWidth={2} />
-
               Добавить слоты
             </button>
           </section>}

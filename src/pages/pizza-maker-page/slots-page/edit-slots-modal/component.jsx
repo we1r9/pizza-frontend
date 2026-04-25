@@ -82,25 +82,27 @@ export const EditSlotsModal = ({
         aria-modal="true"
       >
         <button
-          type='button'
-          onClick={onClose}
+          type="button"
+          aria-label="Закрыть окно"
           className={styles.closeButton}
-          aria-label="Закрыть окно">
+          onClick={onClose}
+        >
           <X size={20} strokeWidth={2.2} />
         </button>
 
         <div className={styles.daysButtonsRow}>
           {visibleDays.map((orderDay, index) => (
             <button
+              type="button"
               key={orderDay.id}
-              onClick={() => {
-                setActiveDayIndex(index)
-                setChangedSlotIds([])
-              }}
               className={`
                 ${styles.dayButton}
                 ${activeDayIndex === index && styles.selectedDayButton}
               `}
+              onClick={() => {
+                setActiveDayIndex(index)
+                setChangedSlotIds([])
+              }}
             >
               {formatDate(orderDay.date)}
             </button>
@@ -114,14 +116,13 @@ export const EditSlotsModal = ({
 
             return (
               <button
+                type="button"
                 key={slot.id}
                 disabled={slot.booked}
-                className={`${styles.slotPill} ${slot.booked
-                  ? styles.bookedPill
-                  : !displayEnabled
-                    ? styles.disabledSlotPill
-                    : ''
-                  }`}
+                className={`
+                  ${styles.slotPill}
+                  ${slot.booked ? styles.bookedPill : !displayEnabled ? styles.disabledSlotPill : ''}
+                `}
                 onClick={() => handleToggleSlot(slot.id)}
               >
                 {slot.time}
@@ -133,6 +134,7 @@ export const EditSlotsModal = ({
         <div className={styles.saveChangesContainer}>
           {changedSlotIds.length > 0 && (
             <button
+              type="button"
               className={styles.saveChangesButton}
               onClick={() => {
                 handleSaveChanges()

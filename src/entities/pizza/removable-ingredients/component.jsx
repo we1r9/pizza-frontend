@@ -29,10 +29,14 @@ export const RemovableIngredients = ({
 
         return (
           <button
+            type="button"
             key={ingredient}
-            type='button'
-            className={`${styles.ingredientPill} ${isRemoved && styles.removedIngredientPill}`}
-            onClick={() => handleToggleIngredient(ingredient)}>
+            className={`
+              ${styles.ingredientPill}
+              ${isRemoved && styles.removedIngredientPill}
+            `}
+            onClick={() => handleToggleIngredient(ingredient)}
+          >
             <span className={styles.ingredientText}>
               {capitalize(ingredient)}
             </span>

@@ -81,8 +81,10 @@ export const PizzaDetailsPage = ({
       <header className={styles.topBar}>
         <button
           type="button"
+          aria-label="Назад к меню"
           className={styles.backButton}
-          onClick={() => setCurrentStep('pizza')}>
+          onClick={() => setCurrentStep('pizza')}
+        >
           <X size={20} strokeWidth={2.2} />
         </button>
       </header>

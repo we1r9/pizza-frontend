@@ -7,8 +7,10 @@ export const AddToOrderButton = ({
 
   return (
     <button
+      type="button"
+      className={styles.addToOrderButton}
       onClick={onClick}
-      className={styles.addToOrderButton}>
+    >
       {children}
     </button>
   )

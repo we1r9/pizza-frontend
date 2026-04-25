@@ -17,7 +17,8 @@ export const OrderDetailsPage = ({
         <button
           type="button"
           className={styles.backButton}
-          onClick={() => setCurrentStep('orders')}>
+          onClick={() => setCurrentStep('orders')}
+        >
           <ArrowLeft size={16} strokeWidth={2} />
           Назад
         </button>

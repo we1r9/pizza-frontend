@@ -27,10 +27,14 @@ export const ToppingsSelection = ({
 
         return (
           <button
+            type="button"
             key={topping.id}
-            type='button'
-            className={`${styles.toppingPill} ${isSelected ? styles.selectedToppingPill : ''}`}
-            onClick={() => handleToggleTopping(topping)}>
+            className={`
+              ${styles.toppingPill}
+              ${isSelected ? styles.selectedToppingPill : ''}
+            `}
+            onClick={() => handleToggleTopping(topping)}
+          >
             <span className={styles.toppingName}>
               {capitalize(topping.name)}
             </span>

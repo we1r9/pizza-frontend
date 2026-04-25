@@ -7,20 +7,24 @@ export const OrdersTabs = ({
   return (
     <div className={styles.ordersTabsRow}>
       <button
-        onClick={() => setActiveView('current')}
+        type="button"
         className={`
           ${styles.ordersPill}
           ${activeView === 'current' && styles.activeOrdersPill}
-        `}>
+        `}
+        onClick={() => setActiveView('current')}
+      >
         Активные
       </button>
 
       <button
-        onClick={() => setActiveView('completed')}
+        type="button"
         className={`
           ${styles.ordersPill}
           ${activeView === 'completed' && styles.activeOrdersPill}
-        `}>
+        `}
+        onClick={() => setActiveView('completed')}
+      >
         Завершенные
       </button>
     </div>

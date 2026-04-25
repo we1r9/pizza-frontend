@@ -23,7 +23,6 @@ export const App = () => {
     sessionStorage.setItem('activeRole', activeRole)
   }, [activeRole])
 
-
   useEffect(() => {
     localStorage.setItem('orderDays', JSON.stringify(orderDays))
   }, [orderDays])

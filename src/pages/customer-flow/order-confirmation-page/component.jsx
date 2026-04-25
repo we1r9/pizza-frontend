@@ -61,8 +61,10 @@ export const OrderConfirmationPage = ({
         </p>
 
         <button
+          type="button"
           className={styles.returnToChoiceButton}
-          onClick={() => setCurrentStep('pizza')}>
+          onClick={() => setCurrentStep('pizza')}
+        >
           <ArrowLeft size={16} strokeWidth={2} />
           Вернуться к выбору
         </button>
@@ -76,7 +78,8 @@ export const OrderConfirmationPage = ({
         <button
           type="button"
           className={styles.backButton}
-          onClick={() => setCurrentStep('pizza')}>
+          onClick={() => setCurrentStep('pizza')}
+        >
           <ArrowLeft size={16} strokeWidth={2} />
           Назад
         </button>
@@ -124,9 +127,11 @@ export const OrderConfirmationPage = ({
 
         <div className={styles.confirmOrderWrapper}>
           <button
-            onClick={() => setCurrentStep('payment')}
+            type="button"
             disabled={!bookingInfo.canBook}
-            className={styles.confirmOrderButton}>
+            className={styles.confirmOrderButton}
+            onClick={() => setCurrentStep('payment')}
+          >
             <span>Оформить заказ на </span>
 
             <span

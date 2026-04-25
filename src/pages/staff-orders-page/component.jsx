@@ -79,7 +79,8 @@ export const StaffOrdersPage = ({
           <button
             type="button"
             className={sharedStyles.backButton}
-            onClick={handleReturn}>
+            onClick={handleReturn}
+          >
             <ArrowLeft size={16} strokeWidth={2} />
             Назад
           </button>
@@ -103,7 +104,8 @@ export const StaffOrdersPage = ({
           <button
             type="button"
             className={sharedStyles.backButton}
-            onClick={handleReturn}>
+            onClick={handleReturn}
+          >
             <ArrowLeft size={16} strokeWidth={2} />
             Назад
           </button>

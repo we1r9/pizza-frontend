@@ -19,7 +19,7 @@ export const OrderItems = ({
                 className={styles.image}
                 alt={item.name}
                 loading="eager"
-                />
+              />
             </div>
 
             <div className={styles.itemBody}>
@@ -53,9 +53,10 @@ export const OrderItems = ({
 
               <div className={styles.quantityControlsWrapper}>
                 <button
-                  type='button'
+                  type="button"
                   className={styles.quantityButton}
-                  onClick={() => onDecreaseQuantity(item.id)}>
+                  onClick={() => onDecreaseQuantity(item.id)}
+                >
                   <Minus size={18} strokeWidth={2} />
                 </button>
 
@@ -66,9 +67,10 @@ export const OrderItems = ({
                 </span>
 
                 <button
-                  type='button'
+                  type="button"
                   className={styles.quantityButton}
-                  onClick={() => onIncreaseQuantity(item.id)}>
+                  onClick={() => onIncreaseQuantity(item.id)}
+                >
                   <Plus size={18} strokeWidth={2} />
                 </button>
               </div>

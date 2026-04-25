@@ -52,7 +52,8 @@ export const SuccessPage = ({
           onClick={() => {
             resetOrderFlow()
             setCurrentStep('slot')
-          }}>
+          }}
+        >
           <Plus size={18} strokeWidth={2} />
           Новый заказ
         </button>
@@ -63,7 +64,8 @@ export const SuccessPage = ({
           onClick={() => {
             resetOrderFlow()
             setCurrentStep('orders')
-          }}>
+          }}
+        >
           Мои заказы
           <ArrowRight size={18} strokeWidth={2} />
         </button>

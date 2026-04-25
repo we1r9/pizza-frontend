@@ -21,9 +21,12 @@ export const AddableSlotsList = ({
 
         return (
           <button
-            key={slot.id}
             type="button"
-            className={`${styles.slotPill} ${isSelected ? styles.selectedSlotPill : ''}`}
+            key={slot.id}
+            className={`
+              ${styles.slotPill}
+              ${isSelected ? styles.selectedSlotPill : ''}
+            `}
             onClick={() => handleToggleSlot(slot.id, isSelected)}
           >
             {slot.time}

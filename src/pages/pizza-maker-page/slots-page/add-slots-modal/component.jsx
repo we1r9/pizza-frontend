@@ -127,10 +127,11 @@ export const AddSlotsModal = ({
         className={styles.modal}
       >
         <button
-          type='button'
-          onClick={onClose}
+          type="button"
+          aria-label="Закрыть окно"
           className={styles.closeButton}
-          aria-label="Закрыть окно">
+          onClick={onClose}
+        >
           <X size={20} strokeWidth={2.2} />
         </button>
 
@@ -155,6 +156,7 @@ export const AddSlotsModal = ({
 
           {selectableSlotIds.length > 0 && (
             <button
+              type="button"
               className={styles.selectButton}
               onClick={() => {
                 if (allSelectableSlotsSelected) {
@@ -185,7 +187,8 @@ export const AddSlotsModal = ({
               onClick={() => {
                 handleAddSlots()
                 showToast('Слоты успешно добавлены')
-              }}>
+              }}
+            >
               Добавить
             </button>
           </div>

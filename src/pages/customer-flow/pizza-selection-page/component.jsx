@@ -27,7 +27,8 @@ export const PizzaSelectionPage = ({
         <button
           type="button"
           className={styles.backButton}
-          onClick={() => setCurrentStep('slot')}>
+          onClick={() => setCurrentStep('slot')}
+        >
           <ArrowLeft size={16} strokeWidth={2} />
           Назад
         </button>
@@ -59,6 +60,7 @@ export const PizzaSelectionPage = ({
               Проверьте соединение и попробуйте снова
             </p>
             <button
+              type="button"
               className={styles.retryButton}
               onClick={refetch}
             >

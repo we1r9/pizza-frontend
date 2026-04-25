@@ -6,9 +6,10 @@ export const Slot = ({
 }) => {
   return (
     <button
+      type="button"
       disabled={isBooked}
-      onClick={onClick}
       className={className}
+      onClick={onClick}
     >
       {slot.time}
     </button>

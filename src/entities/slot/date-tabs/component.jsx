@@ -27,7 +27,9 @@ export const DateTabs = ({
           <button
             type="button"
             key={day.id}
-            className={`${styles.dateButton} ${selectedDayId === day.id && styles.selectedDateButton}`}
+            className={`
+              ${styles.dateButton}
+              ${selectedDayId === day.id && styles.selectedDateButton}`}
             onClick={() => {
               setSelectedDayId(day.id)
               setSelectedSlotId(null)

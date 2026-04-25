@@ -7,20 +7,24 @@ export const PizzaMakerViewTabs = ({
   return (
     <div className={styles.viewTabsRow}>
       <button
-        onClick={() => setPizzaMakerActiveView('orders')}
+        type="button"
         className={`
           ${styles.viewPill}
           ${pizzaMakerActiveView === 'orders' && styles.activeViewPill}
-        `}>
+        `}
+        onClick={() => setPizzaMakerActiveView('orders')}
+      >
         Заказы
       </button>
 
       <button
-        onClick={() => setPizzaMakerActiveView('slots')}
+        type="button"
         className={`
           ${styles.viewPill}
           ${pizzaMakerActiveView === 'slots' && styles.activeViewPill}
-        `}>
+        `}
+        onClick={() => setPizzaMakerActiveView('slots')}
+      >
         Управление слотами
       </button>
     </div>

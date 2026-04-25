@@ -18,16 +18,23 @@ export const PaymentStatusControls = ({
         <div className={sharedStyles.controlGroup}>
           <div className={sharedStyles.buttonsRow}>
             <button
-              type='button'
-              className={`${sharedStyles.pill} ${order.paymentStatus === 'unpaid' ? sharedStyles.savedPill : ''} ${currentPaymentStatus === 'unpaid' ? sharedStyles.selectedPill : ''}`}
+              type="button"
+              className={`
+                ${sharedStyles.pill}
+                ${order.paymentStatus === 'unpaid' ? sharedStyles.savedPill : ''}
+                ${currentPaymentStatus === 'unpaid' ? sharedStyles.selectedPill : ''}
+              `}
               onClick={() => onSelectStatus('unpaid')}
             >
               Не оплачено
             </button>
 
             <button
-              type='button'
-              className={`${sharedStyles.pill} ${order.paymentStatus === 'paid' ? sharedStyles.savedPill : ''} ${currentPaymentStatus === 'paid' ? sharedStyles.selectedPill : ''}`}
+              type="button"
+              className={`
+                ${sharedStyles.pill}
+                ${order.paymentStatus === 'paid' ? sharedStyles.savedPill : ''}
+                ${currentPaymentStatus === 'paid' ? sharedStyles.selectedPill : ''}`}
               onClick={() => onSelectStatus('paid')}
             >
               Оплачено
@@ -39,9 +46,9 @@ export const PaymentStatusControls = ({
       {isActionVisible && (
         <div className={sharedStyles.actionButtonContainer}>
           <button
-            type='button'
-            onClick={onActionClick}
+            type="button"
             className={sharedStyles.actionButton}
+            onClick={onActionClick}
           >
             Сохранить
           </button>

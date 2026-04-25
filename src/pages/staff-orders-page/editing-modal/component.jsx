@@ -49,10 +49,11 @@ export const EditingModal = ({
         role="dialog"
         aria-modal="true">
         <button
-          type='button'
-          onClick={onClose}
+          type="button"
+          aria-label="Закрыть окно"
           className={styles.closeButton}
-          aria-label="Закрыть окно">
+          onClick={onClose}
+        >
           <X size={20} strokeWidth={2.2} />
         </button>
 
@@ -96,9 +97,10 @@ export const EditingModal = ({
         )}
 
         <button
-          type='button'
+          type="button"
+          className={styles.confirmButton}
           onClick={handleConfirm}
-          className={styles.confirmButton}>
+        >
           Подтвердить
         </button>
       </div>

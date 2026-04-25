@@ -70,7 +70,8 @@ export const PaymentPage = ({
           onClick={() => {
             setCurrentStep('order')
             setPaymentMethod(null)
-          }}>
+          }}
+        >
           <ArrowLeft size={16} strokeWidth={2} />
           Назад
         </button>
@@ -82,12 +83,13 @@ export const PaymentPage = ({
         <section className={styles.paymentOptions}>
           <button
             type="button"
-            onClick={() => setPaymentMethod('card')}
             className={`
             ${styles.paymentOption}
             ${paymentMethod === 'card'
                 ? styles.activePaymentOption
-                : ''}`}>
+                : ''}`}
+            onClick={() => setPaymentMethod('card')}
+          >
             <span className={styles.paymentTitle}>
               <CreditCard
                 size={18}
@@ -107,12 +109,13 @@ export const PaymentPage = ({
 
           <button
             type="button"
-            onClick={() => setPaymentMethod('on_receipt')}
             className={`
             ${styles.paymentOption}
             ${paymentMethod === 'on_receipt'
                 ? styles.activePaymentOption
-                : ''}`}>
+                : ''}`}
+            onClick={() => setPaymentMethod('on_receipt')}
+          >
             <span className={styles.paymentTitle}>
               <Wallet
                 size={18}
@@ -142,8 +145,9 @@ export const PaymentPage = ({
 
             <button
               type="button"
+              className={styles.summaryButton}
               onClick={handleAddOrder}
-              className={styles.summaryButton}>
+            >
               {paymentMethod === 'card'
                 ? 'Оплатить'
                 : 'Подтвердить заказ'}

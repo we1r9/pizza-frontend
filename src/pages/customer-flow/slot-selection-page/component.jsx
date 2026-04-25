@@ -30,8 +30,10 @@ export const SlotSelectionPage = ({
         <header className={styles.topBar}>
           <span className={styles.logo}>🍕</span>
           <button
+            type="button"
             className={styles.ordersButton}
-            onClick={() => setCurrentStep('orders')}>
+            onClick={() => setCurrentStep('orders')}
+          >
             Мои заказы
           </button>
         </header>
@@ -58,8 +60,10 @@ export const SlotSelectionPage = ({
       <header className={styles.topBar}>
         <span className={styles.logo}>🍕</span>
         <button
+          type="button"
           className={styles.ordersButton}
-          onClick={() => setCurrentStep('orders')}>
+          onClick={() => setCurrentStep('orders')}
+        >
           Мои заказы
         </button>
       </header>

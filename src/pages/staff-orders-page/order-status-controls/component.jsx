@@ -23,23 +23,33 @@ export const OrderStatusControls = ({
         <div className={sharedStyles.controlGroup}>
           <div className={sharedStyles.buttonsRow}>
             <button
-              type='button'
-              className={`${sharedStyles.pill} ${order.status === 'new' ? sharedStyles.savedPill : ''} ${currentOrderStatus === 'new' ? sharedStyles.selectedPill : ''}`}
-              onClick={() => onSelectStatus('new')}>
+              type="button"
+              className={`
+                ${sharedStyles.pill}
+                ${order.status === 'new' ? sharedStyles.savedPill : ''}
+                ${currentOrderStatus === 'new' ? sharedStyles.selectedPill : ''}`}
+              onClick={() => onSelectStatus('new')}
+            >
               Новый
             </button>
 
             <button
-              type='button'
-              className={`${sharedStyles.pill} ${order.status === 'in_progress' ? sharedStyles.savedPill : ''} ${currentOrderStatus === 'in_progress' ? sharedStyles.selectedPill : ''}`}
+              type="button"
+              className={`
+                ${sharedStyles.pill}
+                ${order.status === 'in_progress' ? sharedStyles.savedPill : ''}
+                ${currentOrderStatus === 'in_progress' ? sharedStyles.selectedPill : ''}`}
               onClick={() => onSelectStatus('in_progress')}
             >
               Готовится
             </button>
 
             <button
-              type='button'
-              className={`${sharedStyles.pill} ${order.status === 'ready' ? sharedStyles.savedPill : ''} ${currentOrderStatus === 'ready' ? sharedStyles.selectedPill : ''}`}
+              type="button"
+              className={`
+                ${sharedStyles.pill}
+                ${order.status === 'ready' ? sharedStyles.savedPill : ''}
+                ${currentOrderStatus === 'ready' ? sharedStyles.selectedPill : ''}`}
               onClick={() => onSelectStatus('ready')}
             >
               Готов
@@ -47,8 +57,12 @@ export const OrderStatusControls = ({
 
             {showCompletedOption && (
               <button
-                type='button'
-                className={`${sharedStyles.pill} ${order.status === 'completed' ? sharedStyles.savedPill : ''} ${currentOrderStatus === 'completed' ? sharedStyles.selectedPill : ''}`}
+                type="button"
+                className={`
+                  ${sharedStyles.pill}
+                  ${order.status === 'completed' ? sharedStyles.savedPill : ''}
+                  ${currentOrderStatus === 'completed' ? sharedStyles.selectedPill : ''}
+                `}
                 onClick={() => onSelectStatus('completed')}
               >
                 Выдан
@@ -61,10 +75,13 @@ export const OrderStatusControls = ({
       {isActionVisible && (
         <div className={sharedStyles.actionButtonContainer}>
           <button
-            type='button'
+            type="button"
             disabled={isCompletedBlocked}
+            className={`
+              ${sharedStyles.actionButton}
+              ${isCompletedBlocked && sharedStyles.actionButtonDisabled}
+            `}
             onClick={onActionClick}
-            className={`${sharedStyles.actionButton} ${isCompletedBlocked && sharedStyles.actionButtonDisabled}`}
           >
             {actionButtonText}
           </button>
