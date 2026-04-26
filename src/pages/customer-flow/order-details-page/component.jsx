@@ -7,7 +7,7 @@ import { ArrowLeft, Check } from 'lucide-react'
 import styles from './styles.module.css'
 
 export const OrderDetailsPage = ({
-  setCurrentStep,
+  setScreen,
   selectedOrder
 }) => {
 
@@ -17,7 +17,7 @@ export const OrderDetailsPage = ({
         <button
           type="button"
           className={styles.backButton}
-          onClick={() => setCurrentStep('orders')}
+          onClick={() => setScreen('orders')}
         >
           <ArrowLeft size={16} strokeWidth={2} />
           Назад

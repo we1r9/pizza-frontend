@@ -7,7 +7,7 @@ import { ArrowLeft, ShoppingBasket, RotateCcw } from 'lucide-react'
 import styles from './styles.module.css'
 
 export const PizzaSelectionPage = ({
-  setCurrentStep,
+  setScreen,
   chosenDay,
   selectedSlotTime,
   setSelectedPizza,
@@ -27,7 +27,7 @@ export const PizzaSelectionPage = ({
         <button
           type="button"
           className={styles.backButton}
-          onClick={() => setCurrentStep('slot')}
+          onClick={() => setScreen('slot')}
         >
           <ArrowLeft size={16} strokeWidth={2} />
           Назад
@@ -83,7 +83,7 @@ export const PizzaSelectionPage = ({
             <PizzaGrid
               pizzas={pizzas}
               setSelectedPizza={setSelectedPizza}
-              setCurrentStep={setCurrentStep}
+              setScreen={setScreen}
               orderItems={orderItems}
             />
           </>
@@ -92,7 +92,7 @@ export const PizzaSelectionPage = ({
         <div className={styles.actionRow}>
           <GoToCartButton
             orderItems={orderItems}
-            onClick={() => setCurrentStep('order')}>
+            onClick={() => setScreen('order')}>
             <>
               <span>{totalCost.toLocaleString('ru-RU').replace(/\s/g, '\u202F')} ₽</span>
               <ShoppingBasket size={18} strokeWidth={2} />

@@ -14,7 +14,7 @@ export const OrderConfirmationPage = ({
   setOrderItems,
   orderComment,
   setOrderComment,
-  setCurrentStep
+  setScreen
 }) => {
   const bookingInfo = getBookingInfo(orderItems, chosenDay, selectedSlotId)
 
@@ -64,7 +64,7 @@ export const OrderConfirmationPage = ({
         <button
           type="button"
           className={styles.returnToChoiceButton}
-          onClick={() => setCurrentStep('pizza')}
+          onClick={() => setScreen('pizza')}
         >
           <ArrowLeft size={16} strokeWidth={2} />
           Вернуться к выбору
@@ -79,7 +79,7 @@ export const OrderConfirmationPage = ({
         <button
           type="button"
           className={styles.backButton}
-          onClick={() => setCurrentStep('pizza')}
+          onClick={() => setScreen('pizza')}
         >
           <ArrowLeft size={16} strokeWidth={2} />
           Назад
@@ -132,7 +132,7 @@ export const OrderConfirmationPage = ({
             type="button"
             disabled={!bookingInfo.canBook}
             className={styles.confirmOrderButton}
-            onClick={() => setCurrentStep('payment')}
+            onClick={() => setScreen('payment')}
           >
             <span>Оформить заказ на </span>
 

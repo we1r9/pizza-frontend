@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 export const ConfirmSlotButton = ({
   children,
   isHidden,
-  setCurrentStep
+  setScreen
 }) => {
   if (isHidden) return null
 
@@ -12,7 +12,7 @@ export const ConfirmSlotButton = ({
       <button
         type="button"
         className={styles.confirmSlotButton}
-        onClick={() => setCurrentStep('pizza')}
+        onClick={() => setScreen('pizza')}
       >
         {children}
       </button>

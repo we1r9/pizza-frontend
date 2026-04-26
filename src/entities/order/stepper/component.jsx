@@ -10,27 +10,27 @@ export const Stepper = ({ selectedOrder }) => {
     { key: 'completed', label: 'Выдан' }
   ]
 
-  const currentStepIndex = statusSteps.findIndex((step) => step.key === selectedOrder.status)
+  const screenIndex = statusSteps.findIndex((step) => step.key === selectedOrder.status)
 
   const isCompletedOrder = selectedOrder.status === 'completed'
 
   return (
     <ol
-      aria-label={`Статус заказа: ${statusSteps[currentStepIndex]?.label ?? ''}`}
+      aria-label={`Статус заказа: ${statusSteps[screenIndex]?.label ?? ''}`}
       className={`
         ${styles.stepper}
         ${isCompletedOrder ? styles.stepperCompleted : ''}
       `}
     >
       {statusSteps.map((step, index) => {
-        const isCompleted = index <= currentStepIndex
+        const isCompleted = index <= screenIndex
 
         const isLast = index === statusSteps.length - 1
 
         return (
           <li
             key={step.key}
-            aria-current={index === currentStepIndex ? 'step' : undefined}
+            aria-current={index === screenIndex ? 'step' : undefined}
             className={`
               ${styles.stepperItem}
               ${!isLast ? styles.stepperItemGrow : ''}
@@ -68,7 +68,7 @@ export const Stepper = ({ selectedOrder }) => {
               <div
                 className={`
                   ${styles.stepLine}
-                  ${index < currentStepIndex ? styles.stepLineActive : ''
+                  ${index < screenIndex ? styles.stepLineActive : ''
                   }
                 `}
               />

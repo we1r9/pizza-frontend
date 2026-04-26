@@ -26,7 +26,7 @@ export const CustomerFlow = () => {
     }
   }, [pizzas])
 
-  const [currentStep, setCurrentStep] = useState('slot')
+  const [screen, setScreen] = useState('slot')
 
   const visibleOrderDays = orderDays.filter((day) =>
     day.availableSlots.some(
@@ -52,11 +52,11 @@ export const CustomerFlow = () => {
 
   let content
 
-  switch (currentStep) {
+  switch (screen) {
     case 'slot':
       content = (
         <SlotSelectionPage
-          setCurrentStep={setCurrentStep}
+          setScreen={setScreen}
           orderDays={orderDays}
           chosenDay={chosenDay}
           selectedDayId={actualSelectedDayId}
@@ -71,7 +71,7 @@ export const CustomerFlow = () => {
     case 'pizza':
       content = (
         <PizzaSelectionPage
-          setCurrentStep={setCurrentStep}
+          setScreen={setScreen}
           chosenDay={chosenDay}
           selectedSlotTime={selectedSlotTime}
           setSelectedPizza={setSelectedPizza}
@@ -87,7 +87,7 @@ export const CustomerFlow = () => {
     case 'pizza-details':
       content = (
         <PizzaDetailsPage
-          setCurrentStep={setCurrentStep}
+          setScreen={setScreen}
           selectedPizza={selectedPizza}
           setOrderItems={setOrderItems}
         />
@@ -104,7 +104,7 @@ export const CustomerFlow = () => {
           setOrderItems={setOrderItems}
           orderComment={orderComment}
           setOrderComment={setOrderComment}
-          setCurrentStep={setCurrentStep}
+          setScreen={setScreen}
         />
       )
       break
@@ -112,7 +112,7 @@ export const CustomerFlow = () => {
     case 'payment':
       content = (
         <PaymentPage
-          setCurrentStep={setCurrentStep}
+          setScreen={setScreen}
           orderItems={orderItems}
           paymentMethod={paymentMethod}
           setPaymentMethod={setPaymentMethod}
@@ -127,7 +127,7 @@ export const CustomerFlow = () => {
     case 'success':
       content = (
         <SuccessPage
-          setCurrentStep={setCurrentStep}
+          setScreen={setScreen}
           chosenDay={chosenDay}
           selectedSlotTime={selectedSlotTime}
           orderItems={orderItems}
@@ -143,7 +143,7 @@ export const CustomerFlow = () => {
     case 'orders':
       content = (
         <OrdersPage
-          setCurrentStep={setCurrentStep}
+          setScreen={setScreen}
           setSelectedOrder={setSelectedOrder}
         />
       )
@@ -152,7 +152,7 @@ export const CustomerFlow = () => {
     case 'order-details':
       content = (
         <OrderDetailsPage
-          setCurrentStep={setCurrentStep}
+          setScreen={setScreen}
           selectedOrder={selectedOrder}
         />
       )
@@ -165,7 +165,7 @@ export const CustomerFlow = () => {
   return (
     <AnimatePresence mode="wait">
       <Motion.div
-        key={currentStep}
+        key={screen}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

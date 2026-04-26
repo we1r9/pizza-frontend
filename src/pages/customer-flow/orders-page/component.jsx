@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react"
 import styles from './styles.module.css'
 
 export const OrdersPage = ({
-  setCurrentStep,
+  setScreen,
   setSelectedOrder
 }) => {
   const { orders } = useAppContext()
@@ -18,7 +18,7 @@ export const OrdersPage = ({
         <button
           type="button"
           className={styles.backButton}
-          onClick={() => setCurrentStep('slot')}
+          onClick={() => setScreen('slot')}
         >
           <ArrowLeft size={16} strokeWidth={2} />
           Назад
@@ -56,13 +56,13 @@ export const OrdersPage = ({
                 tabIndex={0}
                 className={styles.orderContainer}
                 onClick={() => {
-                  setCurrentStep('order-details')
+                  setScreen('order-details')
                   setSelectedOrder(order)
                 }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault()
-                    setCurrentStep('order-details')
+                    setScreen('order-details')
                     setSelectedOrder(order)
                   }
                 }}

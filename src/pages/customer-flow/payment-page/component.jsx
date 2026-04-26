@@ -8,7 +8,7 @@ import styles from './styles.module.css'
 const generateOrderNumber = () => Math.floor(1000 + Math.random() * 9000)
 
 export const PaymentPage = ({
-  setCurrentStep,
+  setScreen,
   orderItems,
   paymentMethod,
   setPaymentMethod,
@@ -58,7 +58,7 @@ export const PaymentPage = ({
     }
 
     setOrders((prev) => [...prev, order])
-    setCurrentStep('success')
+    setScreen('success')
   }
 
   return (
@@ -68,7 +68,7 @@ export const PaymentPage = ({
           type="button"
           className={styles.backButton}
           onClick={() => {
-            setCurrentStep('order')
+            setScreen('order')
             setPaymentMethod(null)
           }}
         >

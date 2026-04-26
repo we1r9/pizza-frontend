@@ -6,7 +6,7 @@ import { Plus, ArrowRight } from 'lucide-react'
 import styles from './styles.module.css'
 
 export const SuccessPage = ({
-  setCurrentStep,
+  setScreen,
   chosenDay,
   selectedSlotTime,
   orderItems,
@@ -53,7 +53,7 @@ export const SuccessPage = ({
           className={styles.actionButton}
           onClick={() => {
             resetOrderFlow()
-            setCurrentStep('slot')
+            setScreen('slot')
           }}
         >
           <Plus size={18} strokeWidth={2} />
@@ -65,7 +65,7 @@ export const SuccessPage = ({
           className={styles.actionButton}
           onClick={() => {
             resetOrderFlow()
-            setCurrentStep('orders')
+            setScreen('orders')
           }}
         >
           Мои заказы

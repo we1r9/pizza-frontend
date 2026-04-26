@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 
 export const PizzaGrid = ({
   pizzas,
-  setCurrentStep,
+  setScreen,
   setSelectedPizza,
   orderItems
 }) => {
@@ -26,7 +26,7 @@ export const PizzaGrid = ({
             selectedPizzaCount={selectedPizzaCount}
             onClick={() => {
               setSelectedPizza(pizza)
-              setCurrentStep('pizza-details')
+              setScreen('pizza-details')
             }}
           />
         )

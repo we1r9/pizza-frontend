@@ -9,7 +9,7 @@ import { X, Plus } from 'lucide-react'
 import styles from './styles.module.css'
 
 export const PizzaDetailsPage = ({
-  setCurrentStep,
+  setScreen,
   selectedPizza,
   setOrderItems,
 }) => {
@@ -73,7 +73,7 @@ export const PizzaDetailsPage = ({
 
     setRemovedIngredients([])
     setAddedToppings([])
-    setCurrentStep('pizza')
+    setScreen('pizza')
   }
 
   return (
@@ -83,7 +83,7 @@ export const PizzaDetailsPage = ({
           type="button"
           aria-label="Назад к меню"
           className={styles.backButton}
-          onClick={() => setCurrentStep('pizza')}
+          onClick={() => setScreen('pizza')}
         >
           <X size={20} strokeWidth={2.2} />
         </button>

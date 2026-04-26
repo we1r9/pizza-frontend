@@ -5,7 +5,7 @@ import { isSlotExpired } from "@/shared/lib/isSlotExpired"
 import styles from './styles.module.css'
 
 export const SlotSelectionPage = ({
-  setCurrentStep,
+  setScreen,
   orderDays,
   chosenDay,
   selectedDayId,
@@ -33,7 +33,7 @@ export const SlotSelectionPage = ({
           <button
             type="button"
             className={styles.ordersButton}
-            onClick={() => setCurrentStep('orders')}
+            onClick={() => setScreen('orders')}
           >
             Мои заказы
           </button>
@@ -68,7 +68,7 @@ export const SlotSelectionPage = ({
         <button
           type="button"
           className={styles.ordersButton}
-          onClick={() => setCurrentStep('orders')}
+          onClick={() => setScreen('orders')}
         >
           Мои заказы
         </button>
@@ -93,7 +93,7 @@ export const SlotSelectionPage = ({
 
         <Slots
           key={chosenDay.id}
-          setCurrentStep={setCurrentStep}
+          setScreen={setScreen}
           chosenDay={chosenDay}
           selectedSlotId={selectedSlotId}
           setSelectedSlotId={setSelectedSlotId}

@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import styles from './styles.module.css'
 
 export const Slots = ({
-  setCurrentStep,
+  setScreen,
   chosenDay,
   selectedSlotId,
   setSelectedSlotId,
@@ -60,7 +60,7 @@ export const Slots = ({
       <div className={`${styles.actionRow} ${visibleSlots.length <= 3 && styles.actionRowCentered}`}>
         <ConfirmSlotButton
           isHidden={!selectedSlot}
-          setCurrentStep={setCurrentStep}>
+          setScreen={setScreen}>
           <>
             Продолжить
             <ArrowRight size={18} strokeWidth={2} />
