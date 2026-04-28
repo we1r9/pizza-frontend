@@ -30,13 +30,14 @@
 
 ## Стек
 
-- **React**
-- **JavaScript** (постепенная миграция на TypeScript)
-- **Vite**
-- **CSS Modules**
-- **Framer Motion**
-- **Supabase**
-- **Vitest**
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![CSS Modules](https://img.shields.io/badge/CSS_Modules-66309a?style=for-the-badge&logo=cssmodules&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-000000?style=for-the-badge&logo=framer&logoColor=FFDD00)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 
 ## Установка и запуск
 
