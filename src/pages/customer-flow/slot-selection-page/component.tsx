@@ -4,6 +4,30 @@ import { isSlotExpired } from "@/shared/lib/isSlotExpired"
 
 import styles from './styles.module.css'
 
+interface Slot {
+  id: string
+  time: string
+  enabled: boolean
+  booked: boolean
+}
+
+interface OrderDay {
+  id: string
+  date: string
+  availableSlots: Slot[]
+}
+
+interface SlotSelectionPageProps {
+  setScreen: (screen: string) => void
+  orderDays: OrderDay[]
+  chosenDay: OrderDay | undefined
+  selectedDayId: string | null
+  setSelectedDayId: (id: string) => void
+  selectedSlotId: string | null
+  setSelectedSlotId: (id: string | null) => void
+  setSelectedSlotTime: (time: string | null) => void
+}
+
 export const SlotSelectionPage = ({
   setScreen,
   orderDays,
@@ -12,8 +36,8 @@ export const SlotSelectionPage = ({
   setSelectedDayId,
   selectedSlotId,
   setSelectedSlotId,
-  setSelectedSlotTime
-}) => {
+  setSelectedSlotTime,
+}: SlotSelectionPageProps) => {
 
   const availableDays = orderDays.filter((day) =>
     day.availableSlots.some(
@@ -92,7 +116,7 @@ export const SlotSelectionPage = ({
         />
 
         <Slots
-          key={chosenDay.id}
+          key={chosenDay?.id}
           setScreen={setScreen}
           chosenDay={chosenDay}
           selectedSlotId={selectedSlotId}
