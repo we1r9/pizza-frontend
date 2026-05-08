@@ -15,7 +15,8 @@ export const PaymentPage = ({
   chosenDay,
   selectedSlotId,
   selectedSlotTime,
-  orderComment
+  orderComment,
+  setConfirmedDay
 }) => {
   const { setOrders, setOrderDays } = useAppContext()
   const totalCost = orderItems.reduce(
@@ -58,6 +59,7 @@ export const PaymentPage = ({
     }
 
     setOrders((prev) => [...prev, order])
+    setConfirmedDay(chosenDay)
     setScreen('success')
   }
 

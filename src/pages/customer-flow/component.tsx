@@ -66,6 +66,7 @@ export const CustomerFlow = () => {
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'on_receipt' | null>(null)
   const [selectedOrder, setSelectedOrder] = useState<unknown>(null)
   const [orderComment, setOrderComment] = useState<string>('')
+  const [confirmedDay, setConfirmedDay] = useState<unknown>(null)
 
   const actualSelectedDayId = visibleOrderDays.some((day: { id: string }) => day.id === selectedDayId)
     ? selectedDayId
@@ -143,6 +144,7 @@ export const CustomerFlow = () => {
           selectedSlotId={selectedSlotId}
           selectedSlotTime={selectedSlotTime}
           orderComment={orderComment}
+          setConfirmedDay={setConfirmedDay}
         />
       )
       break
@@ -151,7 +153,7 @@ export const CustomerFlow = () => {
       content = (
         <SuccessPage
           setScreen={setScreen}
-          chosenDay={chosenDay}
+          chosenDay={confirmedDay}
           selectedSlotTime={selectedSlotTime}
           orderItems={orderItems}
           setPaymentMethod={setPaymentMethod}
